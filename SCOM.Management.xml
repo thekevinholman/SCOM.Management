@@ -1,0 +1,3655 @@
+﻿<?xml version="1.0" encoding="utf-8"?><ManagementPack ContentReadable="true" SchemaVersion="2.0" OriginalSchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <Manifest>
+    <Identity>
+      <ID>SCOM.Management</ID>
+      <Version>10.19.10349.0</Version>
+    </Identity>
+    <Name>SCOM.Management</Name>
+    <References>
+      <Reference Alias="Windows">
+        <ID>Microsoft.Windows.Library</ID>
+        <Version>7.5.8501.0</Version>
+        <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+      </Reference>
+      <Reference Alias="System">
+        <ID>System.Library</ID>
+        <Version>7.5.8501.0</Version>
+        <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+      </Reference>
+      <Reference Alias="SC">
+        <ID>Microsoft.SystemCenter.Library</ID>
+        <Version>7.0.8433.0</Version>
+        <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+      </Reference>
+      <Reference Alias="Health">
+        <ID>System.Health.Library</ID>
+        <Version>7.0.8433.0</Version>
+        <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+      </Reference>
+    </References>
+  </Manifest>
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="SCOM.Management.Class" Accessibility="Public" Abstract="false" Base="Windows!Microsoft.Windows.LocalApplication" Hosted="true" Singleton="false" Extension="false" />
+        <ClassType ID="SCOM.Management.Agent.Class" Accessibility="Public" Abstract="false" Base="SCOM.Management.Class" Hosted="true" Singleton="false" Extension="false">
+          <Property ID="AgentVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="UpdateRollup" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="ADIntEnabled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="ManagementGroups" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="OMSWorkspaces" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="ProxyURL" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />		  
+          <Property ID="PSInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="PSVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="CLRVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Architecture" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />		  
+          <Property ID="OSVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="OSName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="PrimaryMS" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="FailoverList" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="ActionAccount" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="InstallPath" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="APMInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+		  <Property ID="CertLoaded" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+		  <Property ID="CertExpires" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+		  <Property ID="ThumbPrint" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+		  <Property ID="CertIssuer" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="IP" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Connection" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="1024" MinLength="0" Required="false" Scale="0" />		  
+        </ClassType>
+        <ClassType ID="SCOM.Management.Server.Class" Accessibility="Public" Abstract="false" Base="SCOM.Management.Class" Hosted="true" Singleton="false" Extension="false">
+          <Property ID="ServerVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="ServerURLevel" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="WebConsoleVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="WebConsoleURLevel" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="ConsoleVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="ConsoleURLevel" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="OMSWorkspaces" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="PSVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="CLRVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="OSVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="OSName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="PrimaryMS" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="FailoverList" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="ActionAccount" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="InstallPath" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+		  <Property ID="CertLoaded" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+		  <Property ID="CertExpires" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+		  <Property ID="ThumbPrint" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+		  <Property ID="CertIssuer" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />		  
+		  <Property ID="TLS12Enforced" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+		  <Property ID="TLS12SQLCliInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+		  <Property ID="TLS12ODBCInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+        </ClassType>
+      </ClassTypes>
+    </EntityTypes>
+    <ModuleTypes>
+      <WriteActionModuleType ID="SCOM.Management.AddManagementGroup.WA" Accessibility="Internal" Batching="false">
+        <Configuration>
+          <xsd:element minOccurs="1" name="MGName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="MSName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="TimeoutSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="MGName" Selector="$Config/MGName$" ParameterType="string" />
+          <OverrideableParameter ID="MSName" Selector="$Config/MSName$" ParameterType="string" />
+          <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
+        </OverrideableParameters>
+        <ModuleImplementation Isolation="Any">
+          <Composite>
+            <MemberModules>
+              <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
+                <ScriptName>SCOM.Management.AddManagementGroup.WA.ps1</ScriptName>
+                <ScriptBody>
+#=================================================================================
+#  Script to ADD a SCOM Management Group to an Agent
+#=================================================================================
+param([string]$MGName,[string]$MSName)
+
+
+# Manual Testing section - put stuff here for manually testing script - typically parameters:
+#=================================================================================
+# $MGName = "SCOM TEST"
+# $MSName = "SCOMServer1.domain.com"
+#=================================================================================
+
+
+# Constants section - modify stuff here:
+#=================================================================================
+# Assign script name variable for use in event logging
+$ScriptName = "SCOM.Management.AddManagementGroup.WA.ps1"
+$EventID = "1310"
+#=================================================================================
+
+
+# Starting Script section
+#=================================================================================
+# Gather who the script is running as
+$whoami = whoami
+#Load the MOMScript API and discovery propertybag
+$momapi = New-Object -comObject "Mom.ScriptAPI"
+#=================================================================================
+
+
+# Begin Main Script
+#=================================================================================
+#Log event that we are starting task
+$momapi.LogScriptEvent($ScriptName,$EventID,0, "`nStarting script. `nRunning as ($whoami)")
+Write-Host "Task Starting.  Running as ($whoami)"
+
+# Check if this is running on a SCOM Management Server or Gateway and stop if it is
+$SCOMServerRegKey = "HKLM:\SOFTWARE\Microsoft\Microsoft Operations Manager\3.0\Server Management Groups"
+IF (Test-Path $SCOMServerRegKey)
+{
+  # This is a management server.  STOP
+  $momapi.LogScriptEvent($ScriptName,$EventID,1,"`nFATAL ERROR: SCOM Server Role Detected. `nThis script should not run on Management Servers or Gateways `n Terminating script.")
+  Write-Host "`nFATAL ERROR: SCOM Server Role Detected. `nThis script should not run on Management Servers or Gateways `nTerminating script." -ForegroundColor Red
+  EXIT
+}
+
+#Load agent scripting object
+$AgentCfg = New-Object -ComObject AgentConfigManager.MgmtSvcCfg
+
+Write-Host "Adding Management Group ($MGName)"
+$Error.Clear()
+
+TRY 
+{
+  $AgentCfg.AddManagementGroup("$MGName","$MSName",5723)
+}
+CATCH
+{
+  Write-Host "ERROR adding Management group.  Error is: ($Error)."
+  EXIT
+}
+
+Write-Host "Management Group ($MGName) Added."
+#Restart Agent
+Write-Host "Restarting Agent now...."
+#=================================================================================
+# End Main Script	
+
+# Restart Agent
+#=================================================================================
+#We need a reliable way to restart the SCOM Agent out of band so that tasks can complete with success
+$Command = "Start-Sleep -s 5;Restart-Service HealthService"
+$Process = ([wmiclass]"root\cimv2:Win32_ProcessStartup").CreateInstance()
+$Process.ShowWindow = 0
+$Process.CreateFlags = 16777216
+([wmiclass]"root\cimv2:Win32_Process").Create("powershell.exe $Command")|Out-Null
+#=================================================================================	
+                </ScriptBody>
+                <Parameters>
+                  <Parameter>
+                    <Name>MGName</Name>
+                    <Value>$Config/MGName$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>MSName</Name>
+                    <Value>$Config/MSName$</Value>
+                  </Parameter>
+                </Parameters>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+              </WriteAction>
+            </MemberModules>
+            <Composition>
+              <Node ID="PSWA" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>System!System.BaseData</OutputType>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType>
+      <WriteActionModuleType ID="SCOM.Management.RemoveManagementGroup.WA" Accessibility="Internal" Batching="false">
+        <Configuration>
+          <xsd:element minOccurs="1" name="MGName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="TimeoutSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="MGName" Selector="$Config/MGName$" ParameterType="string" />
+          <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
+        </OverrideableParameters>
+        <ModuleImplementation Isolation="Any">
+          <Composite>
+            <MemberModules>
+              <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
+                <ScriptName>SCOM.Management.RemoveManagementGroup.WA.ps1</ScriptName>
+                <ScriptBody>
+#=================================================================================
+#  Script to REMOVE a SCOM Management Group from an Agent
+#=================================================================================
+param([string]$MGName)
+
+
+# Manual Testing section - put stuff here for manually testing script - typically parameters:
+#=================================================================================
+# $MGName = "SCOM TEST"
+#=================================================================================
+
+
+# Constants section - modify stuff here:
+#=================================================================================
+# Assign script name variable for use in event logging
+$ScriptName = "SCOM.Management.RemoveManagementGroup.WA.ps1"
+$EventID = "1310"
+#=================================================================================
+
+
+# Starting Script section
+#=================================================================================
+# Gather who the script is running as
+$whoami = whoami
+#Load the MOMScript API and discovery propertybag
+$momapi = New-Object -comObject "Mom.ScriptAPI"
+#=================================================================================
+
+
+# Begin Main Script
+#=================================================================================
+#Log event that we are starting task
+$momapi.LogScriptEvent($ScriptName,$EventID,0, "`nStarting script. `nRunning as ($whoami)")
+Write-Host "Task Starting.  Running as ($whoami)"
+
+# Check if this is running on a SCOM Management Server or Gateway and stop if it is
+$SCOMServerRegKey = "HKLM:\SOFTWARE\Microsoft\Microsoft Operations Manager\3.0\Server Management Groups"
+IF (Test-Path $SCOMServerRegKey)
+{
+  # This is a management server.  STOP
+  $momapi.LogScriptEvent($ScriptName,$EventID,1,"`nFATAL ERROR: SCOM Server Role Detected. `nThis script should not run on Management Servers or Gateways `n Terminating script.")
+  Write-Host "`nFATAL ERROR: SCOM Server Role Detected. `nThis script should not run on Management Servers or Gateways `nTerminating script." -ForegroundColor Red
+  EXIT
+}
+
+#Load agent scripting object
+$AgentCfg = New-Object -ComObject AgentConfigManager.MgmtSvcCfg
+
+Write-Host "Removing Management Group ($MGName)"
+$Error.Clear()
+
+TRY 
+{
+  $AgentCfg.RemoveManagementGroup("$MGName")
+}
+CATCH
+{
+  Write-Host "ERROR removing Management group.  Error is: ($Error)."
+  EXIT
+}
+
+Write-Host "Management Group ($MGName) Removed."
+#Restart Agent
+Write-Host "Restarting Agent now...."
+#=================================================================================
+# End Main Script	
+
+# Restart Agent
+#=================================================================================
+#We need a reliable way to restart the SCOM Agent out of band so that tasks can complete with success
+$Command = "Start-Sleep -s 5;Restart-Service HealthService"
+$Process = ([wmiclass]"root\cimv2:Win32_ProcessStartup").CreateInstance()
+$Process.ShowWindow = 0
+$Process.CreateFlags = 16777216
+([wmiclass]"root\cimv2:Win32_Process").Create("powershell.exe $Command")|Out-Null
+#=================================================================================	
+                </ScriptBody>
+                <Parameters>
+                  <Parameter>
+                    <Name>MGName</Name>
+                    <Value>$Config/MGName$</Value>
+                  </Parameter>
+                </Parameters>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+              </WriteAction>
+            </MemberModules>
+            <Composition>
+              <Node ID="PSWA" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>System!System.BaseData</OutputType>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType> 
+      <WriteActionModuleType ID="SCOM.Management.FlushHealthService.WA" Comment="Flush Healthservice" Accessibility="Internal" Batching="false">
+        <Configuration />
+        <ModuleImplementation Isolation="Any">
+          <Native>
+            <ClassID>B253A4FA-71BE-4F5D-94D5-A46B0D2505AA</ClassID>
+          </Native>
+        </ModuleImplementation>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType>
+      <WriteActionModuleType ID="SCOM.Management.RestartService.WA" Accessibility="Internal" Batching="false">
+        <Configuration>
+          <xsd:element minOccurs="1" name="ServiceName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="TimeoutSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="ServiceName" Selector="$Config/ServiceName$" ParameterType="string" />
+          <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
+        </OverrideableParameters>
+        <ModuleImplementation Isolation="Any">
+          <Composite>
+            <MemberModules>
+              <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
+                <ScriptName>SCOM.Management.RestartService.WA.ps1</ScriptName>
+                <ScriptBody>
+                  #=================================================================================
+                  #  Script to restart services via PowerShell
+                  #=================================================================================
+                  param($ServiceName)
+
+                  # For testing discovery manually in PowerShell:
+                  # $ServiceName = "xspooler"
+
+                  #=================================================================================
+                  # Constants section - modify stuff here:
+
+                  # Assign script name variable for use in event logging
+                  $ScriptName = "SCOM.Management.RestartService.WA.ps1"
+                  #=================================================================================
+
+                  # Gather script start time
+                  $StartTime = Get-Date
+
+                  # Gather who the script is running as
+                  $whoami = whoami
+
+                  #Load the MOMScript API and discovery propertybag
+                  $momapi = New-Object -comObject "Mom.ScriptAPI"
+
+                  #Log script event that we are starting task
+                  $momapi.LogScriptEvent($ScriptName,1315,0, "Starting script.  Running as ($whoami)")
+
+                  # Begin Main Script
+                  #=================================================================================
+                  $Services = Get-Service $ServiceName
+                  IF (!$Services)
+                  {
+                  #Log script event that we are starting task
+                  $momapi.LogScriptEvent($ScriptName,1315,2, "Service ($ServiceName) not found.  Error is ($error)")
+                  EXIT
+                  }
+                  ELSE
+                  {
+                  Write-Host "Attempting to restart service: " $ServiceName
+                  Restart-Service $Services -PassThru
+                  }
+
+                  # Log an event for script ending and total execution time.
+                  $EndTime = Get-Date
+                  $ScriptTime = ($EndTime - $StartTime).TotalSeconds
+                  $momapi.LogScriptEvent($ScriptName,1315,0,"`n Script has completed. `n  Service ($ServiceName) was restarted. `n Runtime was ($ScriptTime) seconds.")
+                </ScriptBody>
+                <Parameters>
+                  <Parameter>
+                    <Name>ServiceName</Name>
+                    <Value>$Config/ServiceName$</Value>
+                  </Parameter>
+                </Parameters>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+              </WriteAction>
+            </MemberModules>
+            <Composition>
+              <Node ID="PSWA" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>System!System.BaseData</OutputType>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType>
+      <WriteActionModuleType ID="SCOM.Management.ExportEventLog.WA" Accessibility="Internal" Batching="false">
+        <Configuration>
+          <xsd:element minOccurs="1" name="LogName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="SharePath" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="TimeoutSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="LogName" Selector="$Config/LogName$" ParameterType="string" />
+          <OverrideableParameter ID="SharePath" Selector="$Config/SharePath$" ParameterType="string" />
+          <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
+        </OverrideableParameters>
+        <ModuleImplementation Isolation="Any">
+          <Composite>
+            <MemberModules>
+              <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
+                <ScriptName>SCOM.Management.ExportEventLog.WA.ps1</ScriptName>
+                <ScriptBody>
+                  #=================================================================================
+                  #  Script to Export Event log to a Share via PowerShell
+                  #=================================================================================
+                  param($LogName,$SharePath)
+
+                  # For testing discovery manually in PowerShell:
+                  # $LogName = "Operations Manager"
+                  # $SharePath = "\\server\logbackup"
+
+                  #=================================================================================
+                  # Constants section - modify stuff here:
+
+                  # Assign script name variable for use in event logging
+                  $ScriptName = "SCOM.Management.ExportEventLog.WA.ps1"
+                  #=================================================================================
+
+                  # Gather script start time
+                  $StartTime = Get-Date
+
+                  # Gather who the script is running as
+                  $whoami = whoami
+
+                  #Load the MOMScript API and discovery propertybag
+                  $momapi = New-Object -comObject "Mom.ScriptAPI"
+
+                  #Log script event that we are starting task
+                  $momapi.LogScriptEvent($ScriptName,1319,0, "Starting script.  Running as ($whoami)")
+
+                  # Begin Main Script
+                  #=================================================================================
+                  $ComputerName = $env:computername
+
+                  $TimeStamp = Get-Date -Format "MM-dd-yyyy"
+                  wevtutil epl $LogName "$SharePath\$ComputerName $LogName $TimeStamp.evtx" /overwrite:true
+
+                  # Log an event for script ending and total execution time.
+                  $EndTime = Get-Date
+                  $ScriptTime = ($EndTime - $StartTime).TotalSeconds
+                  $momapi.LogScriptEvent($ScriptName,1319,0,"`n Script has completed. `n  Runtime was ($ScriptTime) seconds.")
+                </ScriptBody>
+                <Parameters>
+                  <Parameter>
+                    <Name>LogName</Name>
+                    <Value>$Config/LogName$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>SharePath</Name>
+                    <Value>$Config/SharePath$</Value>
+                  </Parameter>
+                </Parameters>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+              </WriteAction>
+            </MemberModules>
+            <Composition>
+              <Node ID="PSWA" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>System!System.BaseData</OutputType>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType>
+      <WriteActionModuleType ID="SCOM.Management.RunAnyPowerShell.WA" Accessibility="Internal" Batching="false">
+        <Configuration>
+          <xsd:element minOccurs="1" name="ScriptBody" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="TimeoutSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="ScriptBody" Selector="$Config/ScriptBody$" ParameterType="string" />
+          <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
+        </OverrideableParameters>
+        <ModuleImplementation Isolation="Any">
+          <Composite>
+            <MemberModules>
+              <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
+                <ScriptName>SCOM.Management.RunAnyPowerShell.WA.ps1</ScriptName>
+                <ScriptBody>$Config/ScriptBody$</ScriptBody>
+                <Parameters />
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+              </WriteAction>
+            </MemberModules>
+            <Composition>
+              <Node ID="PSWA" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>System!System.BaseData</OutputType>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType>
+      <WriteActionModuleType ID="SCOM.Management.DeleteAgent.WA" Accessibility="Internal" Batching="false">
+        <Configuration>
+          <xsd:element minOccurs="1" name="AgentName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="TimeoutSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="AgentName" Selector="$Config/AgentName$" ParameterType="string" />
+          <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
+        </OverrideableParameters>
+        <ModuleImplementation Isolation="Any">
+          <Composite>
+            <MemberModules>
+              <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
+                <ScriptName>SCOM.Management.DeleteAgent.WA.ps1</ScriptName>
+                <ScriptBody>
+#=================================================================================
+#  Script to delete agents via PowerShell
+#
+# This script will delete agents using the SDK binaries and .NET based SDK commands
+# Takes a single parameter of a computer FQDN
+# Should be run on a management server
+#
+# v 1.0
+#=================================================================================
+param($AgentName)
+
+# For testing manually in PowerShell:
+# $AgentName = 'WS2012.opsmgr.net'
+
+#=================================================================================
+# Constants section - modify stuff here:
+
+# Assign script name variable for use in event logging
+$ScriptName = "SCOM.Management.DeleteAgent.WA.ps1"
+#=================================================================================
+
+# Gather script start time
+$StartTime = Get-Date
+
+# Gather who the script is running as
+$whoami = whoami
+
+#Load the MOMScript API and discovery propertybag
+$momapi = New-Object -comObject "Mom.ScriptAPI"
+
+#Log script event that we are starting task
+$momapi.LogScriptEvent($ScriptName,1016,0, "Starting script.  AgentName is ($AgentName).  Running as ($whoami)")
+
+# Begin Main Script
+#=================================================================================
+# Get SCOM directory for binaries
+$SCOMRegKey = "HKLM:\SOFTWARE\Microsoft\Microsoft Operations Manager\3.0\Setup"
+$SCOMPath = (Get-ItemProperty $SCOMRegKey).InstallDirectory
+$SCOMPath = $SCOMPath.TrimEnd("\")
+$SCOMSDKPath = "$SCOMPath\SDK Binaries"
+
+#Load SDK binaries
+$dummy = [System.Reflection.Assembly]::LoadFrom("$SCOMSDKPath\Microsoft.EnterpriseManagement.Core.dll")
+$dummy = [System.Reflection.Assembly]::LoadFrom("$SCOMSDKPath\Microsoft.EnterpriseManagement.OperationsManager.dll")
+$dummy = [System.Reflection.Assembly]::LoadFrom("$SCOMSDKPath\Microsoft.EnterpriseManagement.Runtime.dll")
+
+# Connect to management group
+$MG = [Microsoft.EnterpriseManagement.ManagementGroup]::Connect("localhost")
+$Admin = $MG.GetAdministration()
+
+# Define generic collection list which is required parameter for the SDK delete command
+$AgentManagedComputerType = [Microsoft.EnterpriseManagement.Administration.AgentManagedComputer];
+$GenericListType = [System.Collections.Generic.List``1]
+$GenericList = $GenericListType.MakeGenericType($AgentManagedComputerType)
+$AMCList = new-object $GenericList.FullName
+
+# Get the AgentManagedComputer from the name in the most efficient way possible
+# This SDK method does not require the performance hit of Get-SCOMAgent or looping through each agent to find the right one
+Write-Host "Getting agent details for agent: ($AgentName)"
+$query = "Name= '$AgentName'"
+$AgentCriteria = New-Object Microsoft.EnterpriseManagement.Administration.AgentManagedComputerCriteria($query)
+$Agent = ($Admin.GetAgentManagedComputers($AgentCriteria))[0]
+$AgentCount = $Agent.Count
+
+# Log messages to console
+IF ($AgentCount -eq 1)
+{
+  $AgentDisplayName = $Agent.DisplayName
+  Write-Host "Found agent: ($AgentDisplayName)"
+}
+ELSE
+{
+  Write-Host "ERROR: An Agent with name ($AgentName) not found!"
+  Write-Host "Terminating"
+  $momapi.LogScriptEvent($ScriptName,1016,2,"`n ERROR: Agent not found with agent name ($AgentName).  Terminating script")
+  EXIT
+}
+
+# Add our agent to the collection
+$AMCList.Add($Agent)
+
+# Delete the agent in the collection
+Write-Host "Deleting Agent"
+$Admin.DeleteAgentManagedComputers($AMCList)
+Write-Host "Agent Deleted"
+#=================================================================================
+# End Main Script
+
+
+# Log an event for script ending and total execution time.
+$EndTime = Get-Date
+$ScriptTime = ($EndTime - $StartTime).TotalSeconds
+$momapi.LogScriptEvent($ScriptName,1016,0,"`n Script has completed. `n Deleted ($AgentName). `n Runtime is ($ScriptTime) seconds.")
+                </ScriptBody>
+                <Parameters>
+                  <Parameter>
+                    <Name>AgentName</Name>
+                    <Value>$Config/AgentName$</Value>
+                  </Parameter>
+                </Parameters>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+              </WriteAction>
+            </MemberModules>
+            <Composition>
+              <Node ID="PSWA" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>System!System.BaseData</OutputType>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType>
+      <WriteActionModuleType ID="SCOM.Management.InstallAgent.WA" Accessibility="Internal" Batching="false">
+        <Configuration>
+          <xsd:element minOccurs="1" name="AgentName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="TimeoutSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="AgentName" Selector="$Config/AgentName$" ParameterType="string" />
+          <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
+        </OverrideableParameters>
+        <ModuleImplementation Isolation="Any">
+          <Composite>
+            <MemberModules>
+              <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
+                <ScriptName>SCOM.Management.InstallAgent.WA.ps1</ScriptName>
+                <ScriptBody>
+#=================================================================================
+#  Script to Push Install SCOM agents via PowerShell
+#
+# Takes a single parameter of a computer FQDN
+# Should be run on a management server
+#
+# v 1.0
+#=================================================================================
+param($AgentName)
+
+# For testing manually in PowerShell:
+# $AgentName = 'WS2012.opsmgr.net'
+
+#=================================================================================
+# Constants section - modify stuff here:
+
+# Assign script name variable for use in event logging
+$ScriptName = "SCOM.Management.InstallAgent.WA.ps1"
+#=================================================================================
+
+# Gather script start time
+$StartTime = Get-Date
+
+# Gather who the script is running as
+$whoami = whoami
+
+#Load the MOMScript API and discovery propertybag
+$momapi = New-Object -comObject "Mom.ScriptAPI"
+
+#Log script event that we are starting task
+$momapi.LogScriptEvent($ScriptName,1017,0, "Starting script.  AgentName is ($AgentName).  Running as ($whoami)")
+
+#Connect to local SCOM Management Group Section
+#=================================================================================
+# Clear any previous errors
+if($Error)
+{
+    $Error.Clear()
+}
+
+# Import the OperationsManager PowerShell module and connect to the management group
+Try   
+{
+    $SCOMPowerShellKey = "HKLM:\SOFTWARE\Microsoft\System Center Operations Manager\12\Setup\Powershell\V2"
+    $SCOMModulePath = Join-Path (Get-ItemProperty $SCOMPowerShellKey).InstallDirectory "OperationsManager"
+    Import-module $SCOMModulePath
+}
+Catch 
+{ 
+    $momapi.LogScriptEvent($ScriptName,1017,2, "Unable to load the OperationsManager module, Error is: $error") 
+}
+Try   
+{
+    New-DefaultManagementGroupConnection
+}
+Catch 
+{
+    $momapi.LogScriptEvent($ScriptName,1017,2, "Unable to connect to the management server.  Error when calling New-DefaultManagementGroupConnection.  Error is: $error")
+}	
+#=================================================================================
+
+
+# Begin Main Script
+#=================================================================================
+# Get local SCOM management server name
+$LocalHost = [System.Net.Dns]::GetHostEntry([string]$env:computername).HostName 
+Write-Host "Running on management server ($LocalHost)"
+Write-Host "Getting Management Server object"
+# Get SCOM Management Server object
+$PrimaryMgmtServer = Get-SCOMManagementServer -Name $LocalHost
+Write-Host "Attempting to Install Agent"
+# Clear any previous errors
+if($Error)
+{
+  $Error.Clear()
+}
+# Install SCOM Agent
+Install-SCOMAgent -DNSHostName $AgentName -PrimaryManagementServer $PrimaryMgmtServer
+if($Error)
+{
+  Write-Host "Error ocurred: ($Error)"
+  $momapi.LogScriptEvent($ScriptName,1017,2, "Error installing agent.  Error is: $Error")
+}
+Write-Host "Push install attempted.  Check Alerts view for any failures, Pending Actions, or the Agent Logs on the management servers."
+#=================================================================================
+# End Main Script
+
+
+# Log an event for script ending and total execution time.
+$EndTime = Get-Date
+$ScriptTime = ($EndTime - $StartTime).TotalSeconds
+$momapi.LogScriptEvent($ScriptName,1017,0,"`n Script has completed.  Runtime is ($ScriptTime).")
+                </ScriptBody>
+                <Parameters>
+                  <Parameter>
+                    <Name>AgentName</Name>
+                    <Value>$Config/AgentName$</Value>
+                  </Parameter>
+                </Parameters>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+              </WriteAction>
+            </MemberModules>
+            <Composition>
+              <Node ID="PSWA" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>System!System.BaseData</OutputType>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType>
+      <WriteActionModuleType ID="SCOM.Management.OMSWorkspaceAdd.WA" Accessibility="Internal" Batching="false">
+        <Configuration>
+          <xsd:element minOccurs="1" name="WorkspaceID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+		  <xsd:element minOccurs="1" name="WorkspaceKey" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+		  <xsd:element minOccurs="1" name="ProxyURL" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="AzureCloudType" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />		  
+          <xsd:element minOccurs="1" name="TimeoutSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="WorkspaceID" Selector="$Config/WorkspaceID$" ParameterType="string" />
+		  <OverrideableParameter ID="WorkspaceKey" Selector="$Config/WorkspaceKey$" ParameterType="string" />
+		  <OverrideableParameter ID="ProxyURL" Selector="$Config/ProxyURL$" ParameterType="string" />
+		  <OverrideableParameter ID="AzureCloudType" Selector="$Config/AzureCloudType$" ParameterType="int" />		  
+		  <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
+        </OverrideableParameters>
+        <ModuleImplementation Isolation="Any">
+          <Composite>
+            <MemberModules>
+              <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
+                <ScriptName>SCOM.Management.OMSWorkspaceAdd.WA.ps1</ScriptName>
+                <ScriptBody>
+#=================================================================================
+#  Script to ADD Log Analytics (OMS) Workspace
+#=================================================================================
+param($WorkspaceID,$WorkspaceKey,$ProxyURL,[int]$AzureCloudType)
+
+
+# Manual Testing section - put stuff here for manually testing script - typically parameters:
+#=================================================================================
+# $WorkspaceID = "WorkspaceID"
+# $WorkspaceKey = "WorkspaceKey"
+# $ProxyURL = ""
+# $AzureCloudType = "0"
+#=================================================================================
+
+
+# Constants section - modify stuff here:
+#=================================================================================
+# Assign script name variable for use in event logging
+$ScriptName = "SCOM.Management.OMSWorkspaceAdd.WA.ps1"
+#=================================================================================
+
+
+# Starting Script section
+#=================================================================================
+# Gather who the script is running as
+$whoami = whoami
+
+#Load the MOMScript API and discovery propertybag
+$momapi = New-Object -comObject "Mom.ScriptAPI"
+
+#Log script event that we are starting task
+$momapi.LogScriptEvent($ScriptName,1347,0, "`n Starting script. `n Running as ($whoami)")
+#=================================================================================
+
+
+# Begin Main Script
+#=================================================================================
+Write-Host "Task Starting.  Running as $whoami"
+#Load agent scripting object
+Write-Host "Loading agent scripting objects."
+$AgentCfg = New-Object -ComObject AgentConfigManager.MgmtSvcCfg
+#Check to see if this agent supports OMS
+$AgentSupportsOMS = $AgentCfg | Get-Member -Name 'GetCloudWorkspaces'
+IF (!$AgentSupportsOMS)
+{
+  Write-Host "FATAL ERROR:  This agent version does not support Cloud Workspaces.  You must upgrade this agent.  Terminating."
+  EXIT
+}
+
+#Evaluate AzureCloudType parameter
+IF ($AzureCloudType -eq 0)
+{
+  $AzureCloudType = 0  #This is commercial Azure Cloud and default
+  Write-Host "Azure Cloud Type = 0 which is default Azure Commercial."
+}
+ELSEIF ($AzureCloudType -eq 1)
+{
+  Write-Host "Azure Cloud Type = 1 which is Azure for US Government."
+}
+ELSE
+{
+  Write-Host "An invalid Azure Cloud Type was passed.  This value must be 0 or 1. `nSetting Azure Cloud Type = 0 which is default Azure Commercial."
+  $AzureCloudType = 0
+}
+
+#Evaluate if this MMA supports AzureCloudType
+$CloudWorkspaceSupport = $AgentCfg | Get-Member -Name "AddCloudWorkspace"
+[string]$CloudWorkspaceSupDef = $CloudWorkspaceSupport.Definition
+IF ($CloudWorkspaceSupDef -notmatch "AzureCloudType")
+{
+  #This MMA does not support AzureCloudType parameter
+  Write-Host "This MMA/Agent version does not support the AzureCloudType parameter. `nIf you require AzureCloudType then the MMA/Agent must be upgraded. `nAttempting to add Log Analytics Workspace with no AzureCloudType."
+  #Add OMS Workspace
+  Write-Host "Adding Log Analytics Workspace: ($WorkspaceID)"
+  $Error.Clear()
+  $AgentCfg.AddCloudWorkspace($WorkspaceID,$WorkspaceKey)
+}
+ELSE
+{
+  #This MMA supports AzureCloudType parameter
+  #Add OMS Workspace
+  Write-Host "Adding Log Analytics Workspace: ($WorkspaceID)"
+  $Error.Clear()
+  $AgentCfg.AddCloudWorkspace($WorkspaceID,$WorkspaceKey,$AzureCloudType)
+}
+
+IF ($Error)
+{
+  Write-Host "There was a critical error adding Log Analytics Workspace.  Error is: $Error"
+  EXIT
+}
+Write-Host "Log Analytics Workspace Added."
+#Add Proxy URL
+IF ($ProxyURL)
+{
+  Write-Host "A proxy URL was specified: ($ProxyURL). Adding Log Analytics Proxy configuration to agent."
+  $AgentCfg.SetProxyUrl($ProxyURL)
+  Write-Host "Proxy Added."
+}
+#Restart Agent
+Write-Host "Restarting Agent now...."
+#=================================================================================
+# End Main Script	
+
+# Restart Agent
+#=================================================================================
+#We need a reliable way to restart the SCOM Agent out of band so that tasks can complete with success
+$Command = "Start-Sleep -s 5;Restart-Service HealthService"
+$Process = ([wmiclass]"root\cimv2:Win32_ProcessStartup").CreateInstance()
+$Process.ShowWindow = 0
+$Process.CreateFlags = 16777216
+([wmiclass]"root\cimv2:Win32_Process").Create("powershell.exe $Command")|Out-Null
+#=================================================================================				
+                </ScriptBody>
+                <Parameters>
+                  <Parameter>
+                    <Name>WorkspaceID</Name>
+                    <Value>$Config/WorkspaceID$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>WorkspaceKey</Name>
+                    <Value>$Config/WorkspaceKey$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>ProxyURL</Name>
+                    <Value>$Config/ProxyURL$</Value>
+                  </Parameter>	
+                  <Parameter>
+                    <Name>AzureCloudType</Name>
+                    <Value>$Config/AzureCloudType$</Value>
+                  </Parameter>
+                </Parameters>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+              </WriteAction>
+            </MemberModules>
+            <Composition>
+              <Node ID="PSWA" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>System!System.BaseData</OutputType>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType>
+      <WriteActionModuleType ID="SCOM.Management.OMSWorkspaceRemove.WA" Accessibility="Internal" Batching="false">
+        <Configuration>
+          <xsd:element minOccurs="1" name="WorkspaceID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="TimeoutSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="WorkspaceID" Selector="$Config/WorkspaceID$" ParameterType="string" />
+          <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
+        </OverrideableParameters>
+        <ModuleImplementation Isolation="Any">
+          <Composite>
+            <MemberModules>
+              <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
+                <ScriptName>SCOM.Management.OMSWorkSpaceRemove.WA.ps1</ScriptName>
+                <ScriptBody>
+#=================================================================================
+#  Script to REMOVE OMS Workspace
+#=================================================================================
+param($WorkspaceID)
+
+#=================================================================================
+# Constants section - modify stuff here:
+
+# Assign script name variable for use in event logging
+$ScriptName = "SCOM.Management.OMSWorkSpaceRemove.WA.ps1"
+#=================================================================================
+
+# Gather who the script is running as
+$whoami = whoami
+
+#Load the MOMScript API and discovery propertybag
+$momapi = New-Object -comObject "Mom.ScriptAPI"
+
+#Log script event that we are starting task
+$momapi.LogScriptEvent($ScriptName,1347,0, "`n Starting script. `n Running as ($whoami)")
+
+# Begin Main Script
+#=================================================================================
+Write-Host "Task Starting.  Running as $whoami"
+#Load agent scripting object
+Write-Host "Loading agent scripting objects."
+$AgentCfg = New-Object -ComObject AgentConfigManager.MgmtSvcCfg
+#Check to see if this agent supports OMS
+$AgentSupportsOMS = $AgentCfg | Get-Member -Name 'GetCloudWorkspaces'
+IF (!$AgentSupportsOMS)
+{
+  Write-Host "FATAL ERROR:  This agent version does not support Cloud Workspaces.  You must upgrade this agent.  Terminating."
+  EXIT
+}
+#Verifying that OMS Workspace Exists
+$Workspace = $AgentCfg.GetCloudWorkspace($WorkspaceID)
+IF ($Workspace)
+{
+  Write-Host "Found configured OMS Workspace: ($WorkspaceID)"
+}
+ELSE
+{
+  Write-Host "FATAL ERROR:  OMS Workspace not found!  Workspace ID: ($WorkspaceID)"
+  EXIT
+}
+#Remove OMS Workspace
+Write-Host "Attempting to remove OMS Workspace"
+$Error.Clear()	  
+$AgentCfg.RemoveCloudWorkspace($WorkspaceID)
+IF ($Error)
+{
+  Write-Host "There was a critical error removing OMS Workspace.  Error is: $Error"
+  EXIT
+}
+#Restart Agent
+Write-Host "OMS Workspace Removed"
+Write-Host "Restarting Agent now."
+#=================================================================================
+# End Main Script	
+
+# Restart Agent
+#=================================================================================
+#We need a reliable way to restart the SCOM Agent out of band so that tasks can complete with success
+$Command = "Start-Sleep -s 5;Restart-Service HealthService"
+$Process = ([wmiclass]"root\cimv2:Win32_ProcessStartup").CreateInstance()
+$Process.ShowWindow = 0
+$Process.CreateFlags = 16777216
+([wmiclass]"root\cimv2:Win32_Process").Create("powershell.exe $Command")|Out-Null
+#=================================================================================				
+                </ScriptBody>
+                <Parameters>
+                  <Parameter>
+                    <Name>WorkspaceID</Name>
+                    <Value>$Config/WorkspaceID$</Value>
+                  </Parameter>
+                </Parameters>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+              </WriteAction>
+            </MemberModules>
+            <Composition>
+              <Node ID="PSWA" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>System!System.BaseData</OutputType>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType>		  
+    </ModuleTypes>
+  </TypeDefinitions>
+  <Categories>
+    <Category ID="Cat.SCOM.Management.ConsolePing.Task" Target="SCOM.Management.ConsolePing.Task" Value="System!System.Internal.ManagementPack.ConsoleTasks.MonitoringObject" />
+    <Category ID="Cat.SCOM.Management.ComputerManagement.Task" Target="SCOM.Management.ComputerManagement.Task" Value="System!System.Internal.ManagementPack.ConsoleTasks.MonitoringObject" />
+    <Category ID="Cat.SCOM.Management.RDP.Task" Target="SCOM.Management.RDP.Task" Value="System!System.Internal.ManagementPack.ConsoleTasks.MonitoringObject" />
+  </Categories>
+  <Monitoring>
+    <Discoveries>
+      <Discovery ID="SCOM.Management.Agent.Class.Discovery" Enabled="true" Target="SC!Microsoft.SystemCenter.Agent" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+        <Category>Discovery</Category>
+        <DiscoveryTypes>
+          <DiscoveryClass TypeID="SCOM.Management.Agent.Class">
+            <Property PropertyID="PSInstalled" />
+            <Property PropertyID="Architecture" />			
+            <Property PropertyID="OSName" />
+            <Property PropertyID="APMInstalled" />
+          </DiscoveryClass>
+        </DiscoveryTypes>
+        <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.FilteredRegistryDiscoveryProvider">
+          <ComputerName>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName>
+          <RegistryAttributeDefinitions>
+            <RegistryAttributeDefinition>
+              <AttributeName>AgentRegKeyExists</AttributeName>
+              <Path>SOFTWARE\Microsoft\Microsoft Operations Manager\3.0\Agent Management Groups</Path>
+              <PathType>0</PathType>
+              <!-- 0=regKey 1=regValue -->
+              <AttributeType>0</AttributeType>
+              <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
+            </RegistryAttributeDefinition>
+            <RegistryAttributeDefinition>
+              <AttributeName>PSInstalled</AttributeName>
+              <Path>SOFTWARE\Microsoft\PowerShell</Path>
+              <PathType>0</PathType>
+              <!-- 0=regKey 1=regValue -->
+              <AttributeType>0</AttributeType>
+              <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
+            </RegistryAttributeDefinition>
+            <RegistryAttributeDefinition>
+              <AttributeName>Architecture</AttributeName>
+              <Path>SYSTEM\CurrentControlSet\Control\Session Manager\Environment\PROCESSOR_ARCHITECTURE</Path>
+              <PathType>1</PathType>
+              <!-- 0=regKey 1=regValue -->
+              <AttributeType>1</AttributeType>
+              <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
+            </RegistryAttributeDefinition>			
+            <RegistryAttributeDefinition>
+              <AttributeName>OSName</AttributeName>
+              <Path>SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductName</Path>
+              <PathType>1</PathType>
+              <!-- 0=regKey 1=regValue -->
+              <AttributeType>1</AttributeType>
+              <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
+            </RegistryAttributeDefinition>
+            <RegistryAttributeDefinition>
+              <AttributeName>APMInstalled</AttributeName>
+              <Path>SYSTEM\CurrentControlSet\Services\System Center Management APM</Path>
+              <PathType>0</PathType>
+              <!-- 0=regKey 1=regValue -->
+              <AttributeType>0</AttributeType>
+              <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
+            </RegistryAttributeDefinition>
+          </RegistryAttributeDefinitions>
+          <Frequency>43195</Frequency>
+          <ClassId>$MPElement[Name="SCOM.Management.Agent.Class"]$</ClassId>
+          <InstanceSettings>
+            <Settings>
+              <Setting>
+                <Name>$MPElement[Name="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Name>
+                <Value>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Value>
+              </Setting>
+              <Setting>
+                <Name>$MPElement[Name="System!System.Entity"]/DisplayName$</Name>
+                <Value>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Value>
+              </Setting>
+              <Setting>
+                <Name>$MPElement[Name="SCOM.Management.Agent.Class"]/PSInstalled$</Name>
+                <Value>$Data/Values/PSInstalled$</Value>
+              </Setting>
+              <Setting>
+                <Name>$MPElement[Name="SCOM.Management.Agent.Class"]/Architecture$</Name>
+                <Value>$Data/Values/Architecture$</Value>
+              </Setting>			  
+              <Setting>
+                <Name>$MPElement[Name="SCOM.Management.Agent.Class"]/OSName$</Name>
+                <Value>$Data/Values/OSName$</Value>
+              </Setting>
+              <Setting>
+                <Name>$MPElement[Name="SCOM.Management.Agent.Class"]/APMInstalled$</Name>
+                <Value>$Data/Values/APMInstalled$</Value>
+              </Setting>
+            </Settings>
+          </InstanceSettings>
+          <Expression>
+            <SimpleExpression>
+              <ValueExpression>
+                <XPathQuery Type="Boolean">Values/AgentRegKeyExists</XPathQuery>
+                <!-- Common options for XPathQuery Type are "Boolean" "String" "Integer" "Double" -->
+              </ValueExpression>
+              <Operator>Equal</Operator>
+              <!-- Common options for SimpleExpression Operator are "Equal" "NotEqual" "Greater" "Less" "GreaterEqual" "LessEqual" "Like" "NotLike" -->
+              <ValueExpression>
+                <Value Type="Boolean">true</Value>
+                <!-- Common options for XPathQuery Type are "Boolean" "String" "Integer" "Double" -->
+              </ValueExpression>
+            </SimpleExpression>
+          </Expression>
+        </DataSource>
+      </Discovery>
+      <Discovery ID="SCOM.Management.Agent.Class.PowerShell.Properties.Discovery" Enabled="true" Target="SCOM.Management.Agent.Class" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+        <Category>Discovery</Category>
+        <DiscoveryTypes>
+          <DiscoveryClass TypeID="SCOM.Management.Agent.Class">
+		    <Property PropertyID="AgentVersion" />
+			<Property PropertyID="UpdateRollup" />
+			<Property PropertyID="ADIntEnabled" />
+            <Property PropertyID="ManagementGroups" />
+            <Property PropertyID="OMSWorkspaces" />
+			<Property PropertyID="ProxyURL" />
+            <Property PropertyID="PSVersion" />
+            <Property PropertyID="CLRVersion" />
+            <Property PropertyID="PrimaryMS" />
+            <Property PropertyID="FailoverList" />
+            <Property PropertyID="ActionAccount" />
+            <Property PropertyID="OSVersion" />
+            <Property PropertyID="InstallPath" />
+			<Property PropertyID="CertLoaded" />
+			<Property PropertyID="CertExpires" />
+			<Property PropertyID="ThumbPrint" />
+			<Property PropertyID="CertIssuer" />
+			<Property PropertyID="IP" />
+            <Property PropertyID="Connection" />
+          </DiscoveryClass>
+        </DiscoveryTypes>
+        <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.TimedPowerShell.DiscoveryProvider">
+          <IntervalSeconds>86393</IntervalSeconds>
+          <SyncTime />
+          <ScriptName>SCOM.Management.Agent.Class.PowerShell.Properties.Discovery.ps1</ScriptName>
+          <ScriptBody>
+#=================================================================================
+#  Script to gather agent properties via PowerShell
+#
+#  Author: Kevin Holman
+#  v1.4
+#=================================================================================
+param($SourceId,$ManagedEntityId,$ComputerName,$MGName,[string]$IP)
+
+
+# Manual Testing section - put stuff here for manually testing script - typically parameters:
+#=================================================================================
+# $SourceId = '{00000000-0000-0000-0000-000000000000}'
+# $ManagedEntityId = '{00000000-0000-0000-0000-000000000000}'
+# $Computername = 'server.domain.com'
+# $MGName = 'SCOMA'
+# $IP = '123.123.123.123'
+#=================================================================================
+
+
+# Constants section - modify stuff here:
+#=================================================================================
+# Assign script name variable for use in event logging
+$ScriptName = "SCOM.Management.Agent.Class.PowerShell.Properties.Discovery.ps1"
+$EventID = "1006"
+
+#SCOM Management Servers or Gateways that we wish to test the port availability to using FQDN seperated by a comma such as "scom1.opsmgr.net","scom2.opsmgr.net","scom3.opsmgr.net"
+[array]$Parents = ""  
+#=================================================================================
+
+
+# Starting Script section - All scripts get this
+#=================================================================================
+# Gather the start time of the script
+$StartTime = Get-Date
+#Set variable to be used in logging events
+$whoami = whoami
+# Load MOMScript API
+$momapi = New-Object -comObject MOM.ScriptAPI
+#Log script event that we are starting task
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript is starting. `nManagement Group: ($MGName). `nRunning as ($whoami).")
+#=================================================================================
+
+
+# Discovery Script section
+#=================================================================================
+# Load SCOM Discovery module
+$DiscoveryData = $momapi.CreateDiscoveryData(0, $SourceId, $ManagedEntityId)
+#=================================================================================
+
+
+# Begin MAIN script section
+#=================================================================================
+#Check and see if OS is Nano server for use later where we must take different actions for Nano servers
+$isNano = Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels"
+$isNano = $isNano.NanoServer
+if($isNano -ne $null)
+{
+    $isNano = $true
+}
+else
+{
+    $isNano = $false
+}
+
+# Get SCOM Agent Path Section
+#=======================================================================			
+$SCOMRegKey = "HKLM:\SOFTWARE\Microsoft\Microsoft Operations Manager\3.0\Setup"
+$SCOMAgentPath = (Get-ItemProperty $SCOMRegKey).InstallDirectory
+$SCOMAgentPath = $SCOMAgentPath.TrimEnd("\")
+#=======================================================================
+
+# Get SCOM Agent Version Section
+#=======================================================================				
+$SCOMAgentVersionFile = Get-Item $SCOMAgentPath\Tools\TMF\OMAgentTraceTMFVer.Dll
+$SCOMAgentVersion = $SCOMAgentVersionFile.VersionInfo.FileVersion
+$SCOMAgentVersionSplit = $SCOMAgentVersion.Split(".")
+[int]$MajorSCOMAgentVersion = $SCOMAgentVersionSplit[0]
+
+[string]$SCOMAgentURVersion = switch($SCOMAgentVersion)
+{
+  # SCOM 2012
+  "7.1.10184.0" {"2012 R2 RTM"}
+  "7.1.10195.0" {"2012 R2 UR2"}
+  "7.1.10204.0" {"2012 R2 UR3"}
+  "7.1.10211.0" {"2012 R2 UR4"}
+  "7.1.10213.0" {"2012 R2 UR5"}
+  "7.1.10218.0" {"2012 R2 UR6"}
+  "7.1.10229.0" {"2012 R2 UR7"}
+  "7.1.10241.0" {"2012 R2 UR8"}
+  "7.1.10268.0" {"2012 R2 UR9"}
+  "7.1.10285.0" {"2012 R2 UR11"}
+  "7.1.10292.0" {"2012 R2 UR12"}
+  "7.1.10302.0" {"2012 R2 UR13"}
+  "7.1.10305.0" {"2012 R2 UR14"}
+
+  # SCOM 2016
+  "8.0.10918.0" {"2016 RTM"}
+  "8.0.10931.0" {"2016 UR1"}
+  "8.0.10949.0" {"2016 UR2"}
+  "8.0.10970.0" {"2016 UR3"}
+  "8.0.10977.0" {"2016 UR4"}
+  "8.0.10990.0" {"2016 UR5"}
+  "8.0.11004.0" {"2016 UR6"}
+  "8.0.11025.0" {"2016 UR7"}
+  "8.0.11037.0" {"2016 UR8"} 
+  "8.0.11049.0" {"2016 UR9"}   
+
+  # SEMI ANNUAL Channel
+  "8.0.13053.0" {"1801"}
+  "8.0.13067.0" {"1807"}
+		
+  # SCOM 2019
+  "10.19.10003.0" {"2019 TP"}
+  "10.19.10014.0" {"2019 RTM"}
+  "10.19.10140.0" {"2019 UR1"}  
+
+  # If nothing else found then default to version number
+  default {$SCOMAgentVersion} 
+}
+#=======================================================================	
+	
+# Load Agent Scripting Module
+#=======================================================================
+$AgentCfg = New-Object -ComObject "AgentConfigManager.MgmtSvcCfg"
+#=======================================================================
+			
+# Get Agent Management groups section
+#=======================================================================
+#Get management groups
+$MGs=$AgentCfg.GetManagementGroups()
+
+#Loop through each and create a comma seperated list
+FOREACH ($MG in $MGs)
+{
+    $MGList=$MGList + $MG.managementGroupName + ", "
+}
+$MGlist=$MGlist.TrimEnd(", ")
+#=======================================================================
+
+# Get Agent OMS Workspaces section
+#=======================================================================
+# This section depends on AgentConfigManager.MgmtSvcCfg object in previous section
+[string]$OMSList=''
+# Agent might not support OMS
+$AgentSupportsOMS = $AgentCfg | Get-Member -Name 'GetCloudWorkspaces'
+IF (!$AgentSupportsOMS)
+{
+  #This agent version does not support Cloud Workspaces.
+}
+ELSE
+{
+  $OMSWorkSpaces = $AgentCfg.GetCloudWorkspaces()
+  FOREACH ($OMSWorkSpace in $OMSWorkSpaces)
+  {
+    $OMSList = $OMSList + $OMSWorkspace.workspaceId + ", "
+  }
+  IF ($OMSList)
+  {
+    $OMSList = $OMSList.TrimEnd(", ")
+  }
+      
+  #Get ProxyURL
+  [string]$ProxyURL = $AgentCfg.proxyUrl
+}
+#=======================================================================	
+
+# Get Agent AD Integration Setting
+#=======================================================================
+# This section depends on AgentConfigManager.MgmtSvcCfg object in previous section
+# Check Agent version for 2012 or a later version as these use different commands
+IF ($MajorSCOMAgentVersion -lt 8)
+{
+	# Assume SCOM 2012 agent
+	$ADIntEnabled = $AgentCfg.GetActiveDirectoryIntegrationEnabled()
+}
+Else
+{
+	# Assume SCOM 2016 agent or later
+	$ADIntEnabled = $AgentCfg.ActiveDirectoryIntegrationEnabled
+}
+#=======================================================================					
+			
+# Get PowerShell Version section
+#=======================================================================
+$PSVer = $PSVersionTable.PSVersion
+[string]$PSMajor = $PSVer.Major
+[string]$PSMinor = $PSVer.Minor
+$PSVersion = $PSMajor + "." + $PSMinor
+#=======================================================================
+			
+# Get PowerShell CLR Version section
+#=======================================================================
+$CLRVer = $PSVersionTable.CLRVersion
+[string]$CLRMajor = $CLRVer.Major
+[string]$CLRMinor = $CLRVer.Minor
+$CLRVersion = $CLRMajor + "." + $CLRMinor
+#=======================================================================			
+
+# Get Agent Assignments section
+#======================================================================
+$FilePath = "$SCOMAgentPath\Health Service State\Connector Configuration Cache\$MGName\OpsMgrConnector.Config.xml"
+
+IF (Test-Path -Path $FilePath)
+{
+[xml]$ConfigFileXML = Get-Content -Path $FilePath
+
+#Get Primary MS
+$PrimaryArr = $ConfigFileXML.Message.State.Parents.Added.Item | Where-Object {$_.IsPrimary -eq "True"}
+$PrimaryMS = $PrimaryArr.AuthenticationName
+
+#Get list of Secondary MS
+$SecondaryArr = $ConfigFileXML.Message.State.Parents.Added.Item | Where-Object {$_.IsPrimary -eq "False"}
+[string]$SecondaryMSList = @()
+FOREACH ($SecondaryXML in $SecondaryArr)
+{
+$SecondaryMS = $SecondaryXML.AuthenticationName
+$SecondaryMSList = $SecondaryMSList + $SecondaryMS + ", "
+}
+$FailoverList = $SecondaryMSList.TrimEnd(", ")
+}
+ELSE
+{
+#Log script event that we cannot find config file
+$momapi.LogScriptEvent($ScriptName,$EventID,2, "Cannot find agent config file at path ($FilePath)")
+}
+#=======================================================================
+
+# Get Action Account section
+#=======================================================================
+# Get the action account this script is running under.  We will assume that is the default agent action account
+try
+{
+$user =  ""
+$domain =  ""
+if($isNano)
+{
+$user = $env:username
+$domain = $env:userdnsdomain
+}
+else
+{
+$oNetwork = new-object -comobject "WScript.Network"
+$user = $oNetwork.UserName
+$domain = $oNetwork.UserDomain
+}
+If(($user.Length -eq 0) -or ($user -eq "SYSTEM"))
+{
+$ActionAccount = $user
+}
+Else
+{
+$ActionAccount = $domain + "\" + $user
+}
+}
+catch
+{
+$oAPI.LogScriptEvent($ScriptName, 11, 1, "Failed to retrieve the User name and domain for the action account, error: ", $error.Description)
+Exit -1;
+}
+#=======================================================================
+
+# Get OSVersion  section
+#=======================================================================
+$OSRegKey = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
+[string]$OSCurrentVersion = (Get-ItemProperty $OSRegKey).CurrentVersion
+[string]$OSCurrentBuildNumber = (Get-ItemProperty $OSRegKey).CurrentBuildNumber
+[string]$OSCurrentCurrentMajorVersionNumber = (Get-ItemProperty $OSRegKey).CurrentMajorVersionNumber
+[string]$OSCurrentCurrentMinorVersionNumber = (Get-ItemProperty $OSRegKey).CurrentMinorVersionNumber
+
+# If Windows 10 or WS2016 use new reg keys else use old keys
+IF ($OSCurrentCurrentMajorVersionNumber)
+{
+    [string]$OSVersion = $OSCurrentCurrentMajorVersionNumber + "." + $OSCurrentCurrentMinorVersionNumber + "." + $OSCurrentBuildNumber
+}
+ELSE
+{
+    [string]$OSVersion = $OSCurrentVersion + "." + $OSCurrentBuildNumber
+}
+#=======================================================================
+
+# Get Certificate Section
+#=======================================================================
+$CertRegKey = "HKLM:\SOFTWARE\Microsoft\Microsoft Operations Manager\3.0\Machine Settings"
+IF(Test-Path $CertRegKey)
+{
+  [array]$CertValue = (Get-ItemProperty $CertRegKey).ChannelCertificateSerialNumber
+  IF($Certvalue)
+  {
+	$CertLoaded = $True
+    [string]$ThumbPrint = (Get-ItemProperty $CertRegKey).ChannelCertificateHash
+    $Cert = Get-ChildItem -path cert:\LocalMachine\My | Where-Object {$_.Thumbprint -eq $ThumbPrint}
+    IF ($Cert)
+    {
+      [datetime]$CertExpiresDateTime = $Cert.NotAfter
+      [string]$CertExpires = $CertExpiresDateTime.ToShortDateString()
+      $CertIssuerArr = $Cert.Issuer
+      $CertIssuerSplit = $CertIssuerArr.Split(",")
+      [string]$CertIssuer = $CertIssuerSplit[0].TrimStart("CN=")
+    }
+    ELSE
+    {
+      $CertIssuer = "NotFound"
+      $CertExpires = "NotFound"
+    }
+
+  }
+  ELSE
+  {
+    $CertLoaded = $False
+  }
+}
+ELSE
+{
+  $CertLoaded = $False
+}
+#=======================================================================
+
+# Build IP List from Windows Computer Property
+#=======================================================================
+#We want to remove Link local IP
+[string]$IPList = ""
+$IPSplit = $IP.Split(",")
+FOREACH ($IPAddr in $IPSplit)
+{
+  [string]$IPAddr = $IPAddr.Trim()
+  write-host $IPAddr
+  IF (!($IPAddr.StartsWith("fe80") -or $IPAddr.StartsWith("169.254")))
+  {
+    $IPList = $IPList + $IPAddr + ","
+  }
+}
+$IPList = $IPList.TrimEnd(",")
+#=======================================================================
+
+# Get port connection availability to an array of parents
+#=======================================================================
+[string]$PortList = ""
+IF ($Parents)
+{
+  FOREACH ($Parent in $Parents)
+  {
+    [string]$PortAvail = ""
+    $ip=([System.Net.Dns]::GetHostAddresses($Parent)).IPAddressToString;
+    $tcp=New-Object net.sockets.tcpclient;$tcp.Connect($Parent,5723);
+    $out=$tcp.Connected;
+    # write-host "`nPort 5723 test result for ($Parent) on IP ($ip) : ($out)"
+
+    IF ($out)
+    {
+      $PortAvail = "Open"
+    }
+    ELSE
+    {
+      $PortAvail = "Blocked"
+    }
+
+    $ParentSplit = $Parent.Split(".")
+    [string]$ServerName = $ParentSplit[0]
+    $PortList = $PortList + $ServerName + ": " + $PortAvail + ", "
+  }
+  $PortList = $Portlist.TrimEnd(", ")
+}
+#=======================================================================
+
+
+# Discovery Script section - Discovery scripts get this
+#=================================================================================
+$instance = $DiscoveryData.CreateClassInstance("$MPElement[Name='SCOM.Management.Agent.Class']$")
+$instance.AddProperty("$MPElement[Name='Windows!Microsoft.Windows.Computer']/PrincipalName$", $Computername)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/AgentVersion$", $SCOMAgentVersion)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/UpdateRollup$", $SCOMAgentURVersion)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/ADIntEnabled$", $ADIntEnabled)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/ManagementGroups$", $MGList)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/OMSWorkspaces$", $OMSList)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/ProxyURL$", $ProxyURL)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/PSVersion$", $PSVersion)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/CLRVersion$", $CLRVersion)			
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/PrimaryMS$", $PrimaryMS)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/FailoverList$", $FailoverList)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/ActionAccount$", $ActionAccount)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/OSVersion$", $OSVersion)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/InstallPath$", $SCOMAgentPath)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/CertLoaded$", $CertLoaded)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/CertExpires$", $CertExpires)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/ThumbPrint$", $ThumbPrint)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/CertIssuer$", $CertIssuer)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/IP$", $IPList)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/Connection$", $PortList)
+$DiscoveryData.AddInstance($instance)
+
+# Return Discovery Items Normally           
+$DiscoveryData
+# Return Discovery Bag to the command line for testing (does not work from ISE)
+# $momapi.Return($DiscoveryData)
+#=================================================================================
+
+
+# End of script section
+#=================================================================================
+#Log an event for script ending and total execution time.
+$EndTime = Get-Date
+$ScriptTime = ($EndTime - $StartTime).TotalSeconds
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent Version: ($SCOMAgentVersion). `nAgent Rollup: ($SCOMAgentURVersion). `nADIntEnabled: ($ADIntEnabled). `nManagement Group list: ($MGList). `Log Analytics Workspace list: ($OMSList). `nProxyURL: ($ProxyURL). `nPowerShell Version: ($PSVersion). `nCLR Version: ($CLRVersion). `n Primary MS: ($PrimaryMS). `nSecondary MS Failover list: ($FailoverList). `nAction Account: ($ActionAccount). `nOS Version: ($OSVersion). `nSCOM Agent Path: ($SCOMAgentPath). `nCertLoaded: ($CertLoaded). `nCert Expiration: ($CertExpires). `nCert Thumbprint: ($ThumbPrint). `nCert Issuer: ($CertIssuer). `nIP ($IPList). `nConnection: ($PortList). `nScript runtime: ($ScriptTime) seconds.")
+#=================================================================================
+# End of script	  
+		  </ScriptBody>
+          <Parameters>
+            <Parameter>
+              <Name>SourceId</Name>
+              <Value>$MPElement$</Value>
+            </Parameter>
+            <Parameter>
+              <Name>ManagedEntityId</Name>
+              <Value>$Target/Id$</Value>
+            </Parameter>
+            <Parameter>
+              <Name>ComputerName</Name>
+              <Value>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Value>
+            </Parameter>
+            <Parameter>
+              <Name>MGName</Name>
+              <Value>$Target/ManagementGroup/Name$</Value>
+            </Parameter>
+            <Parameter>
+              <Name>IP</Name>
+              <Value>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/IPAddress$</Value>
+            </Parameter>			
+          </Parameters>
+          <TimeoutSeconds>600</TimeoutSeconds>
+        </DataSource>
+      </Discovery>
+      <Discovery ID="SCOM.Management.Server.Class.Discovery" Enabled="true" Target="SC!Microsoft.SystemCenter.ManagementServer" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+        <Category>Discovery</Category>
+        <DiscoveryTypes>
+          <DiscoveryClass TypeID="SCOM.Management.Server.Class">
+            <Property PropertyID="OSName" />
+          </DiscoveryClass>
+        </DiscoveryTypes>
+        <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.FilteredRegistryDiscoveryProvider">
+          <ComputerName>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName>
+          <RegistryAttributeDefinitions>
+            <RegistryAttributeDefinition>
+              <AttributeName>ServerRegKeyExists</AttributeName>
+              <Path>SOFTWARE\Microsoft\Microsoft Operations Manager\3.0\Server Management Groups</Path>
+              <PathType>0</PathType>
+              <!-- 0=regKey 1=regValue -->
+              <AttributeType>0</AttributeType>
+              <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
+            </RegistryAttributeDefinition>
+            <RegistryAttributeDefinition>
+              <AttributeName>WebConsoleRegKeyExists</AttributeName>
+              <Path>SOFTWARE\Microsoft\System Center Operations Manager\12\Setup\WebConsole</Path>
+              <PathType>0</PathType>
+              <!-- 0=regKey 1=regValue -->
+              <AttributeType>0</AttributeType>
+              <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
+            </RegistryAttributeDefinition>			
+            <RegistryAttributeDefinition>
+              <AttributeName>OSName</AttributeName>
+              <Path>SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductName</Path>
+              <PathType>1</PathType>
+              <!-- 0=regKey 1=regValue -->
+              <AttributeType>1</AttributeType>
+              <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
+            </RegistryAttributeDefinition>
+          </RegistryAttributeDefinitions>
+          <Frequency>14400</Frequency>
+          <ClassId>$MPElement[Name="SCOM.Management.Server.Class"]$</ClassId>
+          <InstanceSettings>
+            <Settings>
+              <Setting>
+                <Name>$MPElement[Name="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Name>
+                <Value>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Value>
+              </Setting>
+              <Setting>
+                <Name>$MPElement[Name="System!System.Entity"]/DisplayName$</Name>
+                <Value>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Value>
+              </Setting>
+              <Setting>
+                <Name>$MPElement[Name="SCOM.Management.Server.Class"]/OSName$</Name>
+                <Value>$Data/Values/OSName$</Value>
+              </Setting>
+            </Settings>
+          </InstanceSettings>
+		  <Expression>
+			<Or>
+			  <Expression>
+				<SimpleExpression>
+				  <ValueExpression>
+					<XPathQuery Type="Boolean">Values/ServerRegKeyExists</XPathQuery>
+					<!-- Common options for XPathQuery Type are "Boolean" "String" "Integer" "Double" -->
+				  </ValueExpression>
+				  <Operator>Equal</Operator>
+				  <!-- Common options for SimpleExpression Operator are "Equal" "NotEqual" "Greater" "Less" "GreaterEqual" "LessEqual" "Like" "NotLike" -->
+				  <ValueExpression>
+					<Value Type="Boolean">true</Value>
+					<!-- Common options for XPathQuery Type are "Boolean" "String" "Integer" "Double" -->
+				  </ValueExpression>
+				</SimpleExpression>
+			  </Expression>
+			  <Expression>
+				<SimpleExpression>
+				  <ValueExpression>
+					<XPathQuery Type="Boolean">Values/WebConsoleRegKeyExists</XPathQuery>
+					<!-- Common options for XPathQuery Type are "Boolean" "String" "Integer" "Double" -->
+				  </ValueExpression>
+				  <Operator>Equal</Operator>
+				  <!-- Common options for SimpleExpression Operator are "Equal" "NotEqual" "Greater" "Less" "GreaterEqual" "LessEqual" "Like" "NotLike" -->
+				  <ValueExpression>
+					<Value Type="Boolean">true</Value>
+					<!-- Common options for XPathQuery Type are "Boolean" "String" "Integer" "Double" -->
+				  </ValueExpression>
+				</SimpleExpression>
+			  </Expression>	
+            </Or>
+          </Expression>			  
+        </DataSource>
+      </Discovery>
+      <Discovery ID="SCOM.Management.Server.Class.PowerShell.Properties.Discovery" Enabled="true" Target="SCOM.Management.Server.Class" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+        <Category>Discovery</Category>
+        <DiscoveryTypes>
+          <DiscoveryClass TypeID="SCOM.Management.Server.Class">
+            <Property PropertyID="ServerVersion" />
+            <Property PropertyID="ServerURLevel" />
+            <Property PropertyID="WebConsoleVersion" />
+            <Property PropertyID="WebConsoleURLevel" />
+            <Property PropertyID="ConsoleVersion" />
+            <Property PropertyID="ConsoleURLevel" />
+            <Property PropertyID="OMSWorkspaces" />
+            <Property PropertyID="PSVersion" />
+            <Property PropertyID="CLRVersion" />
+            <Property PropertyID="OSVersion" />
+            <Property PropertyID="PrimaryMS" />
+            <Property PropertyID="FailoverList" />
+            <Property PropertyID="ActionAccount" />
+            <Property PropertyID="InstallPath" />
+			<Property PropertyID="CertLoaded" />
+			<Property PropertyID="CertExpires" />
+			<Property PropertyID="ThumbPrint" />
+			<Property PropertyID="CertIssuer" />			
+			<Property PropertyID="TLS12Enforced" />
+			<Property PropertyID="TLS12SQLCliInstalled" />
+			<Property PropertyID="TLS12ODBCInstalled" />
+          </DiscoveryClass>
+        </DiscoveryTypes>
+        <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.TimedPowerShell.DiscoveryProvider">
+          <IntervalSeconds>86400</IntervalSeconds>
+          <SyncTime />
+          <ScriptName>SCOM.Management.Server.Class.PowerShell.Properties.Discovery.ps1</ScriptName>
+          <ScriptBody>
+#=================================================================================
+#
+#  Script to gather SCOM Server Component properties via PowerShell
+#
+#  Author: Kevin Holman
+#
+#  Version: 2.0
+#
+#=================================================================================
+param($SourceId,$ManagedEntityId,$ComputerName,$MGName)
+
+
+# Manual Testing section - put stuff here for manually testing script - typically parameters:
+#=================================================================================
+# $SourceId = '{00000000-0000-0000-0000-000000000000}'
+# $ManagedEntityId = '{00000000-0000-0000-0000-000000000000}'
+# $Computername = 'server.domain.com'
+# $MGName = 'SCOMA'
+#=================================================================================
+
+
+# Constants section - modify stuff here:
+#=================================================================================
+# Assign script name variable for use in event logging
+$ScriptName = "SCOM.Management.Server.Class.PowerShell.Properties.Discovery.ps1"
+$EventID = "1006"
+#=================================================================================
+
+
+# Starting Script section - All scripts get this
+#=================================================================================
+# Gather the start time of the script
+$StartTime = Get-Date
+#Set variable to be used in logging events
+$whoami = whoami
+# Load MOMScript API
+$momapi = New-Object -comObject MOM.ScriptAPI
+#Log script event that we are starting task
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script is starting. `n Running as ($whoami).")
+#=================================================================================
+
+
+# Discovery Script section - Discovery scripts get this
+#=================================================================================
+# Load SCOM Discovery module
+$DiscoveryData = $momapi.CreateDiscoveryData(0, $SourceId, $ManagedEntityId)
+#=================================================================================
+
+
+# Begin Main Script
+#=================================================================================
+# Begin Role Version Section
+#=======================================================================
+# Function to map a file version to a UR level
+function URVersion($Version)
+{
+  switch($Version)
+  {
+    # SCOM 2012
+    "7.1.10226.0" {"2012 R2 RTM"}
+    "7.1.10184.0" {"2012 R2 RTM"} #Gateway
+    "7.1.10226.1011" {"2012 R2 UR1"}
+    "7.1.10188.0" {"2012 R2 UR1"} #Gateway
+    "7.1.10226.1015" {"2012 R2 UR2"}
+    "7.1.10195.0" {"2012 R2 UR2"} #Gateway
+    "7.1.10226.1037" {"2012 R2 UR3"}
+    "7.1.10204.0" {"2012 R2 UR3"} #Gateway
+    "7.1.10226.1046" {"2012 R2 UR4"}
+    "7.1.10211.0" {"2012 R2 UR4"} #Gateway
+    "7.1.10226.1052" {"2012 R2 UR5"}
+    "7.1.10213.0" {"2012 R2 UR5"} #Gateway
+    "7.1.10226.1064" {"2012 R2 UR6"}
+    "7.1.10218.0" {"2012 R2 UR6"} #Gateway
+    "7.1.10226.1090" {"2012 R2 UR7"}
+    "7.1.10229.0" {"2012 R2 UR7"} #Gateway
+    "7.1.10226.1118" {"2012 R2 UR8"}
+    "7.1.10241.0" {"2012 R2 UR8"} #Gateway
+    "7.1.10226.1177" {"2012 R2 UR9"}
+    "7.1.10268.0" {"2012 R2 UR9"} #Gateway
+    "7.1.10226.1239" {"2012 R2 UR11"}
+    "7.1.10285.0" {"2012 R2 UR11"} #Gateway
+    "7.1.10226.1304" {"2012 R2 UR12"}
+    "7.1.10292.0" {"2012 R2 UR12"} #Gateway
+    "7.1.10226.1360" {"2012 R2 UR13"}
+    "7.1.10302.0" {"2012 R2 UR13"} #Gateway
+    "7.1.10226.1387" {"2012 R2 UR14"}
+    "7.1.10305.0" {"2012 R2 UR14"} #Gateway				
+
+    # SCOM 2016
+    "7.2.11719.0" {"2016 RTM"}
+    "8.0.10918.0" {"2016 RTM"} #Gateway
+    "7.2.11759.0" {"2016 UR1"}
+    "7.2.11822.0" {"2016 UR2"}
+    "8.0.10949.0" {"2016 UR2"} #Gateway
+    "7.2.11878.0" {"2016 UR3"}
+    "8.0.10970.0" {"2016 UR3"} #Gateway
+    "7.2.11938.0" {"2016 UR4"}
+    "8.0.10977.0" {"2016 UR4"} #Gateway		
+    "7.2.12016.0" {"2016 UR5"}
+    "8.0.10990.0" {"2016 UR5"} #Gateway
+    "7.2.12066.0" {"2016 UR6"}
+    "8.0.11004.0" {"2016 UR6"} #Gateway
+    "7.2.12150.0" {"2016 UR7"}
+    "8.0.11025.0" {"2016 UR7"} #Gateway
+    "7.2.12213.0" {"2016 UR8"}
+    "8.0.11037.0" {"2016 UR8"} #Gateway		
+    "7.2.12265.0" {"2016 UR9"}
+    "8.0.11049.0" {"2016 UR9"} #Gateway		
+	
+    # SEMI ANNUAL Channel
+    "7.3.13142.0" {"1801"}
+    "8.0.13053.0" {"1801"} #Gateway		
+    "7.3.13261.0" {"1807"}
+    "8.0.13067.0" {"1807"} #Gateway	
+		
+    # SCOM 2019
+    "10.19.10014.0" {"2019 TP"}
+    "10.19.10050.0" {"2019 RTM"}
+    "10.19.10311.0" {"2019 UR1"}
+    "10.19.10349.0" {"2019 UR1 with Hotfix"}	
+  }
+}
+                        			
+$SCOMRegKey = "HKLM:\SOFTWARE\Microsoft\Microsoft Operations Manager\3.0\Setup"
+$SCOMPath = (Get-ItemProperty $SCOMRegKey).InstallDirectory
+$SCOMPath = $SCOMPath.TrimEnd("\")
+$SCOMCorePath = $SCOMPath.TrimEnd("Server")
+$SCOMCorePath = $SCOMCorePath.TrimEnd("\")
+			
+# Check to see if this is a Gateway
+IF ($SCOMCorePath -match "Gateway")
+{
+  $MS = $false
+  $ServerURFile = Get-Item $SCOMPath\HealthService.dll
+  $ServerURFileVersion = $ServerURFile.VersionInfo.FileVersion
+
+  $MOMWsManModulesFile = Get-Item $SCOMPath\MOMWsManModules.dll
+  $MOMWsManModulesFileVersion = $MOMWsManModulesFile.VersionInfo.FileVersion
+
+  $MOMCommonFile = Get-Item $SCOMPath\Microsoft.Mom.Common.dll
+  $MOMCommonFileVersion = $MOMCommonFile.VersionInfo.FileVersion
+
+  IF ($ServerURFileVersion -eq "8.0.10949.0" -and $MOMWsManModulesFileVersion -eq "8.0.10918.0")
+  {
+    #This is SCOM 2016 UR2
+    $ServerURFileVersion = "8.0.10949.0"
+  }
+  ELSEIF ($ServerURFileVersion -eq "8.0.10949.0" -and $MOMWsManModulesFileVersion -eq "8.0.10970.0")
+  {
+    #This is SCOM 2016 UR3 and was patched from UR2 to UR3
+    $ServerURFileVersion = "8.0.10970.0"
+  }
+  ELSEIF ($ServerURFileVersion -eq "8.0.10918.0" -and $MOMWsManModulesFileVersion -eq "8.0.10970.0")
+  {
+    #This is SCOM 2016 UR3 and was patched from RTM to UR3 directly
+    $ServerURFileVersion = "8.0.10970.0"
+  }
+  ELSEIF ($ServerURFileVersion -eq "10.19.10014.0" -and $MOMCommonFileVersion -eq "10.19.10050.0")
+  {
+    #This is SCOM 2019 RTM
+    $ServerURFileVersion = "10.19.10050.0"
+  }
+  ELSEIF ($ServerURFileVersion -eq "10.19.10140.0" -and $MOMCommonFileVersion -eq "10.19.10050.0")
+  {
+    #This is SCOM 2019 UR1
+    $ServerURFileVersion = "10.19.10311.0"
+  }
+  
+  # Set these to null since we do not expect a web console or a console on a GW
+  $WebConsoleURFileVersion = ""
+  $ConsoleURFileVersion = ""
+}
+ELSE  #This is a Management Server not a Gateway
+{
+  $MS = $true
+  $ServerURFile = Get-Item $SCOMPath\Microsoft.EnterpriseManagement.RuntimeService.dll
+  $ServerURFileVersion = $ServerURFile.VersionInfo.FileVersion
+  $ServerURFileVersionSplit = $ServerURFileVersion.Split(".")
+  $MajorSCOMVersion = $ServerURFileVersionSplit[0] + "." + $ServerURFileVersionSplit[1]
+
+  IF ($MajorSCOMVersion -eq "7.1") #SCOM2012
+  {
+    Try
+    {
+      $WebConsoleURFile = Get-Item $SCOMCorePath\WebConsole\WebHost\bin\Microsoft.EnterpriseManagement.Management.DataProviders.dll
+      $WebConsoleURFileVersion = $WebConsoleURFile.VersionInfo.FileVersion
+    }
+    Catch
+    {
+      $WebConsoleURFileVersion = ""
+    }
+    Try
+    {
+      $ConsoleURFile = Get-Item $SCOMCorePath\Console\Microsoft.EnterpriseManagement.Management.DataProviders.dll
+      $ConsoleURFileVersion = $ConsoleURFile.VersionInfo.FileVersion
+      }
+    Catch
+    {
+      $ConsoleURFileVersion = ""
+    }
+  }
+  IF ($MajorSCOMVersion -eq "7.2")  #SCOM2016
+  {
+    Try
+    {
+      $WebConsoleURFile = Get-Item $SCOMCorePath\WebConsole\WebHost\bin\Microsoft.EnterpriseManagement.Monitoring.DataProviders.dll
+      $WebConsoleURFileVersion = $WebConsoleURFile.VersionInfo.FileVersion
+    }
+    Catch
+    {
+      $WebConsoleURFileVersion = ""
+    }
+    Try
+    {
+      $ConsoleURFile = Get-Item $SCOMCorePath\Console\Microsoft.EnterpriseManagement.Monitoring.DataProviders.dll
+      $ConsoleURFileVersion = $ConsoleURFile.VersionInfo.FileVersion
+    }
+    Catch
+    {
+      $ConsoleURFileVersion = ""
+    }
+  }
+  IF ($MajorSCOMVersion -eq "7.3")  #SCOM 1801 or 1807 Semi Annual Channel
+  {
+    $ServerURFile = Get-Item $SCOMCorePath\Server\Microsoft.EnterpriseManagement.DataAccessLayer.dll
+    $ServerURFileVersion = $ServerURFile.VersionInfo.FileVersion
+
+    Try
+    {
+      $WebConsoleURFile = Get-Item $SCOMCorePath\WebConsole\WebHost\bin\Microsoft.Mom.Common.dll
+      $WebConsoleURFileVersion = $WebConsoleURFile.VersionInfo.FileVersion
+    }
+    Catch
+    {
+      $WebConsoleURFileVersion = ""
+    }
+    Try
+    {
+      $ConsoleURFile = Get-Item $SCOMCorePath\Console\Microsoft.MOM.UI.Common.dll
+      $ConsoleURFileVersion = $ConsoleURFile.VersionInfo.FileVersion
+    }
+    Catch
+    {
+      $ConsoleURFileVersion = ""
+    }
+  }
+  IF ($MajorSCOMVersion -eq "10.19") #SCOM 2019
+  {
+    #We need to use a different file for versioning for SCOM 2019
+    $ServerURFile = Get-Item $SCOMCorePath\Server\Microsoft.EnterpriseManagement.DataAccessLayer.dll
+    $ServerURFileVersion = $ServerURFile.VersionInfo.FileVersion	
+	
+	#Check to see if this is UR1 plus Hotfix special case
+	$ServerUR1HotfixFile = Get-Item $SCOMCorePath\Server\Microsoft.EnterpriseManagement.DataAccessService.OperationsManager.dll
+	$ServerUR1HotfixFileVersion = $ServerUR1HotfixFile.VersionInfo.FileVersion
+	
+	IF ($ServerUR1HotfixFileVersion -eq "10.19.10349.0")
+	{
+	  $ServerURFileVersion = $ServerUR1HotfixFileVersion
+	}
+
+    Try
+	{
+	  $WebConsoleURFile = Get-Item $SCOMCorePath\WebConsole\Dashboard\OMVersion.dll
+	  $WebConsoleURFileVersion = $WebConsoleURFile.VersionInfo.FileVersion
+	}
+	Catch
+	{
+	  $WebConsoleURFileVersion = ""
+	}
+	Try
+	{
+	  $ConsoleURFile = Get-Item $SCOMCorePath\Console\Microsoft.MOM.UI.Components.dll
+	  $ConsoleURFileVersion = $ConsoleURFile.VersionInfo.FileVersion
+	}
+	Catch
+	{
+	  $ConsoleURFileVersion = ""
+	}
+  }	  
+}
+
+$ServerURLevel = URVersion $ServerURFileVersion
+$WebConsoleURLevel = URVersion $WebConsoleURFileVersion
+$ConsoleURLevel = URVersion $ConsoleURFileVersion
+#=======================================================================
+			
+# Get Server OMS Workspaces section
+#=======================================================================
+# Load SCOM Agent scripting module
+$AgentCfg = New-Object -ComObject "AgentConfigManager.MgmtSvcCfg"
+# Try Catch since agent might not support method and throw error or might be empty
+try
+{
+    $OMSWorkSpaces=$AgentCfg.GetCloudWorkspaces()
+    foreach($OMSWorkSpace in $OMSWorkSpaces)
+	{
+    $OMSList=$OMSList + $OMSWorkspace.workspaceId + ", "
+    }
+    $OMSList=$OMSList.TrimEnd(", ")
+}
+catch
+{
+    $OMSList=''
+}			
+#=======================================================================			
+			
+# Get PowerShell Version section
+#=======================================================================
+$PSVer = $PSVersionTable.PSVersion
+[string]$PSMajor = $PSVer.Major
+[string]$PSMinor = $PSVer.Minor
+$PSVersion = $PSMajor + "." + $PSMinor
+#=======================================================================
+			
+# Get PowerShell CLR Version section
+#=======================================================================
+$CLRVer = $PSVersionTable.CLRVersion
+[string]$CLRMajor = $CLRVer.Major
+[string]$CLRMinor = $CLRVer.Minor
+$CLRVersion = $CLRMajor + "." + $CLRMinor
+#=======================================================================			
+
+# Get Assignments section if not a Management Server
+#=======================================================================
+[string]$PrimaryMS = ""
+[string]$FailoverList = ""
+
+#Only continue if this is a Gateway
+IF ($MS -eq $false)
+{
+  #Uses $SCOMPath from above
+  $FilePath = "$SCOMPath\Health Service State\Connector Configuration Cache\$MGName\OpsMgrConnector.Config.xml"
+
+  IF (Test-Path -Path $FilePath)
+  {
+    [xml]$ConfigFileXML = Get-Content -Path $FilePath
+
+    #Get Primary MS
+    $PrimaryArr = $ConfigFileXML.Message.State.Parents.Added.Item | Where-Object {$_.IsPrimary -eq "True"}
+    $PrimaryMS = $PrimaryArr.AuthenticationName
+
+    #Get list of Secondary MS
+    $SecondaryArr = $ConfigFileXML.Message.State.Parents.Added.Item | Where-Object {$_.IsPrimary -eq "False"}
+    [string]$SecondaryMSList = @()
+    FOREACH ($SecondaryXML in $SecondaryArr)
+    {
+    $SecondaryMS = $SecondaryXML.AuthenticationName
+    $SecondaryMSList = $SecondaryMSList + $SecondaryMS + ", "
+    }
+    $FailoverList = $SecondaryMSList.TrimEnd(", ")
+  }
+  ELSE
+  {
+    #Log script event that we cannot find config file
+    $momapi.LogScriptEvent($ScriptName,$EventID,2, "Cannot find config file at path ($FilePath)")
+  }
+}
+#=======================================================================
+
+			
+# Get Action Account section
+#=======================================================================
+# Get the action account this script is running under.  We will assume that is the default action account
+try
+{
+    $user =  ""
+    $domain =  ""
+    $oNetwork = new-object -comobject "WScript.Network"
+    $user = $oNetwork.UserName
+    $domain = $oNetwork.UserDomain
+    If(($user.Length -eq 0) -or ($user -eq "SYSTEM"))
+    {
+    $ActionAccount = $user
+    }
+    Else
+    {
+    $ActionAccount = $domain + "\" + $user
+    }
+}
+catch
+{
+    $momapi.LogScriptEvent($ScriptName,$EventID,2, "Failed to retrieve the User name and domain for the action account, error: ", $error.Description)
+}
+#=======================================================================
+
+
+# Get OSVersion section
+#=======================================================================
+$OSRegKey = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
+[string]$OSCurrentVersion = (Get-ItemProperty $OSRegKey).CurrentVersion
+[string]$OSCurrentBuildNumber = (Get-ItemProperty $OSRegKey).CurrentBuildNumber
+[string]$OSCurrentCurrentMajorVersionNumber = (Get-ItemProperty $OSRegKey).CurrentMajorVersionNumber
+[string]$OSCurrentCurrentMinorVersionNumber = (Get-ItemProperty $OSRegKey).CurrentMinorVersionNumber
+
+# If Windows 10 or WS2016 use new reg keys else use old keys
+IF ($OSCurrentCurrentMajorVersionNumber)
+{
+    [string]$OSVersion = $OSCurrentCurrentMajorVersionNumber + "." + $OSCurrentCurrentMinorVersionNumber + "." + $OSCurrentBuildNumber
+}
+ELSE
+{
+    [string]$OSVersion = $OSCurrentVersion + "." + $OSCurrentBuildNumber
+}
+#=======================================================================
+
+
+# Get Remotely Manageable  section
+#=======================================================================
+#=======================================================================
+
+
+# Get Certificate Section
+#=======================================================================
+$CertRegKey = "HKLM:\SOFTWARE\Microsoft\Microsoft Operations Manager\3.0\Machine Settings"
+IF(Test-Path $CertRegKey)
+{
+  [array]$CertValue = (Get-ItemProperty $CertRegKey).ChannelCertificateSerialNumber
+  IF($Certvalue)
+  {
+	$CertLoaded = $True
+    [string]$ThumbPrint = (Get-ItemProperty $CertRegKey).ChannelCertificateHash
+    $Cert = Get-ChildItem -path cert:\LocalMachine\My | Where-Object {$_.Thumbprint -eq $ThumbPrint}
+    IF ($Cert)
+    {
+      [datetime]$CertExpiresDateTime = $Cert.NotAfter
+      [string]$CertExpires = $CertExpiresDateTime.ToShortDateString()
+      $CertIssuerArr = $Cert.Issuer
+      $CertIssuerSplit = $CertIssuerArr.Split(",")
+      [string]$CertIssuer = $CertIssuerSplit[0].TrimStart("CN=")
+    }
+    ELSE
+    {
+      $CertIssuer = "NotFound"
+      $CertExpires = "NotFound"
+    }
+
+  }
+  ELSE
+  {
+    $CertLoaded = $False
+  }
+}
+ELSE
+{
+  $CertLoaded = $False
+}
+#=======================================================================
+
+
+# Get TLS12Enforced Section
+#=======================================================================
+#Set the value to good by default then look for any bad or missing settings
+$TLS12Enforced = $True
+
+IF (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Client")
+{
+  $Enabled = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Client").Enabled
+  $DisabledByDefault = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Client").DisabledByDefault
+  IF ($Enabled -ne 0 -or $DisabledByDefault -ne 1)
+  {
+    $TLS12Enforced = $False
+  }
+}
+ELSE
+{
+  $TLS12Enforced = $False
+}
+
+IF (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Server")
+{
+  $Enabled = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Server").Enabled
+  $DisabledByDefault = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Server").DisabledByDefault
+  IF ($Enabled -ne 0 -or $DisabledByDefault -ne 1)
+  {
+    $TLS12Enforced = $False
+  }
+}
+ELSE
+{
+  $TLS12Enforced = $False
+}
+
+IF (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Client")
+{
+  $Enabled = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Client").Enabled
+  $DisabledByDefault = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Client").DisabledByDefault
+  IF ($Enabled -ne 0 -or $DisabledByDefault -ne 1)
+  {
+    $TLS12Enforced = $False
+  }
+}
+ELSE
+{
+  $TLS12Enforced = $False
+}
+
+IF (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Server")
+{
+  $Enabled = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Server").Enabled
+  $DisabledByDefault = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Server").DisabledByDefault
+  IF ($Enabled -ne 0 -or $DisabledByDefault -ne 1)
+  {
+    $TLS12Enforced = $False
+  }
+}
+ELSE
+{
+  $TLS12Enforced = $False
+}
+
+IF (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client")
+{
+  $Enabled = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client").Enabled
+  $DisabledByDefault = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client").DisabledByDefault
+  IF ($Enabled -ne 0 -or $DisabledByDefault -ne 1)
+  {
+    $TLS12Enforced = $False
+  }
+}
+ELSE
+{
+  $TLS12Enforced = $False
+}
+
+IF (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server")
+{
+  $Enabled = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server").Enabled
+  $DisabledByDefault = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server").DisabledByDefault
+  IF ($Enabled -ne 0 -or $DisabledByDefault -ne 1)
+  {
+    $TLS12Enforced = $False
+  }
+}
+ELSE
+{
+  $TLS12Enforced = $False
+}
+
+IF (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Client")
+{
+  $Enabled = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Client").Enabled
+  $DisabledByDefault = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Client").DisabledByDefault
+  IF ($Enabled -ne 0 -or $DisabledByDefault -ne 1)
+  {
+    $TLS12Enforced = $False
+  }
+}
+ELSE
+{
+  $TLS12Enforced = $False
+}
+
+IF (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server")
+{
+  $Enabled = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server").Enabled
+  $DisabledByDefault = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server").DisabledByDefault
+  IF ($Enabled -ne 0 -or $DisabledByDefault -ne 1)
+  {
+    $TLS12Enforced = $False
+  }
+}
+ELSE
+{
+  $TLS12Enforced = $False
+}
+
+IF (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client")
+{
+  $Enabled = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client").Enabled
+  $DisabledByDefault = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client").DisabledByDefault
+  IF ($Enabled -ne 1 -or $DisabledByDefault -ne 0)
+  {
+    $TLS12Enforced = $False
+  }
+}
+ELSE
+{
+  $TLS12Enforced = $False
+}
+
+IF (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server")
+{
+  $Enabled = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server").Enabled
+  $DisabledByDefault = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server").DisabledByDefault
+  IF ($Enabled -ne 1 -or $DisabledByDefault -ne 0)
+  {
+    $TLS12Enforced = $False
+  }
+}
+ELSE
+{
+  $TLS12Enforced = $False
+}
+
+IF (Test-Path "HKLM:\SOFTWARE\Microsoft\.NETFramework\v4.0.30319")
+{
+  $SchUseStrongCrypto = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\.NETFramework\v4.0.30319").SchUseStrongCrypto
+  IF ($SchUseStrongCrypto -ne 1)
+  {
+    $TLS12Enforced = $False
+  }
+}
+ELSE
+{
+  $TLS12Enforced = $False
+}
+
+IF (Test-Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319")
+{
+  $SchUseStrongCrypto = (Get-ItemProperty "HKLM:\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319").SchUseStrongCrypto
+  IF ($SchUseStrongCrypto -ne 1)
+  {
+    $TLS12Enforced = $False
+  }
+}
+ELSE
+{
+  $TLS12Enforced = $False
+}
+#=======================================================================
+
+
+# Get TLS12SQLCliInstalled Section
+#=======================================================================
+$RegPath = "HKLM:SOFTWARE\ODBC\ODBCINST.INI\ODBC Drivers"
+[string]$SQLClient11InstalledStatus = (Get-ItemProperty $RegPath)."SQL Server Native Client 11.0"
+
+IF ($SQLClient11InstalledStatus -eq "Installed")
+{
+  $TLS12SQLCliInstalled = $True
+}
+ELSE
+{
+  $TLS12SQLCliInstalled = $False
+}
+#=======================================================================
+
+
+# Get TLS12ODBCInstalled Section
+#=======================================================================
+$RegPath = "HKLM:SOFTWARE\ODBC\ODBCINST.INI\ODBC Drivers"
+[string]$ODBCDriver13 = (Get-ItemProperty $RegPath)."ODBC Driver 13 for SQL Server"
+
+IF ($ODBCDriver13 -eq "Installed")
+{
+  $TLS12ODBCInstalled = $True
+}
+ELSE
+{
+  $TLS12ODBCInstalled = $False
+}
+#=======================================================================
+
+
+# Discovery Script section - Discovery scripts get this
+#=================================================================================
+$instance = $DiscoveryData.CreateClassInstance("$MPElement[Name='SCOM.Management.Server.Class']$")
+$instance.AddProperty("$MPElement[Name='Windows!Microsoft.Windows.Computer']/PrincipalName$", $Computername)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/ServerVersion$", $ServerURFileVersion)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/ServerURLevel$", $ServerURLevel)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/WebConsoleVersion$", $WebConsoleURFileVersion)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/WebConsoleURLevel$", $WebConsoleURLevel)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/ConsoleVersion$", $ConsoleURFileVersion)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/ConsoleURLevel$", $ConsoleURLevel)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/OMSWorkspaces$", $OMSList)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/PSVersion$", $PSVersion)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/CLRVersion$", $CLRVersion)			
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/OSVersion$", $OSVersion)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/PrimaryMS$", $PrimaryMS)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/FailoverList$", $FailoverList)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/ActionAccount$", $ActionAccount)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/InstallPath$", $SCOMPath)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/CertLoaded$", $CertLoaded)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/CertExpires$", $CertExpires)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/ThumbPrint$", $ThumbPrint)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/CertIssuer$", $CertIssuer)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/TLS12Enforced$", $TLS12Enforced)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/TLS12SQLCliInstalled$", $TLS12SQLCliInstalled)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/TLS12ODBCInstalled$", $TLS12ODBCInstalled)
+$DiscoveryData.AddInstance($instance)
+
+# Return Discovery Items Normally           
+$DiscoveryData
+# Return Discovery Bag to the command line for testing (does not work from ISE)
+# $momapi.Return($DiscoveryData)
+#=================================================================================
+
+
+# End of script section
+#=================================================================================
+#Log an event for script ending and total execution time.
+$EndTime = Get-Date
+$ScriptTime = ($EndTime - $StartTime).TotalSeconds
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script has completed. ServerVersion: ($ServerURFileVersion). `n Server UR Level: ($ServerURLevel). `n WebConsoleVersion: ($WebConsoleURFileVersion). `n Web Console UR Level: ($WebConsoleURLevel). `n ConsoleVersion: ($ConsoleURFileVersion). `n Console UR Level: ($ConsoleURLevel). `n OMS Workspaces: ($OMSList). `n PowerShell Version: ($PSVersion). `n CLR Version: ($CLRVersion). `n OSVersion: ($OSVersion). `n Primary MS: ($PrimaryMS). `n Secondary MS Failover list: ($FailoverList). `n Action Account: ($ActionAccount). `n Install path: ($SCOMPath). `n TLS 1.2 Enforced: ($TLS12Enforced). `n SQLClient 11 installed: ($TLS12SQLCliInstalled). `n ODBC Driver 13 installed: ($TLS12ODBCInstalled). `n Runtime was ($ScriptTime) seconds.")
+#=================================================================================
+# End of script
+          </ScriptBody>
+          <Parameters>
+            <Parameter>
+              <Name>SourceId</Name>
+              <Value>$MPElement$</Value>
+            </Parameter>
+            <Parameter>
+              <Name>ManagedEntityId</Name>
+              <Value>$Target/Id$</Value>
+            </Parameter>
+            <Parameter>
+              <Name>ComputerName</Name>
+              <Value>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Value>
+            </Parameter>
+            <Parameter>
+              <Name>MGName</Name>
+              <Value>$Target/ManagementGroup/Name$</Value>
+            </Parameter>
+          </Parameters>
+          <TimeoutSeconds>600</TimeoutSeconds>
+        </DataSource>
+      </Discovery>
+    </Discoveries>
+    <Rules>
+      <Rule ID="SCOM.Management.TestEvent100.Rule" Enabled="true" Target="SCOM.Management.Class" ConfirmDelivery="true" Remotable="true" Priority="Normal" DiscardLevel="100">
+        <Category>Alert</Category>
+        <DataSources>
+          <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.EventProvider">
+            <ComputerName>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/NetworkName$</ComputerName>
+            <LogName>Application</LogName>
+            <Expression>
+              <And>
+                <Expression>
+                  <SimpleExpression>
+                    <ValueExpression>
+                      <XPathQuery Type="UnsignedInteger">EventDisplayNumber</XPathQuery>
+                    </ValueExpression>
+                    <Operator>Equal</Operator>
+                    <ValueExpression>
+                      <Value Type="UnsignedInteger">100</Value>
+                    </ValueExpression>
+                  </SimpleExpression>
+                </Expression>
+                <Expression>
+                  <SimpleExpression>
+                    <ValueExpression>
+                      <XPathQuery Type="String">PublisherName</XPathQuery>
+                    </ValueExpression>
+                    <Operator>Equal</Operator>
+                    <ValueExpression>
+                      <Value Type="String">TEST</Value>
+                    </ValueExpression>
+                  </SimpleExpression>
+                </Expression>
+              </And>
+            </Expression>
+          </DataSource>
+        </DataSources>
+        <WriteActions>
+          <WriteAction ID="Alert" TypeID="Health!System.Health.GenerateAlert">
+            <Priority>0</Priority>
+            <Severity>0</Severity>
+            <AlertName />
+            <AlertDescription />
+            <AlertOwner />
+            <AlertMessageId>$MPElement[Name="SCOM.Management.TestEvent100.Rule.AlertMessage"]$</AlertMessageId>
+            <AlertParameters>
+              <AlertParameter1>$Data/EventDescription$</AlertParameter1>
+            </AlertParameters>
+            <Suppression />
+            <Custom1 />
+            <Custom2 />
+            <Custom3 />
+            <Custom4 />
+            <Custom5 />
+            <Custom6 />
+            <Custom7 />
+            <Custom8 />
+            <Custom9 />
+            <Custom10 />
+          </WriteAction>
+        </WriteActions>
+      </Rule>
+    </Rules>
+    <Tasks>
+      <Task ID="SCOM.Management.AddManagementGroup.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" Timeout="120" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.AddManagementGroup.WA">
+          <MGName>MGNAME</MGName>
+          <MSName>MSName.Domain.Com</MSName>		  
+          <TimeoutSeconds>60</TimeoutSeconds>
+        </WriteAction>
+      </Task>	  
+      <Task ID="SCOM.Management.RemoveManagementGroup.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" Timeout="120" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.RemoveManagementGroup.WA">
+          <MGName>MGNAME</MGName>
+          <TimeoutSeconds>60</TimeoutSeconds>
+        </WriteAction>
+      </Task>
+      <Task ID="SCOM.Management.AddManagementGroupHS.Task" Accessibility="Public" Enabled="true" Target="SC!Microsoft.SystemCenter.HealthService" Timeout="120" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.AddManagementGroup.WA">
+          <MGName>MGNAME</MGName>
+          <MSName>MSName.Domain.Com</MSName>		  
+          <TimeoutSeconds>60</TimeoutSeconds>
+        </WriteAction>
+      </Task>	  
+      <Task ID="SCOM.Management.RemoveManagementGroupHS.Task" Accessibility="Public" Enabled="true" Target="SC!Microsoft.SystemCenter.HealthService" Timeout="120" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.RemoveManagementGroup.WA">
+          <MGName>MGNAME</MGName>
+          <TimeoutSeconds>60</TimeoutSeconds>
+        </WriteAction>
+      </Task>	  
+      <Task ID="SCOM.Management.RestartHealthService.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Class" Timeout="120" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="WA" TypeID="Windows!Microsoft.Windows.ScriptWriteAction">
+          <ScriptName>SCOM.Management.RestartHealthService.Task.vbs</ScriptName>
+          <Arguments />
+          <ScriptBody>
+            Option Explicit
+            On Error Resume Next
+            Dim ScriptName, oAPI, objWMIService, oShell, oShellEnv, computerName, strCommand, objProcess, objProgram, strShell
+
+            ScriptName = "SCOM.Management.RestartHealthService.Task.vbs"
+
+            'Load momscript API
+            Set oAPI = CreateObject("MOM.ScriptAPI")
+            'Log script event that we are starting
+            Call oAPI.LogScriptEvent(ScriptName, 1313, 2, "A command to restart the agent was sent.  We will attempt to stop and then restart the Healthservice now.")
+
+            'Begin Healthservice Restart
+            Set oShell = WScript.CreateObject("WScript.Shell")
+            set oShellEnv = oShell.Environment("Process")
+            computerName = oShellEnv("ComputerName")
+            'Echo that we are about to start for task output
+            WScript.echo "Beginning Restart attempt for HealthService on " &amp; computerName
+            strCommand = "cmd /c net stop HealthService &amp; cmd /c net start HealthService"
+            Set objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
+            Set objProcess = objWMIService.Get("Win32_Process")
+            Set objProgram = objProcess.Methods_( _
+            "Create").InParameters.SpawnInstance_
+            objProgram.CommandLine = strCommand
+            Set strShell = objWMIService.ExecMethod( _
+            "Win32_Process", "Create", objProgram)
+            'Echo that we are restarting for task output
+            WScript.echo "Restarting HealthService on " &amp; computerName
+            'End Healthservice Restart
+          </ScriptBody>
+          <TimeoutSeconds>60</TimeoutSeconds>
+        </WriteAction>
+      </Task>
+      <Task ID="SCOM.Management.RestartHealthServiceHS.Task" Accessibility="Public" Enabled="true" Target="SC!Microsoft.SystemCenter.HealthService" Timeout="120" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="WA" TypeID="Windows!Microsoft.Windows.ScriptWriteAction">
+          <ScriptName>SCOM.Management.RestartHealthServiceHS.Task.vbs</ScriptName>
+          <Arguments />
+          <ScriptBody>
+            Option Explicit
+            On Error Resume Next
+            Dim ScriptName, oAPI, objWMIService, oShell, oShellEnv, computerName, strCommand, objProcess, objProgram, strShell
+
+            ScriptName = "SCOM.Management.RestartHealthServiceHS.Task.vbs"
+
+            'Load momscript API
+            Set oAPI = CreateObject("MOM.ScriptAPI")
+            'Log script event that we are starting
+            Call oAPI.LogScriptEvent(ScriptName, 1313, 2, "A command to restart the agent was sent.  We will attempt to stop and then restart the Healthservice now.")
+
+            'Begin Healthservice Restart
+            Set oShell = WScript.CreateObject("WScript.Shell")
+            set oShellEnv = oShell.Environment("Process")
+            computerName = oShellEnv("ComputerName")
+            'Echo that we are about to start for task output
+            WScript.echo "Beginning Restart attempt for HealthService on " &amp; computerName
+            strCommand = "cmd /c net stop HealthService &amp; cmd /c net start HealthService"
+            Set objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
+            Set objProcess = objWMIService.Get("Win32_Process")
+            Set objProgram = objProcess.Methods_( _
+            "Create").InParameters.SpawnInstance_
+            objProgram.CommandLine = strCommand
+            Set strShell = objWMIService.ExecMethod( _
+            "Win32_Process", "Create", objProgram)
+            'Echo that we are restarting for task output
+            WScript.echo "Restarting HealthService on " &amp; computerName
+            'End Healthservice Restart
+          </ScriptBody>
+          <TimeoutSeconds>60</TimeoutSeconds>
+        </WriteAction>
+      </Task>	  
+      <Task ID="SCOM.Management.FlushHealthService.Task" Comment="Flush HealthService" Accessibility="Public" Enabled="true" Target="SCOM.Management.Class" Timeout="120" Remotable="true">
+        <Category>Maintenance</Category>
+        <WriteAction ID="FlushHealthServiceWA" TypeID="SCOM.Management.FlushHealthService.WA" />
+      </Task>
+      <Task ID="SCOM.Management.RestartService.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Class" Timeout="120" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.RestartService.WA">
+          <ServiceName>ServiceName</ServiceName>
+          <TimeoutSeconds>60</TimeoutSeconds>
+        </WriteAction>
+      </Task>
+      <Task ID="SCOM.Management.ExportEventLog.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Class" Timeout="120" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.ExportEventLog.WA">
+          <LogName>Operations Manager</LogName>
+          <SharePath>\\servername\sharename</SharePath>
+          <TimeoutSeconds>60</TimeoutSeconds>
+        </WriteAction>
+      </Task>
+      <Task ID="SCOM.Management.RunAnyPowerShell.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Class" Timeout="120" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.RunAnyPowerShell.WA">
+          <ScriptBody />
+          <TimeoutSeconds>60</TimeoutSeconds>
+        </WriteAction>
+      </Task>
+      <Task ID="SCOM.Management.CreateTestEvent.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Class" Timeout="120" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="CMDWA" TypeID="System!System.CommandExecuter">
+          <ApplicationName>%systemroot%\System32\cmd.exe</ApplicationName>
+          <WorkingDirectory />
+          <CommandLine>/c EVENTCREATE /T ERROR /ID 100 /L APPLICATION /SO TEST /D "This is a Test event 100"</CommandLine>
+          <TimeoutSeconds>60</TimeoutSeconds>
+          <RequireOutput>true</RequireOutput>
+        </WriteAction>
+      </Task>
+      <Task ID="SCOM.Management.InstallSoftwareFromShare.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Class" Timeout="300" Remotable="true">
+        <Category>Maintenance</Category>
+        <ProbeAction ID="Probe" TypeID="Windows!Microsoft.Windows.ScriptProbeAction">
+          <ScriptName>SCOM.Management.InstallSoftwareFromShare.Task.vbs</ScriptName>
+          <Arguments>"msiexec.exe /p \\servername\sharename\filename /qn"</Arguments>
+          <ScriptBody>
+            on error resume next
+
+            set oShellEnv = oShell.Environment("Process")
+            computerName = oShellEnv("ComputerName")
+
+            CommandAndFilePath = WScript.Arguments(0)
+
+            Set objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
+
+            Set objProcess = objWMIService.Get("Win32_Process")
+            Set objProgram = objProcess.Methods_( _
+            "Create").InParameters.SpawnInstance_
+            objProgram.CommandLine = CommandAndFilePath
+
+            Set strShell = objWMIService.ExecMethod( _
+            "Win32_Process", "Create", objProgram)
+
+            Wscript.Echo "Software Install Executed"
+          </ScriptBody>
+          <TimeoutSeconds>300</TimeoutSeconds>
+        </ProbeAction>
+      </Task>
+      <Task ID="SCOM.Management.DeleteAgent.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Server.Class" Timeout="180" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.DeleteAgent.WA">
+          <AgentName />
+          <TimeoutSeconds>120</TimeoutSeconds>
+        </WriteAction>
+      </Task>
+      <Task ID="SCOM.Management.Watcher.DeleteAgent.Task" Accessibility="Public" Enabled="true" Target="SC!Microsoft.SystemCenter.HealthServiceWatcher" Timeout="180" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.DeleteAgent.WA">
+          <AgentName>$Target/Property[Type='SC!Microsoft.SystemCenter.HealthServiceWatcher']/HealthServiceName$</AgentName>
+          <TimeoutSeconds>120</TimeoutSeconds>
+        </WriteAction>
+      </Task>
+      <Task ID="SCOM.Management.Agent.DeleteAgent.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" Timeout="180" Remotable="true" RunLocation="SC!Microsoft.SystemCenter.CollectionManagementServer">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.DeleteAgent.WA">
+          <AgentName>$Target/Property[Type="System!System.Entity"]/DisplayName$</AgentName>
+          <TimeoutSeconds>120</TimeoutSeconds>
+        </WriteAction>
+      </Task>
+      <Task ID="SCOM.Management.InstallAgent.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Server.Class" Timeout="300" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.InstallAgent.WA">
+          <AgentName />
+          <TimeoutSeconds>300</TimeoutSeconds>
+        </WriteAction>
+      </Task>
+      <Task ID="SCOM.Management.EnableADIntegration.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" Timeout="120" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
+          <ScriptName>SCOM.Management.EnableADIntegration.Task.ps1</ScriptName>
+          <ScriptBody>
+#=================================================================================
+#  Script to enable AD integration
+#=================================================================================
+
+#=================================================================================
+# Constants section - modify stuff here:
+
+# Assign script name variable for use in event logging
+$ScriptName = "SCOM.Management.EnableADIntegration.Task.ps1"
+#=================================================================================
+
+# Gather who the script is running as
+$whoami = whoami
+
+#Load the MOMScript API and discovery propertybag
+$momapi = New-Object -comObject "Mom.ScriptAPI"
+
+#Log script event that we are starting task
+$momapi.LogScriptEvent($ScriptName,1321,0, "Starting script.  Running as ($whoami)")
+
+# Begin Main Script
+#=================================================================================
+Write-Host "Task Starting.  Running as $whoami"
+#Load agent scripting object
+Write-Host "Loading agent scripting objects."
+$AgentCfg = New-Object -ComObject AgentConfigManager.MgmtSvcCfg
+#Enable AD integration
+Write-Host "Enabling AD Integration"		  
+$AgentCfg.EnableActiveDirectoryIntegration()
+#Restart Agent
+Write-Host "AD Integration Enabled."
+Write-Host "Restarting Agent now."
+#=================================================================================
+# End Main Script	
+
+# Restart Agent
+#=================================================================================
+#We need a reliable way to restart the SCOM Agent out of band so that tasks can complete with success
+$Command = "Start-Sleep -s 5;Restart-Service HealthService"
+$Process = ([wmiclass]"root\cimv2:Win32_ProcessStartup").CreateInstance()
+$Process.ShowWindow = 0
+$Process.CreateFlags = 16777216
+([wmiclass]"root\cimv2:Win32_Process").Create("powershell.exe $Command")|Out-Null
+#=================================================================================
+ 		  </ScriptBody>
+          <Parameters />
+          <TimeoutSeconds>120</TimeoutSeconds>
+        </WriteAction>
+      </Task>
+      <Task ID="SCOM.Management.DisableADIntegration.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" Timeout="120" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
+          <ScriptName>SCOM.Management.DisableADIntegration.Task.ps1</ScriptName>
+          <ScriptBody>
+#=================================================================================
+#  Script to disable AD integration
+#=================================================================================
+
+#=================================================================================
+# Constants section - modify stuff here:
+
+# Assign script name variable for use in event logging
+$ScriptName = "SCOM.Management.DisableADIntegration.Task.ps1"
+#=================================================================================
+
+# Gather who the script is running as
+$whoami = whoami
+
+#Load the MOMScript API and discovery propertybag
+$momapi = New-Object -comObject "Mom.ScriptAPI"
+
+#Log script event that we are starting task
+$momapi.LogScriptEvent($ScriptName,1321,0, "Starting script.  Running as ($whoami)")
+
+# Begin Main Script
+#=================================================================================
+Write-Host "Task Starting.  Running as $whoami"
+#Load agent scripting object
+Write-Host "Loading agent scripting objects."
+$AgentCfg = New-Object -ComObject AgentConfigManager.MgmtSvcCfg
+#Disable AD integration
+Write-Host "Disabling AD Integration"		  
+$AgentCfg.DisableActiveDirectoryIntegration()
+#Restart Agent
+Write-Host "AD Integration Disabled."
+Write-Host "Restarting Agent now."
+#=================================================================================
+# End Main Script	
+
+# Restart Agent
+#=================================================================================
+#We need a reliable way to restart the SCOM Agent out of band so that tasks can complete with success
+$Command = "Start-Sleep -s 5;Restart-Service HealthService"
+$Process = ([wmiclass]"root\cimv2:Win32_ProcessStartup").CreateInstance()
+$Process.ShowWindow = 0
+$Process.CreateFlags = 16777216
+([wmiclass]"root\cimv2:Win32_Process").Create("powershell.exe $Command")|Out-Null
+#=================================================================================
+		  </ScriptBody>
+          <Parameters />
+          <TimeoutSeconds>120</TimeoutSeconds>
+        </WriteAction>
+      </Task>
+      <Task ID="SCOM.Management.SetManuallyInstalledFalse.Task" Accessibility="Public" Enabled="true" Target="SC!Microsoft.SystemCenter.HealthService" Timeout="120" Remotable="true" RunLocation="SC!Microsoft.SystemCenter.CollectionManagementServer">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
+          <ScriptName>SCOM.Management.SetManuallyInstalledFalse.Task.ps1</ScriptName>
+          <ScriptBody>
+#=================================================================================
+#  Script to Set HealthService Manually Installed to False
+#=================================================================================
+Param($AgentName)
+
+# $AgentName = "WS2012R2.opsmgr.net"
+
+
+#=================================================================================
+# Constants section - modify stuff here:
+
+# Assign script name variable for use in event logging
+$ScriptName = "SCOM.Management.SetManuallyInstalledFalse.Task.ps1"
+#=================================================================================
+
+# Gather who the script is running as
+$whoami = whoami
+
+#Load the MOMScript API and discovery propertybag
+$momapi = New-Object -comObject "Mom.ScriptAPI"
+
+#Log script event that we are starting task
+$momapi.LogScriptEvent($ScriptName,1317,0, "Starting script.  Running as ($whoami)")
+
+# Begin Main Script
+#=================================================================================
+Write-Host "Task Starting.  Running as $whoami"
+
+IF ($AgentName)
+{
+    Write-Host "Agent Name is ($AgentName)."
+}
+ELSE
+{
+    Write-Host "FATAL ERROR:  Agent Name was not passed to script.  Terminating"
+    $momapi.LogScriptEvent($ScriptName,1317,2, "FATAL ERROR:  Agent Name was not passed to script.  Terminating")
+    #EXIT
+}
+
+#Connect to SQL
+
+$SCOMRegKey = "HKLM:\SOFTWARE\Microsoft\Microsoft Operations Manager\3.0\Setup"
+$SQLServer = (Get-ItemProperty $SCOMRegKey).DatabaseServerName
+$SQLDBName = (Get-ItemProperty $SCOMRegKey).DatabaseName
+
+$SqlQuery1 = "SELECT IsManuallyInstalled from MT_HealthService WHERE DisplayName = '$AgentName'"
+
+Write-Host "Connecting to SQL.  SQL Server: ($SQLServer).  SQL DB: ($SQLDBName)."
+
+$SqlConnection = New-Object System.Data.SqlClient.SqlConnection
+$SqlConnection.ConnectionString = “Server=$SQLServer;Database=$SQLDBName;Integrated Security=True”
+$SqlCmd = New-Object System.Data.SqlClient.SqlCommand
+$SqlCmd.CommandText = $SqlQuery1
+$SqlCmd.Connection = $SqlConnection
+$SqlAdapter = New-Object System.Data.SqlClient.SqlDataAdapter
+$SqlAdapter.SelectCommand = $SqlCmd
+$ds = New-Object System.Data.DataSet
+$SqlAdapter.Fill($ds) | Out-Null
+
+$RowCount = $ds.Tables[0].Rows.Count
+
+IF ($RowCount -lt 1)
+{
+    Write-Host "FATAL ERROR:  We did not retrieve an IsManuallyInstalled value from SQL for ($AgentName).  Terminating"
+    $momapi.LogScriptEvent($ScriptName,1317,2, "FATAL ERROR:  We did not retrieve an InsManuallyInstalled value from SQL for ($AgentName).  Terminating")
+    #EXIT
+}
+
+$IsManInstValue = $ds.Tables[0].Rows[0].IsManuallyInstalled
+
+IF ($IsManInstValue -ne $true)
+{
+    Write-Host "FATAL ERROR:  IsManuallyInstalled value from SQL for ($AgentName) is ($IsManInstValue).  Terminating"
+    $momapi.LogScriptEvent($ScriptName,1317,2, "FATAL ERROR:  IsManuallyInstalled value from SQL for ($AgentName) is ($IsManInstValue).  Terminating")
+    #EXIT
+}
+
+# Update Table in SQL
+Write-Host "IsManuallyInstalled value found from SQL was ($IsManInstValue).  Attempting to Update SQL now."
+
+$SqlQuery2 = "UPDATE MT_HealthService
+SET IsManuallyInstalled=0 WHERE IsManuallyInstalled=1 AND BaseManagedEntityId IN
+  (select BaseManagedEntityID from BaseManagedEntity where BaseManagedTypeId = 'AB4C891F-3359-3FB6-0704-075FBFE36710' AND DisplayName = '$AgentName')"
+
+$SqlCmd.CommandText = $SqlQuery2
+$SqlCmd.Connection = $SqlConnection
+$SqlAdapter = New-Object System.Data.SqlClient.SqlDataAdapter
+$SqlAdapter.SelectCommand = $SqlCmd
+$ds = New-Object System.Data.DataSet
+$SqlAdapter.Fill($ds) | Out-Null
+
+# Check value Again
+
+$SqlCmd.CommandText = $SqlQuery1
+$SqlCmd.Connection = $SqlConnection
+$SqlAdapter = New-Object System.Data.SqlClient.SqlDataAdapter
+$SqlAdapter.SelectCommand = $SqlCmd
+$ds = New-Object System.Data.DataSet
+$SqlAdapter.Fill($ds) | Out-Null
+$SqlConnection.Close()
+
+$IsManInstValue = $ds.Tables[0].Rows[0].IsManuallyInstalled
+
+IF ($IsManInstValue -ne $false)
+{
+    Write-Host "FATAL ERROR:  Attempt to set IsManuallyInstalled value failed.  Current value for ($AgentName) is ($IsManInstValue).  Terminating"
+    $momapi.LogScriptEvent($ScriptName,1317,2, "FATAL ERROR:  Attempt to set IsManuallyInstalled value failed.  Current value for ($AgentName) is ($IsManInstValue).  Terminating")
+    #EXIT
+}
+
+Write-Host "Successfully set IsManuallyInstalled value. New value for ($AgentName) is ($IsManInstValue)."
+#=================================================================================
+# End Main Script
+		  </ScriptBody>
+          <Parameters>
+            <Parameter>
+              <Name>AgentName</Name>
+              <Value>$Target/Property[Type="System!System.Entity"]/DisplayName$</Value>
+            </Parameter>
+          </Parameters>
+          <TimeoutSeconds>120</TimeoutSeconds>
+        </WriteAction>
+      </Task>
+      <Task ID="SCOM.Management.OMSWorkspaceAdd.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" Timeout="300" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.OMSWorkspaceAdd.WA">
+          <WorkspaceID>WorkspaceID</WorkspaceID>
+		  <WorkspaceKey>WorkspaceKey</WorkspaceKey>
+		  <ProxyURL></ProxyURL>
+		  <AzureCloudType>0</AzureCloudType>
+          <TimeoutSeconds>300</TimeoutSeconds>
+        </WriteAction>
+      </Task>
+      <Task ID="SCOM.Management.OMSWorkspaceRemove.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" Timeout="300" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.OMSWorkspaceRemove.WA">
+          <WorkspaceID>WorkspaceID</WorkspaceID>
+          <TimeoutSeconds>300</TimeoutSeconds>
+        </WriteAction>
+      </Task>
+      <Task ID="SCOM.Management.HSLockDownAddSystem.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" Timeout="120" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="CMDWA" TypeID="System!System.CommandExecuter">
+          <ApplicationName>%systemroot%\System32\cmd.exe</ApplicationName>
+          <WorkingDirectory />
+          <CommandLine>/c ""c:\Program Files\Microsoft Monitoring Agent\Agent\HSLockdown.exe" /A "NT AUTHORITY\SYSTEM""</CommandLine>
+          <TimeoutSeconds>60</TimeoutSeconds>
+          <RequireOutput>true</RequireOutput>
+        </WriteAction>
+      </Task>
+      <Task ID="SCOM.Management.HSLockDownList.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" Timeout="120" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="CMDWA" TypeID="System!System.CommandExecuter">
+          <ApplicationName>%systemroot%\System32\cmd.exe</ApplicationName>
+          <WorkingDirectory />
+          <CommandLine>/c "c:\Program Files\Microsoft Monitoring Agent\Agent\HSLockdown.exe" /L</CommandLine>
+          <TimeoutSeconds>60</TimeoutSeconds>
+          <RequireOutput>true</RequireOutput>
+        </WriteAction>
+      </Task>
+    </Tasks>
+  </Monitoring>
+  <Presentation>
+    <ConsoleTasks>
+      <ConsoleTask ID="SCOM.Management.ConsolePing.Task" Accessibility="Internal" Enabled="true" Target="SCOM.Management.Class" RequireOutput="true">
+        <Assembly>Res.SCOM.Management.ConsolePing.Task</Assembly>
+        <Handler>ShellHandler</Handler>
+        <Parameters>
+          <Argument Name="WorkingDirectory" />
+          <Argument Name="Application">%windir%\system32\ping.exe</Argument>
+          <Argument>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Argument>
+        </Parameters>
+      </ConsoleTask>
+      <ConsoleTask ID="SCOM.Management.ComputerManagement.Task" Accessibility="Internal" Enabled="true" Target="SCOM.Management.Class" RequireOutput="false">
+        <Assembly>Res.SCOM.Management.ComputerManagement.Task</Assembly>
+        <Handler>ShellHandler</Handler>
+        <Parameters>
+          <Argument Name="WorkingDirectory" />
+          <Argument Name="Application">%windir%\system32\mmc.exe</Argument>
+          <Argument>%windir%\system32\compmgmt.msc</Argument>
+          <Argument>/computer:$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Argument>
+        </Parameters>
+      </ConsoleTask>
+      <ConsoleTask ID="SCOM.Management.RDP.Task" Accessibility="Internal" Enabled="true" Target="SCOM.Management.Class" RequireOutput="false">
+        <Assembly>Res.SCOM.Management.RDP.Task</Assembly>
+        <Handler>ShellHandler</Handler>
+        <Parameters>
+          <Argument Name="WorkingDirectory" />
+          <Argument Name="Application">%windir%\system32\mstsc.exe</Argument>
+          <Argument>/v:</Argument>
+          <Argument>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$ /f</Argument>
+        </Parameters>
+      </ConsoleTask>
+    </ConsoleTasks>
+    <Views>
+      <View ID="SCOM.Management.AlertView" Accessibility="Internal" Enabled="true" Target="SCOM.Management.Agent.Class" TypeID="SC!Microsoft.SystemCenter.AlertViewType" Visible="true">
+        <Category>Custom</Category>
+        <Criteria>
+          <ResolutionState>
+            <StateRange Operator="NotEquals">255</StateRange>
+          </ResolutionState>
+        </Criteria>
+      </View>
+      <View ID="SCOM.Management.Agent.View" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" TypeID="SC!Microsoft.SystemCenter.StateViewType" Visible="true">
+        <Category>Operations</Category>
+        <Criteria>
+          <InMaintenanceMode>false</InMaintenanceMode>
+        </Criteria>
+        <Presentation>
+          <ColumnInfo Index="0" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Descending">
+            <Name>State</Name>
+            <Id>SCOM.Management.Agent.Class-*-7d5bddb4-c5c3-ee48-c42a-4c8d047825d0-*-Health</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="1" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Maintenance Mode</Name>
+            <Id>InMaintenanceMode</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="2" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Name</Name>
+            <Id>Name</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="3" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Path</Name>
+            <Id>Path</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="4" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Display Name</Name>
+            <Id>System.Entity/DisplayName</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="5" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Agent Version</Name>
+            <Id>SCOM.Management.Agent.Class/AgentVersion</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="6" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Update Rollup</Name>
+            <Id>SCOM.Management.Agent.Class/UpdateRollup</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="9" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>AD INT Enabled</Name>
+            <Id>SCOM.Management.Agent.Class/ADIntEnabled</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="7" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Management Groups</Name>
+            <Id>SCOM.Management.Agent.Class/ManagementGroups</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="8" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>OMS Workspaces</Name>
+            <Id>SCOM.Management.Agent.Class/OMSWorkspaces</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="11" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>PS Installed</Name>
+            <Id>SCOM.Management.Agent.Class/PSInstalled</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="12" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>PS VER</Name>
+            <Id>SCOM.Management.Agent.Class/PSVersion</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="13" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>CLR.NET VER</Name>
+            <Id>SCOM.Management.Agent.Class/CLRVersion</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="14" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>OS Version</Name>
+            <Id>SCOM.Management.Agent.Class/OSVersion</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="15" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>OS Name</Name>
+            <Id>SCOM.Management.Agent.Class/OSName</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="16" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Primary MS</Name>
+            <Id>SCOM.Management.Agent.Class/PrimaryMS</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="17" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Failover List</Name>
+            <Id>SCOM.Management.Agent.Class/FailoverList</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="18" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Action Account</Name>
+            <Id>SCOM.Management.Agent.Class/ActionAccount</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="19" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>InstallPath</Name>
+            <Id>SCOM.Management.Agent.Class/InstallPath</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="10" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>APM Installed</Name>
+            <Id>SCOM.Management.Agent.Class/APMInstalled</Id>
+          </ColumnInfo>
+        </Presentation>
+        <Target />
+      </View>
+      <View ID="SCOM.Management.Server.View" Accessibility="Public" Enabled="true" Target="SCOM.Management.Server.Class" TypeID="SC!Microsoft.SystemCenter.StateViewType" Visible="true">
+        <Category>Operations</Category>
+        <Criteria>
+          <InMaintenanceMode>false</InMaintenanceMode>
+        </Criteria>
+        <Presentation>
+          <ColumnInfo Index="0" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Descending">
+            <Name>State</Name>
+            <Id>SCOM.Management.Server.Class-*-f67c58eb-c269-0b3a-d1ee-8c11bb668210-*-Health</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="1" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Maintenance Mode</Name>
+            <Id>InMaintenanceMode</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="2" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Name</Name>
+            <Id>Name</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="3" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Path</Name>
+            <Id>Path</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="4" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Display Name</Name>
+            <Id>System.Entity/DisplayName</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="5" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Server Version</Name>
+            <Id>SCOM.Management.Server.Class/ServerVersion</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="6" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Server UR Level</Name>
+            <Id>SCOM.Management.Server.Class/ServerURLevel</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="7" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>WebConsole Version</Name>
+            <Id>SCOM.Management.Server.Class/WebConsoleVersion</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="8" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>WebConsole UR Level</Name>
+            <Id>SCOM.Management.Server.Class/WebConsoleURLevel</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="9" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Console Version</Name>
+            <Id>SCOM.Management.Server.Class/ConsoleVersion</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="10" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Console UR Level</Name>
+            <Id>SCOM.Management.Server.Class/ConsoleURLevel</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="11" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>OMS Workspaces</Name>
+            <Id>SCOM.Management.Server.Class/OMSWorkspaces</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="12" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>PS VER</Name>
+            <Id>SCOM.Management.Server.Class/PSVersion</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="13" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>CLR.NET VER</Name>
+            <Id>SCOM.Management.Server.Class/CLRVersion</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="14" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>OS Version</Name>
+            <Id>SCOM.Management.Server.Class/OSVersion</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="15" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>OS Name</Name>
+            <Id>SCOM.Management.Server.Class/OSName</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="16" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Primary MS</Name>
+            <Id>SCOM.Management.Server.Class/PrimaryMS</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="17" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Failover List</Name>
+            <Id>SCOM.Management.Server.Class/FailoverList</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="18" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Action Account</Name>
+            <Id>SCOM.Management.Server.Class/ActionAccount</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="19" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>InstallPath</Name>
+            <Id>SCOM.Management.Server.Class/InstallPath</Id>
+          </ColumnInfo>
+        </Presentation>
+        <Target />
+      </View>
+      <View ID="SCOM.Management.HealthServiceWatcher.State.View" Accessibility="Public" Enabled="true" Target="SC!Microsoft.SystemCenter.AgentWatcher" TypeID="SC!Microsoft.SystemCenter.StateViewType" Visible="true">
+        <Category>Operations</Category>
+        <Criteria>
+          <InMaintenanceMode>false</InMaintenanceMode>
+        </Criteria>
+        <Presentation>
+          <ColumnInfo Index="0" SortIndex="0" Width="100" Grouped="false" Sorted="true" IsSortable="true" Visible="true" SortOrder="Descending">
+            <Name>State</Name>
+            <Id>Microsoft.SystemCenter.AgentWatcher-*-3a9dc906-03f3-d5ee-dde3-dd9b9f8d2f9c-*-Health</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="1" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>In Maintenance Mode</Name>
+            <Id>InMaintenanceMode</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="2" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Name</Name>
+            <Id>Name</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="3" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Path</Name>
+            <Id>Path</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="4" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Display Name</Name>
+            <Id>System.Entity/DisplayName</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="5" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Health Service ID</Name>
+            <Id>Microsoft.SystemCenter.HealthServiceWatcher/HealthServiceId</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="6" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Health Service Name</Name>
+            <Id>Microsoft.SystemCenter.HealthServiceWatcher/HealthServiceName</Id>
+          </ColumnInfo>
+        </Presentation>
+        <Target />
+      </View>
+      <View ID="SCOM.Management.HealthService.State.View" Accessibility="Public" Enabled="true" Target="SC!Microsoft.SystemCenter.HealthService" TypeID="SC!Microsoft.SystemCenter.StateViewType" Visible="true">
+        <Category>Operations</Category>
+        <Criteria>
+          <InMaintenanceMode>false</InMaintenanceMode>
+          <PropertyCriteria>
+            <PropertyName>IsAgent</PropertyName>
+            <Value>1</Value>
+          </PropertyCriteria>
+        </Criteria>
+        <Presentation>
+          <ColumnInfo Index="0" SortIndex="0" Width="100" Grouped="false" Sorted="true" IsSortable="true" Visible="true" SortOrder="Descending">
+            <Name>State</Name>
+            <Id>Microsoft.SystemCenter.HealthService-*-ab4c891f-3359-3fb6-0704-075fbfe36710-*-Health</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="1" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Maintenance Mode</Name>
+            <Id>InMaintenanceMode</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="2" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Name</Name>
+            <Id>Name</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="3" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Path</Name>
+            <Id>Path</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="4" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Display Name</Name>
+            <Id>System.Entity/DisplayName</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="5" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Authentication Name</Name>
+            <Id>Microsoft.SystemCenter.HealthService/AuthenticationName</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="6" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Maximum Queue Size</Name>
+            <Id>Microsoft.SystemCenter.HealthService/MaximumQueueSize</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="7" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Maximum Size Of All Transferred Files</Name>
+            <Id>Microsoft.SystemCenter.HealthService/MaximumSizeOfAllTransferredFiles</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="8" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="false" Visible="false" SortOrder="Ascending">
+            <Name>Request Compression</Name>
+            <Id>Microsoft.SystemCenter.HealthService/RequestCompression</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="9" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="false" Visible="false" SortOrder="Ascending">
+            <Name>Create Listener</Name>
+            <Id>Microsoft.SystemCenter.HealthService/CreateListener</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="10" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Port</Name>
+            <Id>Microsoft.SystemCenter.HealthService/Port</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="11" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="false" Visible="false" SortOrder="Ascending">
+            <Name>Is Root Health Service Emulator</Name>
+            <Id>Microsoft.SystemCenter.HealthService/IsRHS</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="12" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="false" Visible="false" SortOrder="Ascending">
+            <Name>Is Management Server</Name>
+            <Id>Microsoft.SystemCenter.HealthService/IsManagementServer</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="13" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="false" Visible="false" SortOrder="Ascending">
+            <Name>Is Agent</Name>
+            <Id>Microsoft.SystemCenter.HealthService/IsAgent</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="14" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="false" Visible="false" SortOrder="Ascending">
+            <Name>Is Gateway</Name>
+            <Id>Microsoft.SystemCenter.HealthService/IsGateway</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="15" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Is Manually Installed</Name>
+            <Id>Microsoft.SystemCenter.HealthService/IsManuallyInstalled</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="16" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Installed By</Name>
+            <Id>Microsoft.SystemCenter.HealthService/InstalledBy</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="17" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Install Time</Name>
+            <Id>Microsoft.SystemCenter.HealthService/InstallTime</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="18" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Version</Name>
+            <Id>Microsoft.SystemCenter.HealthService/Version</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="19" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Action Account Identity</Name>
+            <Id>Microsoft.SystemCenter.HealthService/ActionAccountIdentity</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="20" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="false" Visible="false" SortOrder="Ascending">
+            <Name>Send Heartbeats to Management Servers</Name>
+            <Id>Microsoft.SystemCenter.HealthService/HeartbeatEnabled</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="21" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Heartbeat Interval (seconds)</Name>
+            <Id>Microsoft.SystemCenter.HealthService/HeartbeatInterval</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="22" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="false" Visible="false" SortOrder="Ascending">
+            <Name>Managed Through Active Directory</Name>
+            <Id>Microsoft.SystemCenter.HealthService/ActiveDirectoryManaged</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="23" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Proxying Enabled</Name>
+            <Id>Microsoft.SystemCenter.HealthService/ProxyingEnabled</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="24" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Patch List</Name>
+            <Id>Microsoft.SystemCenter.HealthService/PatchList</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="25" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Agent communication protocol</Name>
+            <Id>Microsoft.SystemCenter.HealthService/Protocol</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="26" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="false" Visible="false" SortOrder="Ascending">
+            <Name>Agent initiates connection to parent agents</Name>
+            <Id>Microsoft.SystemCenter.HealthService/InitiatesConnectionToParent</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="27" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Authentication service URI</Name>
+            <Id>Microsoft.SystemCenter.HealthService/ThirdPartyAuthenticationUri</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="28" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>User Action Manager</Name>
+            <Id>Microsoft.SystemCenter.UserActionManager</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="29" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Agent Manager</Name>
+            <Id>Microsoft.SystemCenter.AgentManager</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="30" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Crash Listener</Name>
+            <Id>Microsoft.SystemCenter.CM.AEM.CrashListener</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="31" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>CEIP Data Listener Instance</Name>
+            <Id>Microsoft.SystemCenter.CM.SQM.SQMListener</Id>
+          </ColumnInfo>
+        </Presentation>
+        <Target />
+      </View>
+    </Views>
+    <Folders>
+      <Folder ID="SCOM.Management.RootFolder" Accessibility="Internal" ParentFolder="SC!Microsoft.SystemCenter.Monitoring.ViewFolder.Root" />
+    </Folders>
+    <FolderItems>
+      <FolderItem ElementID="SCOM.Management.AlertView" ID="SCOM.Management.AlertView.FolderItem" Folder="SCOM.Management.RootFolder" />
+      <FolderItem ElementID="SCOM.Management.Agent.View" ID="SCOM.Management.Agent.View.FolderItem" Folder="SCOM.Management.RootFolder" />
+      <FolderItem ElementID="SCOM.Management.Server.View" ID="SCOM.Management.Server.View.FolderItem" Folder="SCOM.Management.RootFolder" />
+      <FolderItem ElementID="SCOM.Management.HealthServiceWatcher.State.View" ID="SCOM.Management.HealthServiceWatcher.State.View.FolderItem" Folder="SCOM.Management.RootFolder" />
+      <FolderItem ElementID="SCOM.Management.HealthService.State.View" ID="SCOM.Management.HealthService.State.View.FolderItem" Folder="SCOM.Management.RootFolder" />
+    </FolderItems>
+    <StringResources>
+      <StringResource ID="SCOM.Management.TestEvent100.Rule.AlertMessage" />
+    </StringResources>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="SCOM.Management">
+          <Name>SCOM Management</Name>
+          <Description>This is a SCOM Management MP to collect data on agents and servers and provide tasks which are useful for management and administration -- Kevin Holman</Description>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Class">
+          <Name>SCOM Management Base Class</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class">
+          <Name>SCOM Agent Management Class</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="AgentVersion">
+          <Name>Agent Version</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="UpdateRollup">
+          <Name>Update Rollup</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="ADIntEnabled">
+          <Name>AD INT Enabled</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="ManagementGroups">
+          <Name>Management Groups</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="OMSWorkspaces">
+          <Name>Log Analytics Workspaces</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="ProxyURL">
+          <Name>ProxyURL</Name>
+        </DisplayString>		
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="PSInstalled">
+          <Name>PS Installed</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="PSVersion">
+          <Name>PS VER</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="CLRVersion">
+          <Name>CLR.NET VER</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="Architecture">
+          <Name>Architecture</Name>
+        </DisplayString>		
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="OSVersion">
+          <Name>OS Version</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="OSName">
+          <Name>OS Name</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="PrimaryMS">
+          <Name>Primary MS</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="FailoverList">
+          <Name>Failover List</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="ActionAccount">
+          <Name>Action Account</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="InstallPath">
+          <Name>InstallPath</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="APMInstalled">
+          <Name>APM Installed</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="CertLoaded">
+          <Name>CertLoaded</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="CertExpires">
+          <Name>CertExpires</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="ThumbPrint">
+          <Name>ThumbPrint</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="CertIssuer">
+          <Name>CertIssuer</Name>
+        </DisplayString>		
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="IP">
+          <Name>IP</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="Connection">
+          <Name>Connection</Name>
+        </DisplayString>		
+        <DisplayString ElementID="SCOM.Management.Server.Class">
+          <Name>SCOM Server Management Class</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="ServerVersion">
+          <Name>Server Version</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="ServerURLevel">
+          <Name>Server UR Level</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="WebConsoleVersion">
+          <Name>WebConsole Version</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="WebConsoleURLevel">
+          <Name>WebConsole UR Level</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="ConsoleVersion">
+          <Name>Console Version</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="ConsoleURLevel">
+          <Name>Console UR Level</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="OMSWorkspaces">
+          <Name>Log Analytics Workspaces</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="PSVersion">
+          <Name>PS VER</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="CLRVersion">
+          <Name>CLR.NET VER</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="OSVersion">
+          <Name>OS Version</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="OSName">
+          <Name>OS Name</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="PrimaryMS">
+          <Name>Primary MS</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="FailoverList">
+          <Name>Failover List</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="ActionAccount">
+          <Name>Action Account</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="InstallPath">
+          <Name>InstallPath</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="CertLoaded">
+          <Name>CertLoaded</Name>
+        </DisplayString>	
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="CertExpires">
+          <Name>CertExpires</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="ThumbPrint">
+          <Name>ThumbPrint</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="CertIssuer">
+          <Name>CertIssuer</Name>
+        </DisplayString>			
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="TLS12Enforced">
+          <Name>TLS 1.2 Registry Enforced</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="TLS12SQLCliInstalled">
+          <Name>TLS 1.2 SQL Client 11 Installed</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="TLS12ODBCInstalled">
+          <Name>TLS 1.2 ODBC 13 Installed</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class.Discovery">
+          <Name>SCOM Management Agent Class Discovery</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class.PowerShell.Properties.Discovery">
+          <Name>SCOM Management Agent PowerShell Properties Discovery</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class.Discovery">
+          <Name>SCOM Management Server Class Discovery</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class.PowerShell.Properties.Discovery">
+          <Name>SCOM Management Server PowerShell Properties Discovery</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.TestEvent100.Rule">
+          <Name>SCOM Management Alert on Test Event 100 Rule</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.TestEvent100.Rule.AlertMessage">
+          <Name>Test Alert on Test Event 100</Name>
+          <Description>This is a test alert fired by event ID 100: 
+Event Description: 
+{0}</Description>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.AddManagementGroup.Task">
+          <Name>Management Group - ADD</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.RemoveManagementGroup.Task">
+          <Name>Management Group - REMOVE</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.AddManagementGroupHS.Task">
+          <Name>Management Group - ADD</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.RemoveManagementGroupHS.Task">
+          <Name>Management Group - REMOVE</Name>
+        </DisplayString>		
+        <DisplayString ElementID="SCOM.Management.RestartHealthService.Task">
+          <Name>Healthservice - RESTART</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.RestartHealthServiceHS.Task">
+          <Name>Healthservice - RESTART</Name>
+        </DisplayString>		
+        <DisplayString ElementID="SCOM.Management.FlushHealthService.Task">
+          <Name>Healthservice - FLUSH</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.RestartService.Task">
+          <Name>Execute any Service Restart</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.ExportEventLog.Task">
+          <Name>Export Event Log</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.RunAnyPowerShell.Task">
+          <Name>Execute any PowerShell</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.CreateTestEvent.Task">
+          <Name>Create Test Event</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.InstallSoftwareFromShare.Task">
+          <Name>Execute Software From Share</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.DeleteAgent.Task">
+          <Name>Agent - DELETE</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Watcher.DeleteAgent.Task">
+          <Name>Agent - DELETE</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.InstallAgent.Task">
+          <Name>Agent - INSTALL</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.ConsolePing.Task">
+          <Name>Ping</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.ComputerManagement.Task">
+          <Name>Computer Management</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.RDP.Task">
+          <Name>Remote Desktop</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.EnableADIntegration.Task">
+          <Name>Agent - AD INT ENABLE</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.DisableADIntegration.Task">
+          <Name>Agent - AD INT DISABLE</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.DeleteAgent.Task">
+          <Name>Agent - DELETE</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.SetManuallyInstalledFalse.Task">
+          <Name>SET IsManuallyInstalled to FALSE</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.OMSWorkspaceAdd.Task">
+          <Name>Log Analytics Workspace - ADD</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.OMSWorkspaceRemove.Task">
+          <Name>Log Analytics Workspace - REMOVE</Name>
+        </DisplayString>	
+        <DisplayString ElementID="SCOM.Management.HSLockDownAddSystem.Task">
+          <Name>HSLockDown - Add SYSTEM</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.HSLockDownList.Task">
+          <Name>HSLockDown - LIST Accounts</Name>
+        </DisplayString>					
+        <DisplayString ElementID="SCOM.Management.RootFolder">
+          <Name>SCOM Management</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.AlertView">
+          <Name>Test Alerts</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.View">
+          <Name>SCOM Agents</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.View">
+          <Name>SCOM Servers</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.HealthServiceWatcher.State.View">
+          <Name>SCOM HealthService Watcher</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.HealthService.State.View">
+          <Name>SCOM HealthService</Name>
+          <Description />
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+  <Resources>
+    <Assembly ID="Res.SCOM.Management.ConsolePing.Task" Accessibility="Public" FileName="SCOM.Management.ConsolePing.Task" HasNullStream="true" QualifiedName="SCOM.Management.ConsolePing.Task" />
+    <Assembly ID="Res.SCOM.Management.ComputerManagement.Task" Accessibility="Public" FileName="SCOM.Management.ComputerManagement.Task" HasNullStream="true" QualifiedName="SCOM.Management.ComputerManagement.Task" />
+    <Assembly ID="Res.SCOM.Management.RDP.Task" Accessibility="Public" FileName="SCOM.Management.RDP.Task" HasNullStream="true" QualifiedName="SCOM.Management.RDP.Task" />
+  </Resources>
+</ManagementPack>
