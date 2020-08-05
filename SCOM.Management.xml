@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.19.10349.0</Version>
+      <Version>10.19.10407.0</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1162,7 +1162,7 @@ $Process.CreateFlags = 16777216
 #  Script to gather agent properties via PowerShell
 #
 #  Author: Kevin Holman
-#  v1.4
+#  v1.5
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName,[string]$IP)
 
@@ -1272,7 +1272,8 @@ $SCOMAgentVersionSplit = $SCOMAgentVersion.Split(".")
   # SCOM 2019
   "10.19.10003.0" {"2019 TP"}
   "10.19.10014.0" {"2019 RTM"}
-  "10.19.10140.0" {"2019 UR1"}  
+  "10.19.10140.0" {"2019 UR1"}
+  "10.19.10153.0" {"2019 UR2"}
 
   # If nothing else found then default to version number
   default {$SCOMAgentVersion} 
@@ -1827,7 +1828,9 @@ function URVersion($Version)
     "10.19.10014.0" {"2019 TP"}
     "10.19.10050.0" {"2019 RTM"}
     "10.19.10311.0" {"2019 UR1"}
-    "10.19.10349.0" {"2019 UR1 with Hotfix"}	
+    "10.19.10349.0" {"2019 UR1 with Hotfix"}
+    "10.19.10407.0" {"2019 UR2"}
+    "10.19.10153.0" {"2019 UR2"} #Gateway	
   }
 }
                         			
