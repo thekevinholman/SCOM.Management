@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.19.10407.0</Version>
+      <Version>10.19.10407.1</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -2854,7 +2854,7 @@ $SqlQuery1 = "SELECT IsManuallyInstalled from MT_HealthService WHERE DisplayName
 Write-Host "Connecting to SQL.  SQL Server: ($SQLServer).  SQL DB: ($SQLDBName)."
 
 $SqlConnection = New-Object System.Data.SqlClient.SqlConnection
-$SqlConnection.ConnectionString = “Server=$SQLServer;Database=$SQLDBName;Integrated Security=True”
+$SqlConnection.ConnectionString = "Server=$SQLServer;Database=$SQLDBName;Integrated Security=True"
 $SqlCmd = New-Object System.Data.SqlClient.SqlCommand
 $SqlCmd.CommandText = $SqlQuery1
 $SqlCmd.Connection = $SqlConnection
