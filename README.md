@@ -1,4 +1,8 @@
 # SCOM.Management 10.19.10407.1
+
+Download Here:  https://github.com/thekevinholman/SCOM.Management/releases/download/10.19.10407.1/SCOM.Management.10.19.10407.1.zip
+
+
 SCOM - Management Pack to discover properties and add tasks to make SCOM Admins life easier
 
 https://kevinholman.com/2017/05/09/scom-management-mp-making-a-scom-admins-life-a-little-easier/
