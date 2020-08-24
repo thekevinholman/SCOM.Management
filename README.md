@@ -1,6 +1,6 @@
 # SCOM.Management 10.19.10407.1
 
-Download Here: [link][Download 10.19.10407.1]
+# [Download Here][Download 10.19.10407.1]
 
 [Download 10.19.10407.1]: https://github.com/thekevinholman/SCOM.Management/releases/download/10.19.10407.1/SCOM.Management.10.19.10407.1.zip
 
