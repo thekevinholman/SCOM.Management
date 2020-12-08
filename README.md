@@ -40,3 +40,4 @@ Version History:
 * 10.19.10349.0 – Added support for SCOM 2019 Post UR1 Hotfix.  Fixed bug when a management server config file is huge and the script runs out of resources getting XML content.
 * 10.19.10407.0 – Added support for SCOM 2019 UR2
 * 10.19.10407.1 - Minor bug fix with quotation marks
+* 10.19.10407.2 - Added support for SCOM 2016 UR10.  Added task to approve agent pending actions
