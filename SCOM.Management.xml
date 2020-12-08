@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.19.10407.1</Version>
+      <Version>10.19.10407.2</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -38,11 +38,11 @@
           <Property ID="ADIntEnabled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="ManagementGroups" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="OMSWorkspaces" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="ProxyURL" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />		  
+          <Property ID="ProxyURL" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="PSInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="PSVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="CLRVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="Architecture" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />		  
+          <Property ID="Architecture" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="OSVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="OSName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="PrimaryMS" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
@@ -50,12 +50,12 @@
           <Property ID="ActionAccount" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="InstallPath" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="APMInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-		  <Property ID="CertLoaded" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-		  <Property ID="CertExpires" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-		  <Property ID="ThumbPrint" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-		  <Property ID="CertIssuer" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="CertLoaded" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="CertExpires" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="ThumbPrint" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="CertIssuer" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="IP" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="Connection" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="1024" MinLength="0" Required="false" Scale="0" />		  
+          <Property ID="Connection" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="1024" MinLength="0" Required="false" Scale="0" />
         </ClassType>
         <ClassType ID="SCOM.Management.Server.Class" Accessibility="Public" Abstract="false" Base="SCOM.Management.Class" Hosted="true" Singleton="false" Extension="false">
           <Property ID="ServerVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
@@ -73,13 +73,13 @@
           <Property ID="FailoverList" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="ActionAccount" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="InstallPath" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-		  <Property ID="CertLoaded" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-		  <Property ID="CertExpires" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-		  <Property ID="ThumbPrint" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-		  <Property ID="CertIssuer" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />		  
-		  <Property ID="TLS12Enforced" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-		  <Property ID="TLS12SQLCliInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-		  <Property ID="TLS12ODBCInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="CertLoaded" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="CertExpires" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="ThumbPrint" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="CertIssuer" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="TLS12Enforced" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="TLS12SQLCliInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="TLS12ODBCInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
         </ClassType>
       </ClassTypes>
     </EntityTypes>
@@ -308,7 +308,7 @@ $Process.CreateFlags = 16777216
         </ModuleImplementation>
         <OutputType>System!System.BaseData</OutputType>
         <InputType>System!System.BaseData</InputType>
-      </WriteActionModuleType> 
+      </WriteActionModuleType>
       <WriteActionModuleType ID="SCOM.Management.FlushHealthService.WA" Comment="Flush Healthservice" Accessibility="Internal" Batching="false">
         <Configuration />
         <ModuleImplementation Isolation="Any">
@@ -445,9 +445,11 @@ $Process.CreateFlags = 16777216
                   # Begin Main Script
                   #=================================================================================
                   $ComputerName = $env:computername
+				  
+				  $LogNameStr = $LogName.Replace("/","-")
 
                   $TimeStamp = Get-Date -Format "MM-dd-yyyy"
-                  wevtutil epl $LogName "$SharePath\$ComputerName $LogName $TimeStamp.evtx" /overwrite:true
+                  wevtutil epl $LogName "$SharePath\$ComputerName $LogNameStr $TimeStamp.evtx" /overwrite:true
 
                   # Log an event for script ending and total execution time.
                   $EndTime = Get-Date
@@ -756,17 +758,17 @@ $momapi.LogScriptEvent($ScriptName,1017,0,"`n Script has completed.  Runtime is 
       <WriteActionModuleType ID="SCOM.Management.OMSWorkspaceAdd.WA" Accessibility="Internal" Batching="false">
         <Configuration>
           <xsd:element minOccurs="1" name="WorkspaceID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-		  <xsd:element minOccurs="1" name="WorkspaceKey" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-		  <xsd:element minOccurs="1" name="ProxyURL" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element minOccurs="1" name="AzureCloudType" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />		  
+          <xsd:element minOccurs="1" name="WorkspaceKey" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="ProxyURL" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="AzureCloudType" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
           <xsd:element minOccurs="1" name="TimeoutSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
         </Configuration>
         <OverrideableParameters>
           <OverrideableParameter ID="WorkspaceID" Selector="$Config/WorkspaceID$" ParameterType="string" />
-		  <OverrideableParameter ID="WorkspaceKey" Selector="$Config/WorkspaceKey$" ParameterType="string" />
-		  <OverrideableParameter ID="ProxyURL" Selector="$Config/ProxyURL$" ParameterType="string" />
-		  <OverrideableParameter ID="AzureCloudType" Selector="$Config/AzureCloudType$" ParameterType="int" />		  
-		  <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
+          <OverrideableParameter ID="WorkspaceKey" Selector="$Config/WorkspaceKey$" ParameterType="string" />
+          <OverrideableParameter ID="ProxyURL" Selector="$Config/ProxyURL$" ParameterType="string" />
+          <OverrideableParameter ID="AzureCloudType" Selector="$Config/AzureCloudType$" ParameterType="int" />
+          <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
         </OverrideableParameters>
         <ModuleImplementation Isolation="Any">
           <Composite>
@@ -900,7 +902,7 @@ $Process.CreateFlags = 16777216
                   <Parameter>
                     <Name>ProxyURL</Name>
                     <Value>$Config/ProxyURL$</Value>
-                  </Parameter>	
+                  </Parameter>
                   <Parameter>
                     <Name>AzureCloudType</Name>
                     <Value>$Config/AzureCloudType$</Value>
@@ -1018,7 +1020,133 @@ $Process.CreateFlags = 16777216
         </ModuleImplementation>
         <OutputType>System!System.BaseData</OutputType>
         <InputType>System!System.BaseData</InputType>
-      </WriteActionModuleType>		  
+      </WriteActionModuleType>
+      <WriteActionModuleType ID="SCOM.Management.ApprovePendingAction.WA" Accessibility="Internal" Batching="false">
+        <Configuration>
+          <xsd:element minOccurs="1" name="AgentName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="TimeoutSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="AgentName" Selector="$Config/AgentName$" ParameterType="string" />
+          <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
+        </OverrideableParameters>
+        <ModuleImplementation Isolation="Any">
+          <Composite>
+            <MemberModules>
+              <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
+                <ScriptName>SCOM.Management.ApprovePendingAction.WA.ps1</ScriptName>
+                <ScriptBody>
+#=================================================================================
+#  Script to Approve Pending Actions
+#
+# This script will approve a pending action based on passing the agent name
+# Takes a single parameter of a computer FQDN
+#
+# v 1.0
+#=================================================================================
+param($AgentName)
+
+
+# Manual Testing section - put stuff here for manually testing script - typically parameters:
+#=================================================================================
+# $AgentName = 'WS2012R2.opsmgr.net'
+#=================================================================================
+
+
+# Constants section
+#=================================================================================
+# Assign script name variable for use in event logging
+# ScriptName should be the same as the ID of the module that the script is contained in
+$ScriptName = "SCOM.Management.ApprovePendingAction.WA.ps1"
+$EventID = "1093"
+#=================================================================================
+
+
+# Starting Script section - All scripts get this
+#=================================================================================
+# Gather the start time of the script
+$StartTime = Get-Date
+#Set variable to be used in logging events
+$whoami = whoami
+# Load MOMScript API
+$momapi = New-Object -comObject MOM.ScriptAPI
+#Log script event that we are starting task
+$momapi.LogScriptEvent($ScriptName,$EventID,0, "Starting script. `nAgentName is ($AgentName). `nRunning as ($whoami).")
+Write-Host "Starting script to approve Pending Action. `nAgentName is ($AgentName). `nRunning as ($whoami)."
+#=================================================================================
+
+
+# Connect to local SCOM Management Group Section - If required
+#=================================================================================
+# I have found this to be the most reliable method to load SCOM modules for scripts running on Management Servers
+# Clear any previous errors
+$Error.Clear()
+# Import the OperationsManager module and connect to the management group
+$SCOMPowerShellKey = "HKLM:\SOFTWARE\Microsoft\System Center Operations Manager\12\Setup\Powershell\V2"
+$SCOMModulePath = Join-Path (Get-ItemProperty $SCOMPowerShellKey).InstallDirectory "OperationsManager"
+Import-module $SCOMModulePath
+TRY
+{
+  New-DefaultManagementGroupConnection -managementServerName "localhost"
+}
+CATCH
+{
+  IF ($Error) 
+  { 
+    $momapi.LogScriptEvent($ScriptName,$EventID,1,"`n FATAL ERROR: Unable to load OperationsManager module or unable to connect to Management Server. `n Terminating script. `n Error is: ($Error).")
+    EXIT
+  }
+}
+#=================================================================================
+
+
+# Begin Main Script
+#=================================================================================
+$Error.Clear()
+$Pending = Get-SCOMPendingManagement | where {$_.agentname -eq $AgentName}
+IF ($Pending)
+{
+  Write-Host "Found a Pending Action for ($AgentName). `nAttempting Approval now."
+  $Pending | Approve-SCOMPendingManagement
+  IF ($Error)
+  {
+    Write-Host "Error attempting approval. `nError is ($Error)"
+  }
+  ELSE
+  {
+    Write-Host "Successfully approved pending action for ($AgentName)."
+  }
+}
+ELSE
+{
+  Write-Host "Unable to find a Pending Action for ($AgentName). `nTerminating."
+}
+#=================================================================================
+# End Main Script
+
+
+# Log an event for script ending and total execution time.
+$EndTime = Get-Date
+$ScriptTime = ($EndTime - $StartTime).TotalSeconds
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime is ($ScriptTime) seconds.")
+                </ScriptBody>
+                <Parameters>
+                  <Parameter>
+                    <Name>AgentName</Name>
+                    <Value>$Config/AgentName$</Value>
+                  </Parameter>
+                </Parameters>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+              </WriteAction>
+            </MemberModules>
+            <Composition>
+              <Node ID="PSWA" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>System!System.BaseData</OutputType>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType>	  
     </ModuleTypes>
   </TypeDefinitions>
   <Categories>
@@ -1033,7 +1161,7 @@ $Process.CreateFlags = 16777216
         <DiscoveryTypes>
           <DiscoveryClass TypeID="SCOM.Management.Agent.Class">
             <Property PropertyID="PSInstalled" />
-            <Property PropertyID="Architecture" />			
+            <Property PropertyID="Architecture" />
             <Property PropertyID="OSName" />
             <Property PropertyID="APMInstalled" />
           </DiscoveryClass>
@@ -1064,7 +1192,7 @@ $Process.CreateFlags = 16777216
               <!-- 0=regKey 1=regValue -->
               <AttributeType>1</AttributeType>
               <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
-            </RegistryAttributeDefinition>			
+            </RegistryAttributeDefinition>
             <RegistryAttributeDefinition>
               <AttributeName>OSName</AttributeName>
               <Path>SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductName</Path>
@@ -1101,7 +1229,7 @@ $Process.CreateFlags = 16777216
               <Setting>
                 <Name>$MPElement[Name="SCOM.Management.Agent.Class"]/Architecture$</Name>
                 <Value>$Data/Values/Architecture$</Value>
-              </Setting>			  
+              </Setting>
               <Setting>
                 <Name>$MPElement[Name="SCOM.Management.Agent.Class"]/OSName$</Name>
                 <Value>$Data/Values/OSName$</Value>
@@ -1132,12 +1260,12 @@ $Process.CreateFlags = 16777216
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="SCOM.Management.Agent.Class">
-		    <Property PropertyID="AgentVersion" />
-			<Property PropertyID="UpdateRollup" />
-			<Property PropertyID="ADIntEnabled" />
+            <Property PropertyID="AgentVersion" />
+            <Property PropertyID="UpdateRollup" />
+            <Property PropertyID="ADIntEnabled" />
             <Property PropertyID="ManagementGroups" />
             <Property PropertyID="OMSWorkspaces" />
-			<Property PropertyID="ProxyURL" />
+            <Property PropertyID="ProxyURL" />
             <Property PropertyID="PSVersion" />
             <Property PropertyID="CLRVersion" />
             <Property PropertyID="PrimaryMS" />
@@ -1145,11 +1273,11 @@ $Process.CreateFlags = 16777216
             <Property PropertyID="ActionAccount" />
             <Property PropertyID="OSVersion" />
             <Property PropertyID="InstallPath" />
-			<Property PropertyID="CertLoaded" />
-			<Property PropertyID="CertExpires" />
-			<Property PropertyID="ThumbPrint" />
-			<Property PropertyID="CertIssuer" />
-			<Property PropertyID="IP" />
+            <Property PropertyID="CertLoaded" />
+            <Property PropertyID="CertExpires" />
+            <Property PropertyID="ThumbPrint" />
+            <Property PropertyID="CertIssuer" />
+            <Property PropertyID="IP" />
             <Property PropertyID="Connection" />
           </DiscoveryClass>
         </DiscoveryTypes>
@@ -1263,7 +1391,8 @@ $SCOMAgentVersionSplit = $SCOMAgentVersion.Split(".")
   "8.0.11004.0" {"2016 UR6"}
   "8.0.11025.0" {"2016 UR7"}
   "8.0.11037.0" {"2016 UR8"} 
-  "8.0.11049.0" {"2016 UR9"}   
+  "8.0.11049.0" {"2016 UR9"}
+  "8.0.11057.0" {"2016 UR10"}  
 
   # SEMI ANNUAL Channel
   "8.0.13053.0" {"1801"}
@@ -1585,7 +1714,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
             <Parameter>
               <Name>IP</Name>
               <Value>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/IPAddress$</Value>
-            </Parameter>			
+            </Parameter>
           </Parameters>
           <TimeoutSeconds>600</TimeoutSeconds>
         </DataSource>
@@ -1615,7 +1744,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
               <!-- 0=regKey 1=regValue -->
               <AttributeType>0</AttributeType>
               <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
-            </RegistryAttributeDefinition>			
+            </RegistryAttributeDefinition>
             <RegistryAttributeDefinition>
               <AttributeName>OSName</AttributeName>
               <Path>SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductName</Path>
@@ -1643,38 +1772,38 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
               </Setting>
             </Settings>
           </InstanceSettings>
-		  <Expression>
-			<Or>
-			  <Expression>
-				<SimpleExpression>
-				  <ValueExpression>
-					<XPathQuery Type="Boolean">Values/ServerRegKeyExists</XPathQuery>
-					<!-- Common options for XPathQuery Type are "Boolean" "String" "Integer" "Double" -->
-				  </ValueExpression>
-				  <Operator>Equal</Operator>
-				  <!-- Common options for SimpleExpression Operator are "Equal" "NotEqual" "Greater" "Less" "GreaterEqual" "LessEqual" "Like" "NotLike" -->
-				  <ValueExpression>
-					<Value Type="Boolean">true</Value>
-					<!-- Common options for XPathQuery Type are "Boolean" "String" "Integer" "Double" -->
-				  </ValueExpression>
-				</SimpleExpression>
-			  </Expression>
-			  <Expression>
-				<SimpleExpression>
-				  <ValueExpression>
-					<XPathQuery Type="Boolean">Values/WebConsoleRegKeyExists</XPathQuery>
-					<!-- Common options for XPathQuery Type are "Boolean" "String" "Integer" "Double" -->
-				  </ValueExpression>
-				  <Operator>Equal</Operator>
-				  <!-- Common options for SimpleExpression Operator are "Equal" "NotEqual" "Greater" "Less" "GreaterEqual" "LessEqual" "Like" "NotLike" -->
-				  <ValueExpression>
-					<Value Type="Boolean">true</Value>
-					<!-- Common options for XPathQuery Type are "Boolean" "String" "Integer" "Double" -->
-				  </ValueExpression>
-				</SimpleExpression>
-			  </Expression>	
+          <Expression>
+            <Or>
+              <Expression>
+                <SimpleExpression>
+                  <ValueExpression>
+                    <XPathQuery Type="Boolean">Values/ServerRegKeyExists</XPathQuery>
+                    <!-- Common options for XPathQuery Type are "Boolean" "String" "Integer" "Double" -->
+                  </ValueExpression>
+                  <Operator>Equal</Operator>
+                  <!-- Common options for SimpleExpression Operator are "Equal" "NotEqual" "Greater" "Less" "GreaterEqual" "LessEqual" "Like" "NotLike" -->
+                  <ValueExpression>
+                    <Value Type="Boolean">true</Value>
+                    <!-- Common options for XPathQuery Type are "Boolean" "String" "Integer" "Double" -->
+                  </ValueExpression>
+                </SimpleExpression>
+              </Expression>
+              <Expression>
+                <SimpleExpression>
+                  <ValueExpression>
+                    <XPathQuery Type="Boolean">Values/WebConsoleRegKeyExists</XPathQuery>
+                    <!-- Common options for XPathQuery Type are "Boolean" "String" "Integer" "Double" -->
+                  </ValueExpression>
+                  <Operator>Equal</Operator>
+                  <!-- Common options for SimpleExpression Operator are "Equal" "NotEqual" "Greater" "Less" "GreaterEqual" "LessEqual" "Like" "NotLike" -->
+                  <ValueExpression>
+                    <Value Type="Boolean">true</Value>
+                    <!-- Common options for XPathQuery Type are "Boolean" "String" "Integer" "Double" -->
+                  </ValueExpression>
+                </SimpleExpression>
+              </Expression>
             </Or>
-          </Expression>			  
+          </Expression>
         </DataSource>
       </Discovery>
       <Discovery ID="SCOM.Management.Server.Class.PowerShell.Properties.Discovery" Enabled="true" Target="SCOM.Management.Server.Class" ConfirmDelivery="false" Remotable="true" Priority="Normal">
@@ -1695,13 +1824,13 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
             <Property PropertyID="FailoverList" />
             <Property PropertyID="ActionAccount" />
             <Property PropertyID="InstallPath" />
-			<Property PropertyID="CertLoaded" />
-			<Property PropertyID="CertExpires" />
-			<Property PropertyID="ThumbPrint" />
-			<Property PropertyID="CertIssuer" />			
-			<Property PropertyID="TLS12Enforced" />
-			<Property PropertyID="TLS12SQLCliInstalled" />
-			<Property PropertyID="TLS12ODBCInstalled" />
+            <Property PropertyID="CertLoaded" />
+            <Property PropertyID="CertExpires" />
+            <Property PropertyID="ThumbPrint" />
+            <Property PropertyID="CertIssuer" />
+            <Property PropertyID="TLS12Enforced" />
+            <Property PropertyID="TLS12SQLCliInstalled" />
+            <Property PropertyID="TLS12ODBCInstalled" />
           </DiscoveryClass>
         </DiscoveryTypes>
         <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.TimedPowerShell.DiscoveryProvider">
@@ -1816,7 +1945,9 @@ function URVersion($Version)
     "7.2.12213.0" {"2016 UR8"}
     "8.0.11037.0" {"2016 UR8"} #Gateway		
     "7.2.12265.0" {"2016 UR9"}
-    "8.0.11049.0" {"2016 UR9"} #Gateway		
+    "8.0.11049.0" {"2016 UR9"} #Gateway	
+    "7.2.12324.0" {"2016 UR10"}
+    "8.0.11057.0" {"2016 UR10"} #Gateway		
 	
     # SEMI ANNUAL Channel
     "7.3.13142.0" {"1801"}
@@ -2497,10 +2628,10 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script has completed. ServerVe
         <Category>Custom</Category>
         <WriteAction ID="PSWA" TypeID="SCOM.Management.AddManagementGroup.WA">
           <MGName>MGNAME</MGName>
-          <MSName>MSName.Domain.Com</MSName>		  
+          <MSName>MSName.Domain.Com</MSName>
           <TimeoutSeconds>60</TimeoutSeconds>
         </WriteAction>
-      </Task>	  
+      </Task>
       <Task ID="SCOM.Management.RemoveManagementGroup.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" Timeout="120" Remotable="true">
         <Category>Custom</Category>
         <WriteAction ID="PSWA" TypeID="SCOM.Management.RemoveManagementGroup.WA">
@@ -2512,17 +2643,17 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script has completed. ServerVe
         <Category>Custom</Category>
         <WriteAction ID="PSWA" TypeID="SCOM.Management.AddManagementGroup.WA">
           <MGName>MGNAME</MGName>
-          <MSName>MSName.Domain.Com</MSName>		  
+          <MSName>MSName.Domain.Com</MSName>
           <TimeoutSeconds>60</TimeoutSeconds>
         </WriteAction>
-      </Task>	  
+      </Task>
       <Task ID="SCOM.Management.RemoveManagementGroupHS.Task" Accessibility="Public" Enabled="true" Target="SC!Microsoft.SystemCenter.HealthService" Timeout="120" Remotable="true">
         <Category>Custom</Category>
         <WriteAction ID="PSWA" TypeID="SCOM.Management.RemoveManagementGroup.WA">
           <MGName>MGNAME</MGName>
           <TimeoutSeconds>60</TimeoutSeconds>
         </WriteAction>
-      </Task>	  
+      </Task>
       <Task ID="SCOM.Management.RestartHealthService.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Class" Timeout="120" Remotable="true">
         <Category>Custom</Category>
         <WriteAction ID="WA" TypeID="Windows!Microsoft.Windows.ScriptWriteAction">
@@ -2598,7 +2729,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script has completed. ServerVe
           </ScriptBody>
           <TimeoutSeconds>60</TimeoutSeconds>
         </WriteAction>
-      </Task>	  
+      </Task>
       <Task ID="SCOM.Management.FlushHealthService.Task" Comment="Flush HealthService" Accessibility="Public" Enabled="true" Target="SCOM.Management.Class" Timeout="120" Remotable="true">
         <Category>Maintenance</Category>
         <WriteAction ID="FlushHealthServiceWA" TypeID="SCOM.Management.FlushHealthService.WA" />
@@ -2931,9 +3062,9 @@ Write-Host "Successfully set IsManuallyInstalled value. New value for ($AgentNam
         <Category>Custom</Category>
         <WriteAction ID="PSWA" TypeID="SCOM.Management.OMSWorkspaceAdd.WA">
           <WorkspaceID>WorkspaceID</WorkspaceID>
-		  <WorkspaceKey>WorkspaceKey</WorkspaceKey>
-		  <ProxyURL></ProxyURL>
-		  <AzureCloudType>0</AzureCloudType>
+          <WorkspaceKey>WorkspaceKey</WorkspaceKey>
+          <ProxyURL />
+          <AzureCloudType>0</AzureCloudType>
           <TimeoutSeconds>300</TimeoutSeconds>
         </WriteAction>
       </Task>
@@ -2964,6 +3095,13 @@ Write-Host "Successfully set IsManuallyInstalled value. New value for ($AgentNam
           <RequireOutput>true</RequireOutput>
         </WriteAction>
       </Task>
+      <Task ID="SCOM.Management.ApprovePendingAction.Task" Accessibility="Public" Enabled="true" Target="SC!Microsoft.SystemCenter.UserActionManager" Timeout="180" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.ApprovePendingAction.WA">
+          <AgentName>$Target/Property[Type="SC!Microsoft.SystemCenter.UserActionManager"]/TargetDevicePrincipalName$</AgentName>
+          <TimeoutSeconds>120</TimeoutSeconds>
+        </WriteAction>
+      </Task>	  
     </Tasks>
   </Monitoring>
   <Presentation>
@@ -3363,6 +3501,59 @@ Write-Host "Successfully set IsManuallyInstalled value. New value for ($AgentNam
         </Presentation>
         <Target />
       </View>
+      <View ID="SCOM.Management.PendingActions.State.View" Accessibility="Public" Enabled="true" Target="SC!Microsoft.SystemCenter.UserActionManager" TypeID="SC!Microsoft.SystemCenter.StateViewType" Visible="true">
+        <Category>Operations</Category>
+        <Criteria>
+          <InMaintenanceMode>false</InMaintenanceMode>
+        </Criteria>
+        <Presentation>
+          <ColumnInfo Index="0" SortIndex="0" Width="100" Grouped="false" Sorted="true" IsSortable="true" Visible="true" SortOrder="Descending">
+            <Name>State</Name>
+            <Id>Microsoft.SystemCenter.UserActionManager-*-1a9742b2-cf8d-5ddf-f6bd-0fbb1c5a5565-*-Health</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="1" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Maintenance Mode</Name>
+            <Id>InMaintenanceMode</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="2" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Name</Name>
+            <Id>Name</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="3" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Path</Name>
+            <Id>Path</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="4" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Display Name</Name>
+            <Id>System.Entity/DisplayName</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="5" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Target Device Principal Name</Name>
+            <Id>Microsoft.SystemCenter.UserActionManager/TargetDevicePrincipalName</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="6" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Target Device Network Name</Name>
+            <Id>Microsoft.SystemCenter.UserActionManager/TargetDeviceNetworkName</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="7" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Primary Management Server</Name>
+            <Id>Microsoft.SystemCenter.UserActionManager/ManagementServerName</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="8" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Pending State Type</Name>
+            <Id>Microsoft.SystemCenter.UserActionManager/PendingStateType</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="9" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="false" Visible="false" SortOrder="Ascending">
+            <Name>Last Modified Time</Name>
+            <Id>Microsoft.SystemCenter.UserActionManager/LastModified</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="10" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Failure Type</Name>
+            <Id>Microsoft.SystemCenter.UserActionManager/FailureType</Id>
+          </ColumnInfo>
+        </Presentation>
+        <Target />
+      </View>
     </Views>
     <Folders>
       <Folder ID="SCOM.Management.RootFolder" Accessibility="Internal" ParentFolder="SC!Microsoft.SystemCenter.Monitoring.ViewFolder.Root" />
@@ -3373,6 +3564,7 @@ Write-Host "Successfully set IsManuallyInstalled value. New value for ($AgentNam
       <FolderItem ElementID="SCOM.Management.Server.View" ID="SCOM.Management.Server.View.FolderItem" Folder="SCOM.Management.RootFolder" />
       <FolderItem ElementID="SCOM.Management.HealthServiceWatcher.State.View" ID="SCOM.Management.HealthServiceWatcher.State.View.FolderItem" Folder="SCOM.Management.RootFolder" />
       <FolderItem ElementID="SCOM.Management.HealthService.State.View" ID="SCOM.Management.HealthService.State.View.FolderItem" Folder="SCOM.Management.RootFolder" />
+      <FolderItem ElementID="SCOM.Management.PendingActions.State.View" ID="SCOM.Management.PendingActions.State.View.FolderItem" Folder="SCOM.Management.RootFolder" />
     </FolderItems>
     <StringResources>
       <StringResource ID="SCOM.Management.TestEvent100.Rule.AlertMessage" />
@@ -3408,7 +3600,7 @@ Write-Host "Successfully set IsManuallyInstalled value. New value for ($AgentNam
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="ProxyURL">
           <Name>ProxyURL</Name>
-        </DisplayString>		
+        </DisplayString>
         <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="PSInstalled">
           <Name>PS Installed</Name>
         </DisplayString>
@@ -3420,7 +3612,7 @@ Write-Host "Successfully set IsManuallyInstalled value. New value for ($AgentNam
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="Architecture">
           <Name>Architecture</Name>
-        </DisplayString>		
+        </DisplayString>
         <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="OSVersion">
           <Name>OS Version</Name>
         </DisplayString>
@@ -3453,13 +3645,13 @@ Write-Host "Successfully set IsManuallyInstalled value. New value for ($AgentNam
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="CertIssuer">
           <Name>CertIssuer</Name>
-        </DisplayString>		
+        </DisplayString>
         <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="IP">
           <Name>IP</Name>
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="Connection">
           <Name>Connection</Name>
-        </DisplayString>		
+        </DisplayString>
         <DisplayString ElementID="SCOM.Management.Server.Class">
           <Name>SCOM Server Management Class</Name>
         </DisplayString>
@@ -3510,7 +3702,7 @@ Write-Host "Successfully set IsManuallyInstalled value. New value for ($AgentNam
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="CertLoaded">
           <Name>CertLoaded</Name>
-        </DisplayString>	
+        </DisplayString>
         <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="CertExpires">
           <Name>CertExpires</Name>
         </DisplayString>
@@ -3519,7 +3711,7 @@ Write-Host "Successfully set IsManuallyInstalled value. New value for ($AgentNam
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="CertIssuer">
           <Name>CertIssuer</Name>
-        </DisplayString>			
+        </DisplayString>
         <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="TLS12Enforced">
           <Name>TLS 1.2 Registry Enforced</Name>
         </DisplayString>
@@ -3561,13 +3753,13 @@ Event Description:
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.RemoveManagementGroupHS.Task">
           <Name>Management Group - REMOVE</Name>
-        </DisplayString>		
+        </DisplayString>
         <DisplayString ElementID="SCOM.Management.RestartHealthService.Task">
           <Name>Healthservice - RESTART</Name>
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.RestartHealthServiceHS.Task">
           <Name>Healthservice - RESTART</Name>
-        </DisplayString>		
+        </DisplayString>
         <DisplayString ElementID="SCOM.Management.FlushHealthService.Task">
           <Name>Healthservice - FLUSH</Name>
         </DisplayString>
@@ -3621,13 +3813,16 @@ Event Description:
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.OMSWorkspaceRemove.Task">
           <Name>Log Analytics Workspace - REMOVE</Name>
-        </DisplayString>	
+        </DisplayString>
         <DisplayString ElementID="SCOM.Management.HSLockDownAddSystem.Task">
           <Name>HSLockDown - Add SYSTEM</Name>
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.HSLockDownList.Task">
           <Name>HSLockDown - LIST Accounts</Name>
-        </DisplayString>					
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.ApprovePendingAction.Task">
+          <Name>Approve Pending Action</Name>
+        </DisplayString>		
         <DisplayString ElementID="SCOM.Management.RootFolder">
           <Name>SCOM Management</Name>
         </DisplayString>
@@ -3645,6 +3840,9 @@ Event Description:
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.HealthService.State.View">
           <Name>SCOM HealthService</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCOM.Management.PendingActions.State.View">
+          <Name>SCOM Pending Actions</Name>
           <Description />
         </DisplayString>
       </DisplayStrings>
