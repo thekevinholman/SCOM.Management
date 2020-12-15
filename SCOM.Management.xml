@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.19.10407.2</Version>
+      <Version>10.19.10407.3</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -42,6 +42,7 @@
           <Property ID="PSInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="PSVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="CLRVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="DotNetVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="Architecture" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="OSVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="OSName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
@@ -67,6 +68,7 @@
           <Property ID="OMSWorkspaces" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="PSVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="CLRVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="DotNetVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="OSVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="OSName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="PrimaryMS" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
@@ -78,6 +80,7 @@
           <Property ID="ThumbPrint" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="CertIssuer" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="TLS12Enforced" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+		  <Property ID="MSOLEDBSQL" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="TLS12SQLCliInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="TLS12ODBCInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
         </ClassType>
@@ -1164,6 +1167,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
             <Property PropertyID="Architecture" />
             <Property PropertyID="OSName" />
             <Property PropertyID="APMInstalled" />
+            <Property PropertyID="DotNetVersion" />			
           </DiscoveryClass>
         </DiscoveryTypes>
         <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.FilteredRegistryDiscoveryProvider">
@@ -1185,6 +1189,14 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
               <AttributeType>0</AttributeType>
               <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
             </RegistryAttributeDefinition>
+            <RegistryAttributeDefinition>
+              <AttributeName>DotNetVersion</AttributeName>
+              <Path>SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\Release</Path>
+              <PathType>1</PathType>
+              <!-- 0=regKey 1=regValue -->
+              <AttributeType>1</AttributeType>
+              <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
+            </RegistryAttributeDefinition>			
             <RegistryAttributeDefinition>
               <AttributeName>Architecture</AttributeName>
               <Path>SYSTEM\CurrentControlSet\Control\Session Manager\Environment\PROCESSOR_ARCHITECTURE</Path>
@@ -1226,6 +1238,10 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
                 <Name>$MPElement[Name="SCOM.Management.Agent.Class"]/PSInstalled$</Name>
                 <Value>$Data/Values/PSInstalled$</Value>
               </Setting>
+              <Setting>
+                <Name>$MPElement[Name="SCOM.Management.Agent.Class"]/DotNetVersion$</Name>
+                <Value>$Data/Values/DotNetVersion$</Value>
+              </Setting>			  
               <Setting>
                 <Name>$MPElement[Name="SCOM.Management.Agent.Class"]/Architecture$</Name>
                 <Value>$Data/Values/Architecture$</Value>
@@ -1338,18 +1354,6 @@ $DiscoveryData = $momapi.CreateDiscoveryData(0, $SourceId, $ManagedEntityId)
 
 # Begin MAIN script section
 #=================================================================================
-#Check and see if OS is Nano server for use later where we must take different actions for Nano servers
-$isNano = Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels"
-$isNano = $isNano.NanoServer
-if($isNano -ne $null)
-{
-    $isNano = $true
-}
-else
-{
-    $isNano = $false
-}
-
 # Get SCOM Agent Path Section
 #=======================================================================			
 $SCOMRegKey = "HKLM:\SOFTWARE\Microsoft\Microsoft Operations Manager\3.0\Setup"
@@ -1359,6 +1363,17 @@ $SCOMAgentPath = $SCOMAgentPath.TrimEnd("\")
 
 # Get SCOM Agent Version Section
 #=======================================================================				
+# Test to see if the file exists that we need for versioning
+$AgentFileExists = Test-Path -Path $SCOMAgentPath\Tools\TMF\OMAgentTraceTMFVer.Dll
+IF (!($AgentFileExists))
+{
+  #Try to get the agent path from the HealthService location
+  $HealthServiceRegKey = "HKLM:\SYSTEM\CurrentControlSet\Services\HealthService"
+  $HSImagePath = (Get-ItemProperty $HealthServiceRegKey).ImagePath
+  $HSImagePath = $HSImagePath.Replace('"',"")
+  $SCOMAgentPath = Split-Path -Path $HSImagePath
+}
+
 $SCOMAgentVersionFile = Get-Item $SCOMAgentPath\Tools\TMF\OMAgentTraceTMFVer.Dll
 $SCOMAgentVersion = $SCOMAgentVersionFile.VersionInfo.FileVersion
 $SCOMAgentVersionSplit = $SCOMAgentVersion.Split(".")
@@ -1408,7 +1423,7 @@ $SCOMAgentVersionSplit = $SCOMAgentVersion.Split(".")
   default {$SCOMAgentVersion} 
 }
 #=======================================================================	
-	
+
 # Load Agent Scripting Module
 #=======================================================================
 $AgentCfg = New-Object -ComObject "AgentConfigManager.MgmtSvcCfg"
@@ -1517,35 +1532,46 @@ $momapi.LogScriptEvent($ScriptName,$EventID,2, "Cannot find agent config file at
 
 # Get Action Account section
 #=======================================================================
+#Check and see if OS is Nano server for use later where we must take different actions for Nano servers
+$isNano = Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels"
+$isNano = $isNano.NanoServer
+IF ($isNano -ne $null)
+{
+    $isNano = $true
+}
+ELSE
+{
+    $isNano = $false
+}
+
 # Get the action account this script is running under.  We will assume that is the default agent action account
-try
+TRY
 {
-$user =  ""
-$domain =  ""
-if($isNano)
-{
-$user = $env:username
-$domain = $env:userdnsdomain
+  $user =  ""
+  $domain =  ""
+  IF($isNano)
+  {
+    $user = $env:username
+    $domain = $env:userdnsdomain
+  }
+  ELSE
+  {
+    $oNetwork = new-object -comobject "WScript.Network"
+    $user = $oNetwork.UserName
+    $domain = $oNetwork.UserDomain
+  }
+  IF(($user.Length -eq 0) -or ($user -eq "SYSTEM"))
+  {
+    $ActionAccount = $user
+  }
+  ELSE
+  {
+    $ActionAccount = $domain + "\" + $user
+  }
 }
-else
+CATCH
 {
-$oNetwork = new-object -comobject "WScript.Network"
-$user = $oNetwork.UserName
-$domain = $oNetwork.UserDomain
-}
-If(($user.Length -eq 0) -or ($user -eq "SYSTEM"))
-{
-$ActionAccount = $user
-}
-Else
-{
-$ActionAccount = $domain + "\" + $user
-}
-}
-catch
-{
-$oAPI.LogScriptEvent($ScriptName, 11, 1, "Failed to retrieve the User name and domain for the action account, error: ", $error.Description)
-Exit -1;
+  $momapi.LogScriptEvent($ScriptName,$EventID,2, "`nFailed to retrieve the User name and domain for the action account. `nError is ($Error).")
 }
 #=======================================================================
 
@@ -1692,7 +1718,7 @@ $EndTime = Get-Date
 $ScriptTime = ($EndTime - $StartTime).TotalSeconds
 $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent Version: ($SCOMAgentVersion). `nAgent Rollup: ($SCOMAgentURVersion). `nADIntEnabled: ($ADIntEnabled). `nManagement Group list: ($MGList). `Log Analytics Workspace list: ($OMSList). `nProxyURL: ($ProxyURL). `nPowerShell Version: ($PSVersion). `nCLR Version: ($CLRVersion). `n Primary MS: ($PrimaryMS). `nSecondary MS Failover list: ($FailoverList). `nAction Account: ($ActionAccount). `nOS Version: ($OSVersion). `nSCOM Agent Path: ($SCOMAgentPath). `nCertLoaded: ($CertLoaded). `nCert Expiration: ($CertExpires). `nCert Thumbprint: ($ThumbPrint). `nCert Issuer: ($CertIssuer). `nIP ($IPList). `nConnection: ($PortList). `nScript runtime: ($ScriptTime) seconds.")
 #=================================================================================
-# End of script	  
+# End of script
 		  </ScriptBody>
           <Parameters>
             <Parameter>
@@ -1724,6 +1750,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
         <DiscoveryTypes>
           <DiscoveryClass TypeID="SCOM.Management.Server.Class">
             <Property PropertyID="OSName" />
+			<Property PropertyID="DotNetVersion" />
           </DiscoveryClass>
         </DiscoveryTypes>
         <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.FilteredRegistryDiscoveryProvider">
@@ -1753,6 +1780,14 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
               <AttributeType>1</AttributeType>
               <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
             </RegistryAttributeDefinition>
+            <RegistryAttributeDefinition>
+              <AttributeName>DotNetVersion</AttributeName>
+              <Path>SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\Release</Path>
+              <PathType>1</PathType>
+              <!-- 0=regKey 1=regValue -->
+              <AttributeType>1</AttributeType>
+              <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
+            </RegistryAttributeDefinition>			
           </RegistryAttributeDefinitions>
           <Frequency>14400</Frequency>
           <ClassId>$MPElement[Name="SCOM.Management.Server.Class"]$</ClassId>
@@ -1770,6 +1805,10 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
                 <Name>$MPElement[Name="SCOM.Management.Server.Class"]/OSName$</Name>
                 <Value>$Data/Values/OSName$</Value>
               </Setting>
+              <Setting>
+                <Name>$MPElement[Name="SCOM.Management.Server.Class"]/DotNetVersion$</Name>
+                <Value>$Data/Values/DotNetVersion$</Value>
+              </Setting>			  
             </Settings>
           </InstanceSettings>
           <Expression>
@@ -1829,6 +1868,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
             <Property PropertyID="ThumbPrint" />
             <Property PropertyID="CertIssuer" />
             <Property PropertyID="TLS12Enforced" />
+            <Property PropertyID="MSOLEDBSQL" />			
             <Property PropertyID="TLS12SQLCliInstalled" />
             <Property PropertyID="TLS12ODBCInstalled" />
           </DiscoveryClass>
@@ -1839,13 +1879,11 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
           <ScriptName>SCOM.Management.Server.Class.PowerShell.Properties.Discovery.ps1</ScriptName>
           <ScriptBody>
 #=================================================================================
-#
 #  Script to gather SCOM Server Component properties via PowerShell
 #
 #  Author: Kevin Holman
 #
-#  Version: 2.0
-#
+#  Version: 2.2
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName)
 
@@ -2129,7 +2167,7 @@ $WebConsoleURLevel = URVersion $WebConsoleURFileVersion
 $ConsoleURLevel = URVersion $ConsoleURFileVersion
 #=======================================================================
 			
-# Get Server OMS Workspaces section
+# Get Log Analytics Workspaces section
 #=======================================================================
 # Load SCOM Agent scripting module
 $AgentCfg = New-Object -ComObject "AgentConfigManager.MgmtSvcCfg"
@@ -2201,7 +2239,6 @@ IF ($MS -eq $false)
   }
 }
 #=======================================================================
-
 			
 # Get Action Account section
 #=======================================================================
@@ -2228,7 +2265,6 @@ catch
 }
 #=======================================================================
 
-
 # Get OSVersion section
 #=======================================================================
 $OSRegKey = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
@@ -2247,12 +2283,6 @@ ELSE
     [string]$OSVersion = $OSCurrentVersion + "." + $OSCurrentBuildNumber
 }
 #=======================================================================
-
-
-# Get Remotely Manageable  section
-#=======================================================================
-#=======================================================================
-
 
 # Get Certificate Section
 #=======================================================================
@@ -2290,7 +2320,6 @@ ELSE
   $CertLoaded = $False
 }
 #=======================================================================
-
 
 # Get TLS12Enforced Section
 #=======================================================================
@@ -2464,7 +2493,6 @@ ELSE
 }
 #=======================================================================
 
-
 # Get TLS12SQLCliInstalled Section
 #=======================================================================
 $RegPath = "HKLM:SOFTWARE\ODBC\ODBCINST.INI\ODBC Drivers"
@@ -2479,7 +2507,6 @@ ELSE
   $TLS12SQLCliInstalled = $False
 }
 #=======================================================================
-
 
 # Get TLS12ODBCInstalled Section
 #=======================================================================
@@ -2496,6 +2523,19 @@ ELSE
 }
 #=======================================================================
 
+# Get MSOLEDBSQL Section
+#=======================================================================
+$RegPath = "HKLM:SOFTWARE\Microsoft\Microsoft OLE DB Driver for SQL Server\CurrentVersion"
+
+IF (Test-Path $RegPath)
+{
+  [string]$MSOLEDBSQL = (Get-ItemProperty $RegPath)."Version"
+}
+ELSE
+{
+  [string]$MSOLEDBSQL = "Not Installed"
+}
+#=======================================================================
 
 # Discovery Script section - Discovery scripts get this
 #=================================================================================
@@ -2520,6 +2560,7 @@ $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/CertExpir
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/ThumbPrint$", $ThumbPrint)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/CertIssuer$", $CertIssuer)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/TLS12Enforced$", $TLS12Enforced)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/MSOLEDBSQL$", $MSOLEDBSQL)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/TLS12SQLCliInstalled$", $TLS12SQLCliInstalled)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/TLS12ODBCInstalled$", $TLS12ODBCInstalled)
 $DiscoveryData.AddInstance($instance)
@@ -3610,6 +3651,9 @@ Write-Host "Successfully set IsManuallyInstalled value. New value for ($AgentNam
         <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="CLRVersion">
           <Name>CLR.NET VER</Name>
         </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="DotNetVersion">
+          <Name>.NET Version</Name>
+        </DisplayString>		
         <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="Architecture">
           <Name>Architecture</Name>
         </DisplayString>
@@ -3682,6 +3726,9 @@ Write-Host "Successfully set IsManuallyInstalled value. New value for ($AgentNam
         <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="CLRVersion">
           <Name>CLR.NET VER</Name>
         </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="DotNetVersion">
+          <Name>.NET Version</Name>
+        </DisplayString>		
         <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="OSVersion">
           <Name>OS Version</Name>
         </DisplayString>
@@ -3715,11 +3762,14 @@ Write-Host "Successfully set IsManuallyInstalled value. New value for ($AgentNam
         <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="TLS12Enforced">
           <Name>TLS 1.2 Registry Enforced</Name>
         </DisplayString>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="MSOLEDBSQL">
+          <Name>MSOLEDBSQL</Name>
+        </DisplayString>		
         <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="TLS12SQLCliInstalled">
-          <Name>TLS 1.2 SQL Client 11 Installed</Name>
+          <Name>SQL Client 11</Name>
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="TLS12ODBCInstalled">
-          <Name>TLS 1.2 ODBC 13 Installed</Name>
+          <Name>ODBC 13</Name>
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.Agent.Class.Discovery">
           <Name>SCOM Management Agent Class Discovery</Name>
@@ -3821,7 +3871,7 @@ Event Description:
           <Name>HSLockDown - LIST Accounts</Name>
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.ApprovePendingAction.Task">
-          <Name>Approve Pending Action</Name>
+          <Name>Approve Pending Agent</Name>
         </DisplayString>		
         <DisplayString ElementID="SCOM.Management.RootFolder">
           <Name>SCOM Management</Name>
