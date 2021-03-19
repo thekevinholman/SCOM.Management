@@ -1172,7 +1172,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
                   <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
                 </RegistryAttributeDefinition>
               </RegistryAttributeDefinitions>
-              <Frequency>60</Frequency>
+              <Frequency>86400</Frequency>
             </DataSource>
             <ConditionDetection ID="CDGood" TypeID="System!System.ExpressionFilter">
               <Expression>
