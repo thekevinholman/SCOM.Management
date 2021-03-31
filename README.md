@@ -1,4 +1,4 @@
-# SCOM.Management 10.19.10407.5
+# SCOM.Management 10.19.10505.0
 
 ## [Download Here][Download]
 
@@ -43,3 +43,4 @@ Version History:
 * 10.19.10407.2 - Added support for SCOM 2016 UR10.  Added task to approve agent pending actions
 * 10.19.10407.3 - Fixed issue getting Agent version when SCOM agent path in registry is incorrect.  Added .NET version property.  Added MSOLEDBSQL Property.
 * 10.19.10407.5 - Added monitor for KB4601269 Event Log Security which was released as a post-UR2 hotfix
+* 10.19.10505.0 - Added support for SCOM 2019 UR3
