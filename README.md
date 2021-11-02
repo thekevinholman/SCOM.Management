@@ -1,4 +1,4 @@
-# SCOM.Management 10.19.10505.0
+# SCOM.Management 10.19.10552.0
 
 ## [Download Here][Download]
 
