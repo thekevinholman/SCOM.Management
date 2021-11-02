@@ -44,3 +44,4 @@ Version History:
 * 10.19.10407.3 - Fixed issue getting Agent version when SCOM agent path in registry is incorrect.  Added .NET version property.  Added MSOLEDBSQL Property.
 * 10.19.10407.5 - Added monitor for KB4601269 Event Log Security which was released as a post-UR2 hotfix
 * 10.19.10505.0 - Added support for SCOM 2019 UR3
+* 10.19.10552.0 - Added support for KB5006871 and KB5005527
