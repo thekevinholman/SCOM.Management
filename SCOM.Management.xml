@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.19.10505.0</Version>
+      <Version>10.19.10552.0</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1949,7 +1949,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
 #
 #  Author: Kevin Holman
 #
-#  Version: 2.3
+#  Version: 2.4
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName)
 
@@ -2028,7 +2028,8 @@ function URVersion($Version)
     "7.1.10226.1360" {"2012 R2 UR13"}
     "7.1.10302.0" {"2012 R2 UR13"} #Gateway
     "7.1.10226.1387" {"2012 R2 UR14"}
-    "7.1.10305.0" {"2012 R2 UR14"} #Gateway				
+    "7.1.10305.0" {"2012 R2 UR14"} #Gateway		
+    "7.1.10226.1413" {"2012 R2 UR14 with KB5006871"}    		
 
     # SCOM 2016
     "7.2.11719.0" {"2016 RTM"}
@@ -2052,6 +2053,7 @@ function URVersion($Version)
     "8.0.11049.0" {"2016 UR9"} #Gateway	
     "7.2.12324.0" {"2016 UR10"}
     "8.0.11057.0" {"2016 UR10"} #Gateway		
+    "7.2.12335.0" {"2016 UR10 with KB5006871"}
 	
     # SEMI ANNUAL Channel
     "7.3.13142.0" {"1801"}
@@ -2067,7 +2069,9 @@ function URVersion($Version)
     "10.19.10407.0" {"2019 UR2"}
     "10.19.10153.0" {"2019 UR2"} #Gateway
     "10.19.10505.0" {"2019 UR3"}
-    "10.19.10177.0" {"2019 UR3"} #Gateway		
+    "10.19.10177.0" {"2019 UR3"} #Gateway
+    "10.19.10550.0" {"2019 UR3 with KB5006871"} 
+    "10.19.10552.0" {"2019 UR3 with KB5005527"}       		
   }
 }
                         			
@@ -2139,16 +2143,27 @@ ELSE  #This is a Management Server not a Gateway
     {
       $WebConsoleURFileVersion = ""
     }
+
+    #Need to see if this is Post SCOM2012 UR14 hotfix for web console
+    IF ($WebConsoleURFileVersion -eq "7.1.10226.1387")
+    {
+      #This is SCOM 2012 UR14.  Check to see if hotfix is applied
+      $WebConsoleHotfixFile = Get-Item $SCOMCorePath\WebConsole\AppDiagnostics\AppAdvisor\Web\Bin\ARViewer.dll
+      $WebConsoleHotfixFileVersion = $WebConsoleHotfixFile.VersionInfo.FileVersion
+      $WebConsoleURFileVersion = $WebConsoleHotfixFileVersion
+    }
+
     Try
     {
       $ConsoleURFile = Get-Item $SCOMCorePath\Console\Microsoft.EnterpriseManagement.Management.DataProviders.dll
       $ConsoleURFileVersion = $ConsoleURFile.VersionInfo.FileVersion
-      }
+    }
     Catch
     {
       $ConsoleURFileVersion = ""
     }
   }
+
   IF ($MajorSCOMVersion -eq "7.2")  #SCOM2016
   {
     Try
@@ -2160,6 +2175,16 @@ ELSE  #This is a Management Server not a Gateway
     {
       $WebConsoleURFileVersion = ""
     }
+
+    #Need to see if this is Post SCOM2016 UR10 hotfix for web console
+    IF ($WebConsoleURFileVersion -eq "7.2.12324.0")
+    {
+      #This is SCOM 2016 UR10.  Check to see if hotfix is applied
+      $WebConsoleHotfixFile = Get-Item $SCOMCorePath\WebConsole\AppDiagnostics\AppAdvisor\Web\Bin\ARViewer.dll
+      $WebConsoleHotfixFileVersion = $WebConsoleHotfixFile.VersionInfo.FileVersion
+      $WebConsoleURFileVersion = $WebConsoleHotfixFileVersion
+    }
+
     Try
     {
       $ConsoleURFile = Get-Item $SCOMCorePath\Console\Microsoft.EnterpriseManagement.Monitoring.DataProviders.dll
@@ -2170,6 +2195,7 @@ ELSE  #This is a Management Server not a Gateway
       $ConsoleURFileVersion = ""
     }
   }
+
   IF ($MajorSCOMVersion -eq "7.3")  #SCOM 1801 or 1807 Semi Annual Channel
   {
     $ServerURFile = Get-Item $SCOMCorePath\Server\Microsoft.EnterpriseManagement.DataAccessLayer.dll
@@ -2194,6 +2220,7 @@ ELSE  #This is a Management Server not a Gateway
       $ConsoleURFileVersion = ""
     }
   }
+
   IF ($MajorSCOMVersion -eq "10.19") #SCOM 2019
   {
     #We need to use a different file for versioning for SCOM 2019
@@ -2203,11 +2230,19 @@ ELSE  #This is a Management Server not a Gateway
 	#Check to see if this is UR1 plus Hotfix special case
 	$ServerUR1HotfixFile = Get-Item $SCOMCorePath\Server\Microsoft.EnterpriseManagement.DataAccessService.OperationsManager.dll
 	$ServerUR1HotfixFileVersion = $ServerUR1HotfixFile.VersionInfo.FileVersion
-	
 	IF ($ServerUR1HotfixFileVersion -eq "10.19.10349.0")
 	{
 	  $ServerURFileVersion = $ServerUR1HotfixFileVersion
 	}
+
+    #Check to see if this is SCOM 2019 UR3 plus hotfix
+    IF ($ServerURFileVersion -eq "10.19.10505.0")
+    {
+      #This is SCOM 2019 UR3.  Check for KB5005527
+      $ServerUR3HotfixFile = Get-Item $SCOMCorePath\Server\Eula\Omversion.dll
+      $ServerUR3HotfixFileVersion = $ServerUR3HotfixFile.VersionInfo.FileVersion
+      $ServerURFileVersion = $ServerUR3HotfixFileVersion
+    }
 
     Try
 	{
@@ -2218,6 +2253,16 @@ ELSE  #This is a Management Server not a Gateway
 	{
 	  $WebConsoleURFileVersion = ""
 	}
+    
+    #Need to see if this isPost UR3 hotfix for web console
+    IF ($WebConsoleURFileVersion -eq "10.19.10505.0")
+    {
+      #This is SCOM 2019 UR3.  Check for KB5006871
+      $WebConsoleHotfixFile = Get-Item $SCOMCorePath\WebConsole\AppDiagnostics\AppAdvisor\Web\Bin\ARViewer.dll
+      $WebConsoleHotfixFileVersion = $WebConsoleHotfixFile.VersionInfo.FileVersion
+      $WebConsoleURFileVersion = $WebConsoleHotfixFileVersion
+    }
+
 	Try
 	{
 	  $ConsoleURFile = Get-Item $SCOMCorePath\Console\Microsoft.MOM.UI.Components.dll
