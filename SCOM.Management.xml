@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.19.10552.0</Version>
+      <Version>10.19.10552.1</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1371,7 +1371,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
 #  Script to gather agent properties via PowerShell
 #
 #  Author: Kevin Holman
-#  v1.6
+#  v1.7
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName,[string]$IP)
 
@@ -1444,6 +1444,14 @@ $SCOMAgentVersion = $SCOMAgentVersionFile.VersionInfo.FileVersion
 $SCOMAgentVersionSplit = $SCOMAgentVersion.Split(".")
 [int]$MajorSCOMAgentVersion = $SCOMAgentVersionSplit[0]
 
+#Check for SCOM 2019 Post UR3 Hotfix
+IF ($SCOMAgentVersion -eq "10.19.10177.0")
+{
+  #This is SCOM 2019 UR3.  Check for Hotfix
+  $SCOMAgentVersionFile = Get-Item $SCOMAgentPath\MOMModules2.dll
+  $SCOMAgentVersion = $SCOMAgentVersionFile.VersionInfo.FileVersion
+}
+
 [string]$SCOMAgentURVersion = switch($SCOMAgentVersion)
 {
   # SCOM 2012
@@ -1483,7 +1491,8 @@ $SCOMAgentVersionSplit = $SCOMAgentVersion.Split(".")
   "10.19.10014.0" {"2019 RTM"}
   "10.19.10140.0" {"2019 UR1"}
   "10.19.10153.0" {"2019 UR2"}
-  "10.19.10177.0" {"2019 UR3"}  
+  "10.19.10177.0" {"2019 UR3"}
+  "10.19.10185.0" {"2019 UR3 with KB5005527"}  
 
   # If nothing else found then default to version number
   default {$SCOMAgentVersion} 
@@ -1949,7 +1958,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
 #
 #  Author: Kevin Holman
 #
-#  Version: 2.4
+#  Version: 2.5
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName)
 
@@ -2071,7 +2080,8 @@ function URVersion($Version)
     "10.19.10505.0" {"2019 UR3"}
     "10.19.10177.0" {"2019 UR3"} #Gateway
     "10.19.10550.0" {"2019 UR3 with KB5006871"} 
-    "10.19.10552.0" {"2019 UR3 with KB5005527"}       		
+    "10.19.10552.0" {"2019 UR3 with KB5005527"}
+    "10.19.10185.0" {"2019 UR3 with KB5005527"} #Gateway	
   }
 }
                         			
@@ -2118,6 +2128,13 @@ IF ($SCOMCorePath -match "Gateway")
   {
     #This is SCOM 2019 UR1
     $ServerURFileVersion = "10.19.10311.0"
+  }
+  ELSEIF ($ServerURFileVersion -eq "10.19.10177.0")
+  {
+    #This is SCOM 2019 UR3.  Check for Post UR3 hotfix
+    $MOMModules2File = Get-Item $SCOMPath\MOMModules2.dll
+    $MOMModules2FileVersion = $MOMModules2File.VersionInfo.FileVersion
+    $ServerURFileVersion = $MOMModules2FileVersion
   }
   
   # Set these to null since we do not expect a web console or a console on a GW
