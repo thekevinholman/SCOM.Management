@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.19.10552.1</Version>
+      <Version>10.22.10118.0</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1371,7 +1371,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
 #  Script to gather agent properties via PowerShell
 #
 #  Author: Kevin Holman
-#  v1.7
+#  v1.8
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName,[string]$IP)
 
@@ -1578,7 +1578,16 @@ $CLRVersion = $CLRMajor + "." + $CLRMinor
 
 # Get Agent Assignments section
 #======================================================================
-$FilePath = "$SCOMAgentPath\Health Service State\Connector Configuration Cache\$MGName\OpsMgrConnector.Config.xml"
+
+$HSParametersRegKey = "HKLM:\SYSTEM\CurrentControlSet\Services\HealthService\Parameters"
+IF ($HSStateDir = (Get-ItemProperty $HSParametersRegKey).'State Directory')
+{
+  $FilePath = "$HSStateDir\Connector Configuration Cache\$MGName\OpsMgrConnector.Config.xml"
+} 
+ELSE
+{
+  $FilePath = "$SCOMAgentPath\Health Service State\Connector Configuration Cache\$MGName\OpsMgrConnector.Config.xml"
+}
 
 IF (Test-Path -Path $FilePath)
 {
@@ -1958,7 +1967,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
 #
 #  Author: Kevin Holman
 #
-#  Version: 2.5
+#  Version: 2.7
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName)
 
@@ -1968,7 +1977,7 @@ param($SourceId,$ManagedEntityId,$ComputerName,$MGName)
 # $SourceId = '{00000000-0000-0000-0000-000000000000}'
 # $ManagedEntityId = '{00000000-0000-0000-0000-000000000000}'
 # $Computername = 'server.domain.com'
-# $MGName = 'SCOMA'
+# $MGName = 'SCOM1'
 #=================================================================================
 
 
@@ -2081,7 +2090,11 @@ function URVersion($Version)
     "10.19.10177.0" {"2019 UR3"} #Gateway
     "10.19.10550.0" {"2019 UR3 with KB5006871"} 
     "10.19.10552.0" {"2019 UR3 with KB5005527"}
-    "10.19.10185.0" {"2019 UR3 with KB5005527"} #Gateway	
+    "10.19.10185.0" {"2019 UR3 with KB5005527"} #Gateway
+    
+    # SCOM 2022
+    "10.22.10118.0" {"2022 RTM"}  
+    "10.22.10056.0" {"2022 RTM"} 	
   }
 }
                         			
@@ -2289,9 +2302,32 @@ ELSE  #This is a Management Server not a Gateway
 	{
 	  $ConsoleURFileVersion = ""
 	}
-  }	  
-}
+  }
 
+
+  IF ($MajorSCOMVersion -eq "10.22") #SCOM 2022
+  {
+    Try
+	{
+	  $WebConsoleURFile = Get-Item $SCOMCorePath\WebConsole\Dashboard\OMVersion.dll
+	  $WebConsoleURFileVersion = $WebConsoleURFile.VersionInfo.FileVersion
+	}
+	Catch
+	{
+	  $WebConsoleURFileVersion = ""
+	}
+    
+	Try
+	{
+	  $ConsoleURFile = Get-Item $SCOMCorePath\Console\Microsoft.MOM.UI.Components.dll
+	  $ConsoleURFileVersion = $ConsoleURFile.VersionInfo.FileVersion
+	}
+	Catch
+	{
+	  $ConsoleURFileVersion = ""
+	}
+  }	
+}
 $ServerURLevel = URVersion $ServerURFileVersion
 $WebConsoleURLevel = URVersion $WebConsoleURFileVersion
 $ConsoleURLevel = URVersion $ConsoleURFileVersion
@@ -2341,8 +2377,15 @@ $CLRVersion = $CLRMajor + "." + $CLRMinor
 #Only continue if this is a Gateway
 IF ($MS -eq $false)
 {
-  #Uses $SCOMPath from above
-  $FilePath = "$SCOMPath\Health Service State\Connector Configuration Cache\$MGName\OpsMgrConnector.Config.xml"
+  $HSParametersRegKey = "HKLM:\SYSTEM\CurrentControlSet\Services\HealthService\Parameters"
+  IF ($HSStateDir = (Get-ItemProperty $HSParametersRegKey).'State Directory')
+  {
+    $FilePath = "$HSStateDir\Connector Configuration Cache\$MGName\OpsMgrConnector.Config.xml"
+  } 
+  ELSE
+  {
+    $FilePath = "$SCOMPath\Health Service State\Connector Configuration Cache\$MGName\OpsMgrConnector.Config.xml"
+  }
 
   IF (Test-Path -Path $FilePath)
   {
@@ -2382,11 +2425,11 @@ try
     $domain = $oNetwork.UserDomain
     If(($user.Length -eq 0) -or ($user -eq "SYSTEM"))
     {
-    $ActionAccount = $user
+      $ActionAccount = $user
     }
     Else
     {
-    $ActionAccount = $domain + "\" + $user
+      $ActionAccount = $domain + "\" + $user
     }
 }
 catch
