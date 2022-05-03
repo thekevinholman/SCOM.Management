@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.22.10118.0</Version>
+      <Version>10.22.10118.1</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1493,6 +1493,9 @@ IF ($SCOMAgentVersion -eq "10.19.10177.0")
   "10.19.10153.0" {"2019 UR2"}
   "10.19.10177.0" {"2019 UR3"}
   "10.19.10185.0" {"2019 UR3 with KB5005527"}  
+  
+  # SCOM 2022
+  "10.22.10056.0" {"2022 RTM"}
 
   # If nothing else found then default to version number
   default {$SCOMAgentVersion} 
