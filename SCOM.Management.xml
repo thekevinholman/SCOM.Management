@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.22.10118.1</Version>
+      <Version>10.22.10118.2</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1371,7 +1371,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
 #  Script to gather agent properties via PowerShell
 #
 #  Author: Kevin Holman
-#  v1.8
+#  v1.9
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName,[string]$IP)
 
@@ -1492,7 +1492,8 @@ IF ($SCOMAgentVersion -eq "10.19.10177.0")
   "10.19.10140.0" {"2019 UR1"}
   "10.19.10153.0" {"2019 UR2"}
   "10.19.10177.0" {"2019 UR3"}
-  "10.19.10185.0" {"2019 UR3 with KB5005527"}  
+  "10.19.10185.0" {"2019 UR3 with KB5005527"}
+  "10.19.10200.0" {"2019 UR4"}
   
   # SCOM 2022
   "10.22.10056.0" {"2022 RTM"}
@@ -1970,7 +1971,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
 #
 #  Author: Kevin Holman
 #
-#  Version: 2.7
+#  Version: 2.8
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName)
 
@@ -2094,10 +2095,12 @@ function URVersion($Version)
     "10.19.10550.0" {"2019 UR3 with KB5006871"} 
     "10.19.10552.0" {"2019 UR3 with KB5005527"}
     "10.19.10185.0" {"2019 UR3 with KB5005527"} #Gateway
+    "10.19.10569.0" {"2019 UR4"}
+    "10.19.10200.0" {"2019 UR4"} #Gateway	
     
     # SCOM 2022
     "10.22.10118.0" {"2022 RTM"}  
-    "10.22.10056.0" {"2022 RTM"} 	
+    "10.22.10056.0" {"2022 RTM"} #Gateway	
   }
 }
                         			
