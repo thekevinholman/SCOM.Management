@@ -1,4 +1,4 @@
-# SCOM.Management 10.22.10118.2
+# SCOM.Management 10.22.10118.3
 
 ## [Download Here][Download]
 
@@ -49,3 +49,4 @@ Version History:
 * 10.22.10118.0 - Added support for SCOM 2022 and fixed bug in detection of Health Service State disk drive.
 * 10.22.10118.1 - Fixed bug in Agent version discovery.
 * 10.22.10118.2 - Added support for SCOM 2019 UR4
+* 10.22.10118.3 - Added support for SCOM 2019 UR4 plus KB5016576 Console Hotfix
