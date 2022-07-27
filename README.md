@@ -10,7 +10,7 @@ SCOM - Management Pack to discover properties and add tasks to make SCOM Admins 
 https://kevinholman.com/2017/05/09/scom-management-mp-making-a-scom-admins-life-a-little-easier/
 
 Version History:
-* 10.22.10118.3 - Added support for SCOM 2019 UR4 plus KB5016576 Console Hotfix updated release
+* 10.22.10118.4 - Added support for SCOM 2019 UR4 plus KB5016576 Console Hotfix updated release
 * 10.22.10118.3 - Added support for SCOM 2019 UR4 plus KB5016576 Console Hotfix
 * 10.22.10118.2 - Added support for SCOM 2019 UR4
 * 10.22.10118.1 - Fixed bug in Agent version discovery.
