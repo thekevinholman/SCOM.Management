@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.22.10118.4</Version>
+      <Version>10.22.10337.0</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1971,7 +1971,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
 #
 #  Author: Kevin Holman
 #
-#  Version: 2.9
+#  Version: 3.0
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName)
 
@@ -2102,7 +2102,7 @@ function URVersion($Version)
     
     # SCOM 2022
     "10.22.10118.0" {"2022 RTM"}  
-    "10.22.10056.0" {"2022 RTM"} #Gateway	
+    "10.22.10337.0" {"2022 UR1"} 
   }
 }
                         			
@@ -2118,6 +2118,8 @@ IF ($SCOMCorePath -match "Gateway")
   $MS = $false
   $ServerURFile = Get-Item $SCOMPath\HealthService.dll
   $ServerURFileVersion = $ServerURFile.VersionInfo.FileVersion
+  $ServerURFileVersionSplit = $ServerURFileVersion.Split(".")
+  $MajorSCOMVersion = $ServerURFileVersionSplit[0] + "." + $ServerURFileVersionSplit[1]
 
   $MOMWsManModulesFile = Get-Item $SCOMPath\MOMWsManModules.dll
   $MOMWsManModulesFileVersion = $MOMWsManModulesFile.VersionInfo.FileVersion
@@ -2156,6 +2158,12 @@ IF ($SCOMCorePath -match "Gateway")
     $MOMModules2File = Get-Item $SCOMPath\MOMModules2.dll
     $MOMModules2FileVersion = $MOMModules2File.VersionInfo.FileVersion
     $ServerURFileVersion = $MOMModules2FileVersion
+  }
+  ELSEIF ($MajorSCOMVersion -eq "10.22")
+  {
+    #This is SCOM 2022
+    $ServerURFile = Get-Item $SCOMPath\Microsoft.SystemCenter.Telemetry.EventData.dll
+    $ServerURFileVersion = $ServerURFile.VersionInfo.FileVersion 
   }
   
   # Set these to null since we do not expect a web console or a console on a GW
@@ -2312,7 +2320,7 @@ ELSE  #This is a Management Server not a Gateway
 	}
 	
     #Need to see if this is Post UR4 hotfix for console
-    IF ($$ConsoleURFileVersion -eq "10.19.10569.0")
+    IF ($ConsoleURFileVersion -eq "10.19.10569.0")
     {
       #This is SCOM 2019 UR4.  Check for KB5016576
       $ConsoleHotfixFile = Get-Item $SCOMCorePath\Console\Microsoft.EnterpriseManagement.UI.Authoring.dll
@@ -2324,6 +2332,10 @@ ELSE  #This is a Management Server not a Gateway
 
   IF ($MajorSCOMVersion -eq "10.22") #SCOM 2022
   {
+    #Detect SCOM UR Version
+    #We need to use a different file for versioning for SCOM 2022
+    $ServerURFile = Get-Item $SCOMCorePath\Server\Microsoft.Mom.Common.dll
+    $ServerURFileVersion = $ServerURFile.VersionInfo.FileVersion
     Try
 	{
 	  $WebConsoleURFile = Get-Item $SCOMCorePath\WebConsole\Dashboard\OMVersion.dll
