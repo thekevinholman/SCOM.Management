@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.22.10337.0</Version>
+      <Version>10.22.10337.1</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1371,7 +1371,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
 #  Script to gather agent properties via PowerShell
 #
 #  Author: Kevin Holman
-#  v1.9
+#  v2.0
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName,[string]$IP)
 
@@ -1497,6 +1497,7 @@ IF ($SCOMAgentVersion -eq "10.19.10177.0")
   
   # SCOM 2022
   "10.22.10056.0" {"2022 RTM"}
+  "10.22.10110.0" {"2022 RTM"}
 
   # If nothing else found then default to version number
   default {$SCOMAgentVersion} 
