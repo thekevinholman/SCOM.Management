@@ -1497,7 +1497,7 @@ IF ($SCOMAgentVersion -eq "10.19.10177.0")
   
   # SCOM 2022
   "10.22.10056.0" {"2022 RTM"}
-  "10.22.10110.0" {"2022 RTM"}
+  "10.22.10110.0" {"2022 UR1"}
 
   # If nothing else found then default to version number
   default {$SCOMAgentVersion} 
