@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.22.10337.2</Version>
+      <Version>10.22.10610.0</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -38,51 +38,50 @@
           <Property ID="AgentVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="APMInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="Architecture" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="CertLoaded" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="CertExpires" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="CertIssuer" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="CertLoaded" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="CLRVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="CertThumbPrint" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="Connection" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="1024" MinLength="0" Required="false" Scale="0" />
+          <Property ID="CLRVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="DotNetVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="FailoverList" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="PSInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="PSVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="InstallPath" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="IP" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="ManagementGroups" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="OMSWorkspaces" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="OSName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="OSVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="PrimaryMS" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="FailoverList" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="ManagementGroups" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="LAWorkspaces" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="ProxyURL" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="PSInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="PSVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="ThumbPrint" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="UpdateRollup" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
         </ClassType>
         <ClassType ID="SCOM.Management.Server.Class" Accessibility="Public" Abstract="false" Base="SCOM.Management.Class" Hosted="true" Singleton="false" Extension="false">
           <Property ID="ActionAccount" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="CertLoaded" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="CertExpires" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="CertIssuer" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="CertLoaded" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="CLRVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="CertThumbPrint" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="ServerURLevel" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="ServerVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="WebConsoleURLevel" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="WebConsoleVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="ConsoleURLevel" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="ConsoleVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="CLRVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="DotNetVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="FailoverList" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="PSVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="InstallPath" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="MSOLEDBSQL" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="OMSWorkspaces" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="LAWorkspaces" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="OSName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="OSVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="PrimaryMS" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="PSVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="ServerURLevel" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="ServerVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="ThumbPrint" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="FailoverList" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="SQLMSOLEDBSQL" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="SQLODBC" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID="TLS12Enforced" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="TLS12ODBCInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="TLS12SQLCliInstalled" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="WebConsoleURLevel" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID="WebConsoleVersion" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
         </ClassType>
       </ClassTypes>
     </EntityTypes>
@@ -758,7 +757,7 @@ $momapi.LogScriptEvent($ScriptName,1017,0,"`n Script has completed.  Runtime is 
         <OutputType>System!System.BaseData</OutputType>
         <InputType>System!System.BaseData</InputType>
       </WriteActionModuleType>
-      <WriteActionModuleType ID="SCOM.Management.OMSWorkspaceAdd.WA" Accessibility="Internal" Batching="false">
+      <WriteActionModuleType ID="SCOM.Management.LAWorkspaceAdd.WA" Accessibility="Internal" Batching="false">
         <Configuration>
           <xsd:element minOccurs="1" name="WorkspaceID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
           <xsd:element minOccurs="1" name="WorkspaceKey" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
@@ -777,10 +776,10 @@ $momapi.LogScriptEvent($ScriptName,1017,0,"`n Script has completed.  Runtime is 
           <Composite>
             <MemberModules>
               <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-                <ScriptName>SCOM.Management.OMSWorkspaceAdd.WA.ps1</ScriptName>
+                <ScriptName>SCOM.Management.LAWorkspaceAdd.WA.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
-#  Script to ADD Log Analytics (OMS) Workspace
+#  Script to ADD Log Analytics Workspace
 #=================================================================================
 param($WorkspaceID,$WorkspaceKey,$ProxyURL,[int]$AzureCloudType)
 
@@ -797,7 +796,7 @@ param($WorkspaceID,$WorkspaceKey,$ProxyURL,[int]$AzureCloudType)
 # Constants section - modify stuff here:
 #=================================================================================
 # Assign script name variable for use in event logging
-$ScriptName = "SCOM.Management.OMSWorkspaceAdd.WA.ps1"
+$ScriptName = "SCOM.Management.LAWorkspaceAdd.WA.ps1"
 #=================================================================================
 
 
@@ -820,9 +819,9 @@ Write-Host "Task Starting.  Running as $whoami"
 #Load agent scripting object
 Write-Host "Loading agent scripting objects."
 $AgentCfg = New-Object -ComObject AgentConfigManager.MgmtSvcCfg
-#Check to see if this agent supports OMS
-$AgentSupportsOMS = $AgentCfg | Get-Member -Name 'GetCloudWorkspaces'
-IF (!$AgentSupportsOMS)
+#Check to see if this agent supports Log Analytics Workspaces
+$AgentSupportsLA = $AgentCfg | Get-Member -Name 'GetCloudWorkspaces'
+IF (!$AgentSupportsLA)
 {
   Write-Host "FATAL ERROR:  This agent version does not support Cloud Workspaces.  You must upgrade this agent.  Terminating."
   EXIT
@@ -851,7 +850,7 @@ IF ($CloudWorkspaceSupDef -notmatch "AzureCloudType")
 {
   #This MMA does not support AzureCloudType parameter
   Write-Host "This MMA/Agent version does not support the AzureCloudType parameter. `nIf you require AzureCloudType then the MMA/Agent must be upgraded. `nAttempting to add Log Analytics Workspace with no AzureCloudType."
-  #Add OMS Workspace
+  #Add LA Workspace
   Write-Host "Adding Log Analytics Workspace: ($WorkspaceID)"
   $Error.Clear()
   $AgentCfg.AddCloudWorkspace($WorkspaceID,$WorkspaceKey)
@@ -859,7 +858,7 @@ IF ($CloudWorkspaceSupDef -notmatch "AzureCloudType")
 ELSE
 {
   #This MMA supports AzureCloudType parameter
-  #Add OMS Workspace
+  #Add LA Workspace
   Write-Host "Adding Log Analytics Workspace: ($WorkspaceID)"
   $Error.Clear()
   $AgentCfg.AddCloudWorkspace($WorkspaceID,$WorkspaceKey,$AzureCloudType)
@@ -922,7 +921,7 @@ $Process.CreateFlags = 16777216
         <OutputType>System!System.BaseData</OutputType>
         <InputType>System!System.BaseData</InputType>
       </WriteActionModuleType>
-      <WriteActionModuleType ID="SCOM.Management.OMSWorkspaceRemove.WA" Accessibility="Internal" Batching="false">
+      <WriteActionModuleType ID="SCOM.Management.LAWorkspaceRemove.WA" Accessibility="Internal" Batching="false">
         <Configuration>
           <xsd:element minOccurs="1" name="WorkspaceID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
           <xsd:element minOccurs="1" name="TimeoutSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
@@ -935,10 +934,10 @@ $Process.CreateFlags = 16777216
           <Composite>
             <MemberModules>
               <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-                <ScriptName>SCOM.Management.OMSWorkSpaceRemove.WA.ps1</ScriptName>
+                <ScriptName>SCOM.Management.LAWorkspaceRemove.WA.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
-#  Script to REMOVE OMS Workspace
+#  Script to REMOVE LA Workspace
 #=================================================================================
 param($WorkspaceID)
 
@@ -946,7 +945,7 @@ param($WorkspaceID)
 # Constants section - modify stuff here:
 
 # Assign script name variable for use in event logging
-$ScriptName = "SCOM.Management.OMSWorkSpaceRemove.WA.ps1"
+$ScriptName = "SCOM.Management.LAWorkspaceRemove.WA.ps1"
 #=================================================================================
 
 # Gather who the script is running as
@@ -964,35 +963,35 @@ Write-Host "Task Starting.  Running as $whoami"
 #Load agent scripting object
 Write-Host "Loading agent scripting objects."
 $AgentCfg = New-Object -ComObject AgentConfigManager.MgmtSvcCfg
-#Check to see if this agent supports OMS
-$AgentSupportsOMS = $AgentCfg | Get-Member -Name 'GetCloudWorkspaces'
-IF (!$AgentSupportsOMS)
+#Check to see if this agent supports LA
+$AgentSupportsLA = $AgentCfg | Get-Member -Name 'GetCloudWorkspaces'
+IF (!$AgentSupportsLA)
 {
   Write-Host "FATAL ERROR:  This agent version does not support Cloud Workspaces.  You must upgrade this agent.  Terminating."
   EXIT
 }
-#Verifying that OMS Workspace Exists
+#Verifying that LA Workspace Exists
 $Workspace = $AgentCfg.GetCloudWorkspace($WorkspaceID)
 IF ($Workspace)
 {
-  Write-Host "Found configured OMS Workspace: ($WorkspaceID)"
+  Write-Host "Found configured LA Workspace: ($WorkspaceID)"
 }
 ELSE
 {
-  Write-Host "FATAL ERROR:  OMS Workspace not found!  Workspace ID: ($WorkspaceID)"
+  Write-Host "FATAL ERROR:  LA Workspace not found!  Workspace ID: ($WorkspaceID)"
   EXIT
 }
-#Remove OMS Workspace
-Write-Host "Attempting to remove OMS Workspace"
+#Remove LA Workspace
+Write-Host "Attempting to remove LA Workspace"
 $Error.Clear()	  
 $AgentCfg.RemoveCloudWorkspace($WorkspaceID)
 IF ($Error)
 {
-  Write-Host "There was a critical error removing OMS Workspace.  Error is: $Error"
+  Write-Host "There was a critical error removing LA Workspace.  Error is: $Error"
   EXIT
 }
 #Restart Agent
-Write-Host "OMS Workspace Removed"
+Write-Host "LA Workspace Removed"
 Write-Host "Restarting Agent now."
 #=================================================================================
 # End Main Script	
@@ -1345,7 +1344,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
             <Property PropertyID="UpdateRollup" />
             <Property PropertyID="ADIntEnabled" />
             <Property PropertyID="ManagementGroups" />
-            <Property PropertyID="OMSWorkspaces" />
+            <Property PropertyID="LAWorkspaces" />
             <Property PropertyID="ProxyURL" />
             <Property PropertyID="PSVersion" />
             <Property PropertyID="CLRVersion" />
@@ -1356,7 +1355,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
             <Property PropertyID="InstallPath" />
             <Property PropertyID="CertLoaded" />
             <Property PropertyID="CertExpires" />
-            <Property PropertyID="ThumbPrint" />
+            <Property PropertyID="CertThumbPrint" />
             <Property PropertyID="CertIssuer" />
             <Property PropertyID="IP" />
             <Property PropertyID="Connection" />
@@ -1500,6 +1499,7 @@ IF ($SCOMAgentVersion -eq "10.19.10177.0")
   # SCOM 2022
   "10.22.10056.0" {"2022 RTM"}
   "10.22.10110.0" {"2022 UR1"}
+  "10.22.10208.0" {"2022 UR2"}  
 
   # If nothing else found then default to version number
   default {$SCOMAgentVersion} 
@@ -1524,26 +1524,26 @@ FOREACH ($MG in $MGs)
 $MGlist=$MGlist.TrimEnd(", ")
 #=======================================================================
 
-# Get Agent OMS Workspaces section
+# Get Agent LA Workspaces section
 #=======================================================================
 # This section depends on AgentConfigManager.MgmtSvcCfg object in previous section
-[string]$OMSList=''
-# Agent might not support OMS
-$AgentSupportsOMS = $AgentCfg | Get-Member -Name 'GetCloudWorkspaces'
-IF (!$AgentSupportsOMS)
+[string]$LAList=''
+# Agent might not support LA
+$AgentSupportsLA = $AgentCfg | Get-Member -Name 'GetCloudWorkspaces'
+IF (!$AgentSupportsLA)
 {
   #This agent version does not support Cloud Workspaces.
 }
 ELSE
 {
-  $OMSWorkSpaces = $AgentCfg.GetCloudWorkspaces()
-  FOREACH ($OMSWorkSpace in $OMSWorkSpaces)
+  $LAWorkspaces = $AgentCfg.GetCloudWorkspaces()
+  FOREACH ($LAWorkSpace in $LAWorkSpaces)
   {
-    $OMSList = $OMSList + $OMSWorkspace.workspaceId + ", "
+    $LAList = $LAList + $LAWorkspace.workspaceId + ", "
   }
-  IF ($OMSList)
+  IF ($LAList)
   {
-    $OMSList = $OMSList.TrimEnd(", ")
+    $LAList = $LAList.TrimEnd(", ")
   }
       
   #Get ProxyURL
@@ -1694,8 +1694,8 @@ IF(Test-Path $CertRegKey)
   IF($Certvalue)
   {
 	$CertLoaded = $True
-    [string]$ThumbPrint = (Get-ItemProperty $CertRegKey).ChannelCertificateHash
-    $Cert = Get-ChildItem -path cert:\LocalMachine\My | Where-Object {$_.Thumbprint -eq $ThumbPrint}
+    [string]$CertThumbPrint = (Get-ItemProperty $CertRegKey).ChannelCertificateHash
+    $Cert = Get-ChildItem -path cert:\LocalMachine\My | Where-Object {$_.Thumbprint -eq $CertThumbPrint}
     IF ($Cert)
     {
       [datetime]$CertExpiresDateTime = $Cert.NotAfter
@@ -1778,7 +1778,7 @@ $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/AgentVersi
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/UpdateRollup$", $SCOMAgentURVersion)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/ADIntEnabled$", $ADIntEnabled)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/ManagementGroups$", $MGList)
-$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/OMSWorkspaces$", $OMSList)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/LAWorkspaces$", $LAList)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/ProxyURL$", $ProxyURL)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/PSVersion$", $PSVersion)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/CLRVersion$", $CLRVersion)			
@@ -1789,7 +1789,7 @@ $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/OSVersion$
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/InstallPath$", $SCOMAgentPath)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/CertLoaded$", $CertLoaded)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/CertExpires$", $CertExpires)
-$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/ThumbPrint$", $ThumbPrint)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/CertThumbPrint$", $CertThumbPrint)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/CertIssuer$", $CertIssuer)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/IP$", $IPList)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/Connection$", $PortList)
@@ -1807,7 +1807,7 @@ $DiscoveryData
 #Log an event for script ending and total execution time.
 $EndTime = Get-Date
 $ScriptTime = ($EndTime - $StartTime).TotalSeconds
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent Version: ($SCOMAgentVersion). `nAgent Rollup: ($SCOMAgentURVersion). `nADIntEnabled: ($ADIntEnabled). `nManagement Group list: ($MGList). `Log Analytics Workspace list: ($OMSList). `nProxyURL: ($ProxyURL). `nPowerShell Version: ($PSVersion). `nCLR Version: ($CLRVersion). `n Primary MS: ($PrimaryMS). `nSecondary MS Failover list: ($FailoverList). `nAction Account: ($ActionAccount). `nOS Version: ($OSVersion). `nSCOM Agent Path: ($SCOMAgentPath). `nCertLoaded: ($CertLoaded). `nCert Expiration: ($CertExpires). `nCert Thumbprint: ($ThumbPrint). `nCert Issuer: ($CertIssuer). `nIP ($IPList). `nConnection: ($PortList). `nScript runtime: ($ScriptTime) seconds.")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent Version: ($SCOMAgentVersion). `nAgent Rollup: ($SCOMAgentURVersion). `nADIntEnabled: ($ADIntEnabled). `nManagement Group list: ($MGList). `Log Analytics Workspace list: ($LAList). `nProxyURL: ($ProxyURL). `nPowerShell Version: ($PSVersion). `nCLR Version: ($CLRVersion). `n Primary MS: ($PrimaryMS). `nSecondary MS Failover list: ($FailoverList). `nAction Account: ($ActionAccount). `nOS Version: ($OSVersion). `nSCOM Agent Path: ($SCOMAgentPath). `nCertLoaded: ($CertLoaded). `nCert Expiration: ($CertExpires). `nCert Thumbprint: ($CertThumbPrint). `nCert Issuer: ($CertIssuer). `nIP ($IPList). `nConnection: ($PortList). `nScript runtime: ($ScriptTime) seconds.")
 #=================================================================================
 # End of script
 		  </ScriptBody>
@@ -1946,7 +1946,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
             <Property PropertyID="WebConsoleURLevel" />
             <Property PropertyID="ConsoleVersion" />
             <Property PropertyID="ConsoleURLevel" />
-            <Property PropertyID="OMSWorkspaces" />
+            <Property PropertyID="LAWorkspaces" />
             <Property PropertyID="PSVersion" />
             <Property PropertyID="CLRVersion" />
             <Property PropertyID="OSVersion" />
@@ -1956,12 +1956,11 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
             <Property PropertyID="InstallPath" />
             <Property PropertyID="CertLoaded" />
             <Property PropertyID="CertExpires" />
-            <Property PropertyID="ThumbPrint" />
+            <Property PropertyID="CertThumbPrint" />
             <Property PropertyID="CertIssuer" />
             <Property PropertyID="TLS12Enforced" />
-            <Property PropertyID="MSOLEDBSQL" />
-            <Property PropertyID="TLS12SQLCliInstalled" />
-            <Property PropertyID="TLS12ODBCInstalled" />
+            <Property PropertyID="SQLMSOLEDBSQL" />
+            <Property PropertyID="SQLODBC" />
           </DiscoveryClass>
         </DiscoveryTypes>
         <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.TimedPowerShell.DiscoveryProvider">
@@ -2108,6 +2107,7 @@ function URVersion($Version)
     # SCOM 2022
     "10.22.10118.0" {"2022 RTM"}  
     "10.22.10337.0" {"2022 UR1"} 
+    "10.22.10610.0" {"2022 UR2"} 	
   }
 }
                         			
@@ -2374,16 +2374,16 @@ $AgentCfg = New-Object -ComObject "AgentConfigManager.MgmtSvcCfg"
 # Try Catch since agent might not support method and throw error or might be empty
 try
 {
-    $OMSWorkSpaces=$AgentCfg.GetCloudWorkspaces()
-    foreach($OMSWorkSpace in $OMSWorkSpaces)
+    $LAWorkspaces=$AgentCfg.GetCloudWorkspaces()
+    foreach($LAWorkspace in $LAWorkspaces)
 	{
-    $OMSList=$OMSList + $OMSWorkspace.workspaceId + ", "
+    $LAList=$LAList + $LAWorkspace.workspaceId + ", "
     }
-    $OMSList=$OMSList.TrimEnd(", ")
+    $LAList=$LAList.TrimEnd(", ")
 }
 catch
 {
-    $OMSList=''
+    $LAList=''
 }			
 #=======================================================================			
 			
@@ -2500,8 +2500,8 @@ IF(Test-Path $CertRegKey)
   IF($Certvalue)
   {
 	$CertLoaded = $True
-    [string]$ThumbPrint = (Get-ItemProperty $CertRegKey).ChannelCertificateHash
-    $Cert = Get-ChildItem -path cert:\LocalMachine\My | Where-Object {$_.Thumbprint -eq $ThumbPrint}
+    [string]$CertThumbPrint = (Get-ItemProperty $CertRegKey).ChannelCertificateHash
+    $Cert = Get-ChildItem -path cert:\LocalMachine\My | Where-Object {$_.Thumbprint -eq $CertThumbPrint}
     IF ($Cert)
     {
       [datetime]$CertExpiresDateTime = $Cert.NotAfter
@@ -2700,47 +2700,31 @@ ELSE
 }
 #=======================================================================
 
-# Get TLS12SQLCliInstalled Section
+# Get SQL Driver ODBC Section
 #=======================================================================
-$RegPath = "HKLM:SOFTWARE\ODBC\ODBCINST.INI\ODBC Drivers"
-[string]$SQLClient11InstalledStatus = (Get-ItemProperty $RegPath)."SQL Server Native Client 11.0"
+$RegPath = "HKLM:SOFTWARE\Microsoft\Microsoft ODBC Driver 17 for SQL Server\CurrentVersion"
 
-IF ($SQLClient11InstalledStatus -eq "Installed")
+IF (Test-Path $RegPath)
 {
-  $TLS12SQLCliInstalled = $True
+  [string]$SQLODBC = (Get-ItemProperty $RegPath)."Version"
 }
 ELSE
 {
-  $TLS12SQLCliInstalled = $False
+  [string]$SQLODBC = "Not Installed"
 }
 #=======================================================================
 
-# Get TLS12ODBCInstalled Section
-#=======================================================================
-$RegPath = "HKLM:SOFTWARE\ODBC\ODBCINST.INI\ODBC Drivers"
-[string]$ODBCDriver13 = (Get-ItemProperty $RegPath)."ODBC Driver 13 for SQL Server"
-
-IF ($ODBCDriver13 -eq "Installed")
-{
-  $TLS12ODBCInstalled = $True
-}
-ELSE
-{
-  $TLS12ODBCInstalled = $False
-}
-#=======================================================================
-
-# Get MSOLEDBSQL Section
+# Get SQL Driver MSOLEDBSQL Section
 #=======================================================================
 $RegPath = "HKLM:SOFTWARE\Microsoft\Microsoft OLE DB Driver for SQL Server\CurrentVersion"
 
 IF (Test-Path $RegPath)
 {
-  [string]$MSOLEDBSQL = (Get-ItemProperty $RegPath)."Version"
+  [string]$SQLMSOLEDBSQL = (Get-ItemProperty $RegPath)."Version"
 }
 ELSE
 {
-  [string]$MSOLEDBSQL = "Not Installed"
+  [string]$SQLMSOLEDBSQL = "Not Installed"
 }
 #=======================================================================
 
@@ -2754,7 +2738,7 @@ $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/WebConsol
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/WebConsoleURLevel$", $WebConsoleURLevel)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/ConsoleVersion$", $ConsoleURFileVersion)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/ConsoleURLevel$", $ConsoleURLevel)
-$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/OMSWorkspaces$", $OMSList)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/LAWorkspaces$", $LAList)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/PSVersion$", $PSVersion)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/CLRVersion$", $CLRVersion)			
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/OSVersion$", $OSVersion)
@@ -2764,12 +2748,11 @@ $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/ActionAcc
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/InstallPath$", $SCOMPath)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/CertLoaded$", $CertLoaded)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/CertExpires$", $CertExpires)
-$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/ThumbPrint$", $ThumbPrint)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/CertThumbPrint$", $CertThumbPrint)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/CertIssuer$", $CertIssuer)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/TLS12Enforced$", $TLS12Enforced)
-$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/MSOLEDBSQL$", $MSOLEDBSQL)
-$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/TLS12SQLCliInstalled$", $TLS12SQLCliInstalled)
-$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/TLS12ODBCInstalled$", $TLS12ODBCInstalled)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/SQLMSOLEDBSQL$", $SQLMSOLEDBSQL)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Server.Class']/SQLODBC$", $SQLODBC)
 $DiscoveryData.AddInstance($instance)
 
 # Return Discovery Items Normally           
@@ -2784,7 +2767,7 @@ $DiscoveryData
 #Log an event for script ending and total execution time.
 $EndTime = Get-Date
 $ScriptTime = ($EndTime - $StartTime).TotalSeconds
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script has completed. ServerVersion: ($ServerURFileVersion). `n Server UR Level: ($ServerURLevel). `n WebConsoleVersion: ($WebConsoleURFileVersion). `n Web Console UR Level: ($WebConsoleURLevel). `n ConsoleVersion: ($ConsoleURFileVersion). `n Console UR Level: ($ConsoleURLevel). `n OMS Workspaces: ($OMSList). `n PowerShell Version: ($PSVersion). `n CLR Version: ($CLRVersion). `n OSVersion: ($OSVersion). `n Primary MS: ($PrimaryMS). `n Secondary MS Failover list: ($FailoverList). `n Action Account: ($ActionAccount). `n Install path: ($SCOMPath). `n TLS 1.2 Enforced: ($TLS12Enforced). `n SQLClient 11 installed: ($TLS12SQLCliInstalled). `n ODBC Driver 13 installed: ($TLS12ODBCInstalled). `n Runtime was ($ScriptTime) seconds.")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script has completed. ServerVersion: ($ServerURFileVersion). `n Server UR Level: ($ServerURLevel). `n WebConsoleVersion: ($WebConsoleURFileVersion). `n Web Console UR Level: ($WebConsoleURLevel). `n ConsoleVersion: ($ConsoleURFileVersion). `n Console UR Level: ($ConsoleURLevel). `n LA Workspaces: ($LAList). `n PowerShell Version: ($PSVersion). `n CLR Version: ($CLRVersion). `n OSVersion: ($OSVersion). `n Primary MS: ($PrimaryMS). `n Secondary MS Failover list: ($FailoverList). `n Action Account: ($ActionAccount). `n Install path: ($SCOMPath). `n TLS 1.2 Enforced: ($TLS12Enforced). `n ODBC Driver: ($SQLODBC). `n Runtime was ($ScriptTime) seconds.")
 #=================================================================================
 # End of script
           </ScriptBody>
@@ -3094,9 +3077,9 @@ $Process.CreateFlags = 16777216
           <TimeoutSeconds>300</TimeoutSeconds>
         </ProbeAction>
       </Task>
-      <Task ID="SCOM.Management.OMSWorkspaceAdd.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" Timeout="300" Remotable="true">
+      <Task ID="SCOM.Management.LAWorkspaceAdd.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" Timeout="300" Remotable="true">
         <Category>Custom</Category>
-        <WriteAction ID="PSWA" TypeID="SCOM.Management.OMSWorkspaceAdd.WA">
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.LAWorkspaceAdd.WA">
           <WorkspaceID>WorkspaceID</WorkspaceID>
           <WorkspaceKey>WorkspaceKey</WorkspaceKey>
           <ProxyURL />
@@ -3104,9 +3087,9 @@ $Process.CreateFlags = 16777216
           <TimeoutSeconds>300</TimeoutSeconds>
         </WriteAction>
       </Task>
-      <Task ID="SCOM.Management.OMSWorkspaceRemove.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" Timeout="300" Remotable="true">
+      <Task ID="SCOM.Management.LAWorkspaceRemove.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" Timeout="300" Remotable="true">
         <Category>Custom</Category>
-        <WriteAction ID="PSWA" TypeID="SCOM.Management.OMSWorkspaceRemove.WA">
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.LAWorkspaceRemove.WA">
           <WorkspaceID>WorkspaceID</WorkspaceID>
           <TimeoutSeconds>300</TimeoutSeconds>
         </WriteAction>
@@ -3527,8 +3510,8 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
             <Id>SCOM.Management.Agent.Class/ManagementGroups</Id>
           </ColumnInfo>
           <ColumnInfo Index="8" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
-            <Name>OMS Workspaces</Name>
-            <Id>SCOM.Management.Agent.Class/OMSWorkspaces</Id>
+            <Name>LA Workspaces</Name>
+            <Id>SCOM.Management.Agent.Class/LAWorkspaces</Id>
           </ColumnInfo>
           <ColumnInfo Index="11" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
             <Name>PS Installed</Name>
@@ -3624,8 +3607,8 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
             <Id>SCOM.Management.Server.Class/ConsoleURLevel</Id>
           </ColumnInfo>
           <ColumnInfo Index="11" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
-            <Name>OMS Workspaces</Name>
-            <Id>SCOM.Management.Server.Class/OMSWorkspaces</Id>
+            <Name>LA Workspaces</Name>
+            <Id>SCOM.Management.Server.Class/LAWorkspaces</Id>
           </ColumnInfo>
           <ColumnInfo Index="12" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
             <Name>PS VER</Name>
@@ -3976,7 +3959,7 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
         <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="ManagementGroups">
           <Name>Management Groups</Name>
         </DisplayString>
-        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="OMSWorkspaces">
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="LAWorkspaces">
           <Name>Log Analytics Workspaces</Name>
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="OSName">
@@ -3997,8 +3980,8 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
         <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="PSVersion">
           <Name>PS VER</Name>
         </DisplayString>
-        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="ThumbPrint">
-          <Name>ThumbPrint</Name>
+        <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="CertThumbPrint">
+          <Name>Cert ThumbPrint</Name>
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.Agent.Class" SubElementID="UpdateRollup">
           <Name>Update Rollup</Name>
@@ -4069,10 +4052,10 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
         <DisplayString ElementID="SCOM.Management.InstallSoftwareFromShare.Task">
           <Name>Execute Software From Share</Name>
         </DisplayString>
-        <DisplayString ElementID="SCOM.Management.OMSWorkspaceAdd.Task">
+        <DisplayString ElementID="SCOM.Management.LAWorkspaceAdd.Task">
           <Name>Log Analytics Workspace - ADD</Name>
         </DisplayString>
-        <DisplayString ElementID="SCOM.Management.OMSWorkspaceRemove.Task">
+        <DisplayString ElementID="SCOM.Management.LAWorkspaceRemove.Task">
           <Name>Log Analytics Workspace - REMOVE</Name>
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.PendingActions.State.View">
@@ -4141,10 +4124,10 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
         <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="InstallPath">
           <Name>InstallPath</Name>
         </DisplayString>
-        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="MSOLEDBSQL">
-          <Name>MSOLEDBSQL</Name>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="SQLMSOLEDBSQL">
+          <Name>SQL MSOLEDBSQL</Name>
         </DisplayString>
-        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="OMSWorkspaces">
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="LAWorkspaces">
           <Name>Log Analytics Workspaces</Name>
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="OSName">
@@ -4165,17 +4148,14 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
         <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="ServerVersion">
           <Name>Server Version</Name>
         </DisplayString>
-        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="ThumbPrint">
-          <Name>ThumbPrint</Name>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="CertThumbPrint">
+          <Name>Cert ThumbPrint</Name>
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="TLS12Enforced">
           <Name>TLS 1.2 Registry Enforced</Name>
         </DisplayString>
-        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="TLS12ODBCInstalled">
-          <Name>ODBC 13</Name>
-        </DisplayString>
-        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="TLS12SQLCliInstalled">
-          <Name>SQL Client 11</Name>
+        <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="SQLODBC">
+          <Name>SQL ODBC</Name>
         </DisplayString>
         <DisplayString ElementID="SCOM.Management.Server.Class" SubElementID="WebConsoleURLevel">
           <Name>WebConsole UR Level</Name>
