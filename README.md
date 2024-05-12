@@ -1,4 +1,4 @@
-# SCOM.Management 10.22.10610.0
+# SCOM.Management 10.22.10684.0
 
 ## [Download Here][Download]
 
@@ -10,6 +10,7 @@ SCOM - Management Pack to discover properties and add tasks to make SCOM Admins 
 https://kevinholman.com/2017/05/09/scom-management-mp-making-a-scom-admins-life-a-little-easier/
 
 Version History:
+* 10.22.10684.0 - Added support for SCOM 2019 UR6.  Added support for post UR hotfixes KB5029601, KB5029512, KB5028684, KB5033752, KB5037360
 * 10.22.10610.0 - Added support for SCOM 2022 UR2.  Updated MSOLEDBSQL and ODBC driver detection.  Removed SQL Client detection.  Changed OMS references to Log Analytics
 * 10.22.10337.2 - Added support for SCOM 2019 UR5
 * 10.22.10337.1 - Added support for SCOM 2022 UR1
