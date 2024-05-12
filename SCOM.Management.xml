@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.22.10610.0</Version>
+      <Version>10.22.10684.0</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1495,6 +1495,7 @@ IF ($SCOMAgentVersion -eq "10.19.10177.0")
   "10.19.10185.0" {"2019 UR3 with KB5005527"}
   "10.19.10200.0" {"2019 UR4"}
   "10.19.10211.0" {"2019 UR5"}
+  "10.19.10253.0" {"2019 UR6"}
   
   # SCOM 2022
   "10.22.10056.0" {"2022 RTM"}
@@ -2078,6 +2079,8 @@ function URVersion($Version)
     "7.2.12324.0" {"2016 UR10"}
     "8.0.11057.0" {"2016 UR10"} #Gateway		
     "7.2.12335.0" {"2016 UR10 with KB5006871"}
+    "7.2.12345.0" {"2016 UR10 with KB5028684"}
+    "7.2.12348.0" {"2016 UR10 with KB5037360"}
 	
     # SEMI ANNUAL Channel
     "7.3.13142.0" {"1801"}
@@ -2102,12 +2105,24 @@ function URVersion($Version)
     "10.19.10574.0" {"2019 UR4 with KB5016576"}
     "10.19.10576.0" {"2019 UR4 with KB5016576"}	
     "10.19.10606.0" {"2019 UR5"}
-    "10.19.10211.0" {"2019 UR5"} #Gateway	
+    "10.19.10211.0" {"2019 UR5"} #Gateway
+	"10.19.10615.0" {"2019 UR5 with KB5029601"}
+	"10.19.10616.0" {"2019 UR5 with KB5029512"}
+	"10.19.10618.0" {"2019 UR5 with KB5028684"}
+	"10.19.10649.0" {"2019 UR6"}
+    "10.19.10253.0" {"2019 UR6"} #Gateway	
+    "10.19.10652.0" {"2019 UR6 with KB5037360"}
     
     # SCOM 2022
     "10.22.10118.0" {"2022 RTM"}  
-    "10.22.10337.0" {"2022 UR1"} 
-    "10.22.10610.0" {"2022 UR2"} 	
+    "10.22.10337.0" {"2022 UR1"}
+	"10.22.10448.0" {"2022 UR1 with KB5024286"}
+	"10.22.10565.0" {"2022 UR1 with KB5029512"}
+	"10.22.10575.0" {"2022 UR1 with KB5029601"}
+	"10.22.10560.0" {"2022 UR1 with KB5028684"}
+	"10.22.10610.0" {"2022 UR2"} 	
+	"10.22.10618.0" {"2022 UR2 with KB5033752"} 
+	"10.22.10684.0" {"2022 UR2 with KB5037360"} 
   }
 }
                         			
@@ -2295,6 +2310,16 @@ ELSE  #This is a Management Server not a Gateway
       $ServerURFileVersion = $ServerUR3HotfixFileVersion
     }
 
+	#Check to see if this is SCOM 2019 UR6 plus hotfix
+    IF ($ServerURFileVersion -eq "10.19.10649.0")
+    {
+      #This is SCOM 2019 UR6.  Check for KB5037360
+      $ServerUR6HotfixFile = Get-Item $SCOMCorePath\Server\Tools\TMF\OMTraceTMFVer.Dll
+      $ServerUR6HotfixFileVersion = $ServerUR6HotfixFile.VersionInfo.FileVersion
+      $ServerURFileVersion = $ServerUR6HotfixFileVersion
+    }
+
+
     Try
 	{
 	  $WebConsoleURFile = Get-Item $SCOMCorePath\WebConsole\Dashboard\OMVersion.dll
@@ -2331,7 +2356,18 @@ ELSE  #This is a Management Server not a Gateway
       $ConsoleHotfixFile = Get-Item $SCOMCorePath\Console\Microsoft.EnterpriseManagement.UI.Authoring.dll
       $ConsoleHotfixFileVersion = $ConsoleHotfixFile.VersionInfo.FileVersion
       $ConsoleURFileVersion = $ConsoleHotfixFileVersion
-    }	
+    }
+
+	#Need to see if this is Post UR6 hotfix for console
+    IF ($ConsoleURFileVersion -eq "10.19.10649.0")
+    {
+      #This is SCOM 2019 UR6.  Check for KB5037360
+	  $ConsoleHotfixFile = Get-Item $SCOMCorePath\Console\Tools\TMF\OMTraceTMFVer.Dll
+      $ConsoleHotfixFileVersion = $ConsoleHotfixFile.VersionInfo.FileVersion
+      $ConsoleURFileVersion = $ConsoleHotfixFileVersion
+    }
+
+	
   }
 
 
@@ -2341,6 +2377,17 @@ ELSE  #This is a Management Server not a Gateway
     #We need to use a different file for versioning for SCOM 2022
     $ServerURFile = Get-Item $SCOMCorePath\Server\Microsoft.Mom.Common.dll
     $ServerURFileVersion = $ServerURFile.VersionInfo.FileVersion
+	
+	#Check to see if this is SCOM 2022 UR2 plus hotfix
+    IF ($ServerURFileVersion -eq "10.22.10610.0")
+    {
+      #This is SCOM 2022 UR2. Check for KB5037360
+      $ServerUR2HotfixFile = Get-Item $SCOMCorePath\Server\Tools\TMF\OMTraceTMFVer.Dll
+      $ServerUR2HotfixFileVersion = $ServerUR2HotfixFile.VersionInfo.FileVersion
+      $ServerURFileVersion = $ServerUR2HotfixFileVersion
+    }
+
+	
     Try
 	{
 	  $WebConsoleURFile = Get-Item $SCOMCorePath\WebConsole\Dashboard\OMVersion.dll
@@ -2360,6 +2407,16 @@ ELSE  #This is a Management Server not a Gateway
 	{
 	  $ConsoleURFileVersion = ""
 	}
+	
+		#Check to see if this is SCOM 2022 UR2 plus hotfix
+    IF (($ConsoleURFileVersion -eq "10.22.10605.0") -or ($ConsoleURFileVersion -eq "10.22.10610.0"))
+    {
+      #This is SCOM 2022 UR2. Check for KB5033752 and KB5037360
+      $ConsoleUR2HotfixFile = Get-Item $SCOMCorePath\Console\Tools\TMF\OMTraceTMFVer.Dll
+      $ConsoleUR2HotfixFileVersion = $ConsoleUR2HotfixFile.VersionInfo.FileVersion
+      $ConsoleURFileVersion = $ConsoleUR2HotfixFileVersion
+    }
+	
   }	
 }
 $ServerURLevel = URVersion $ServerURFileVersion
