@@ -1606,14 +1606,14 @@ IF (Test-Path -Path $FilePath)
 
 #Get Primary MS
 $PrimaryArr = $ConfigFileXML.Message.State.Parents.Added.Item | Where-Object {$_.IsPrimary -eq "True"}
-$PrimaryMS = $PrimaryArr.AuthenticationName
+$PrimaryMS = ($PrimaryArr.AuthenticationName)Split(".")[0]
 
 #Get list of Secondary MS
 $SecondaryArr = $ConfigFileXML.Message.State.Parents.Added.Item | Where-Object {$_.IsPrimary -eq "False"}
 [string]$SecondaryMSList = @()
 FOREACH ($SecondaryXML in $SecondaryArr)
 {
-$SecondaryMS = $SecondaryXML.AuthenticationName
+$SecondaryMS = ($SecondaryXML.AuthenticationName).Split(".")[0]
 $SecondaryMSList = $SecondaryMSList + $SecondaryMS + ", "
 }
 $FailoverList = $SecondaryMSList.TrimEnd(", ")
