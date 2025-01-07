@@ -1606,7 +1606,7 @@ IF (Test-Path -Path $FilePath)
 
 #Get Primary MS
 $PrimaryArr = $ConfigFileXML.Message.State.Parents.Added.Item | Where-Object {$_.IsPrimary -eq "True"}
-$PrimaryMS = ($PrimaryArr.AuthenticationName)Split(".")[0]
+$PrimaryMS = ($PrimaryArr.AuthenticationName).Split(".")[0]
 
 #Get list of Secondary MS
 $SecondaryArr = $ConfigFileXML.Message.State.Parents.Added.Item | Where-Object {$_.IsPrimary -eq "False"}
