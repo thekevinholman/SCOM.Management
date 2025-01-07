@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.22.10684.0</Version>
+      <Version>10.25.10132.0</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1371,7 +1371,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
 #
 #  Author: Kevin Holman
 #  
-#  Version: 3.1
+#  Version: 3.2
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName,[string]$IP)
 
@@ -1500,7 +1500,10 @@ IF ($SCOMAgentVersion -eq "10.19.10177.0")
   # SCOM 2022
   "10.22.10056.0" {"2022 RTM"}
   "10.22.10110.0" {"2022 UR1"}
-  "10.22.10208.0" {"2022 UR2"}  
+  "10.22.10208.0" {"2022 UR2"}
+  
+  # SCOM 2025
+  "10.25.10079.0" {"2025 RTM"}
 
   # If nothing else found then default to version number
   default {$SCOMAgentVersion} 
@@ -1974,7 +1977,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
 #
 #  Author: Kevin Holman
 #
-#  Version: 3.1
+#  Version: 3.2
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName)
 
@@ -2123,6 +2126,9 @@ function URVersion($Version)
 	"10.22.10610.0" {"2022 UR2"} 	
 	"10.22.10618.0" {"2022 UR2 with KB5033752"} 
 	"10.22.10684.0" {"2022 UR2 with KB5037360"} 
+	
+    # SCOM 2025
+    "10.25.10132.0" {"2025 RTM"}	
   }
 }
                         			
