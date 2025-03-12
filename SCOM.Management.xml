@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.25.10132.0</Version>
+      <Version>10.25.10132.1</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1977,7 +1977,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
 #
 #  Author: Kevin Holman
 #
-#  Version: 3.2
+#  Version: 3.3
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName)
 
@@ -2184,6 +2184,17 @@ IF ($SCOMCorePath -match "Gateway")
     $MOMModules2File = Get-Item $SCOMPath\MOMModules2.dll
     $MOMModules2FileVersion = $MOMModules2File.VersionInfo.FileVersion
     $ServerURFileVersion = $MOMModules2FileVersion
+  }
+  ELSEIF ($ServerURFileVersion -eq "10.19.10253.0")
+  {
+    #This is SCOM 2019 UR6.  Check for Post UR6 hotfix
+    $SSHLIBFile = Get-Item $SCOMPath\sshlib.dll
+    $SSHLIBVersion = $SSHLIBFile.VersionInfo.FileVersion
+    IF ($SSHLIBVersion -eq "10.19.1255.0")
+    {
+      #This is KB5037360 patch on Gateway
+      $ServerURFileVersion = "10.19.10652.0"
+    }
   }
   ELSEIF ($MajorSCOMVersion -eq "10.22")
   {
@@ -2833,6 +2844,7 @@ $ScriptTime = ($EndTime - $StartTime).TotalSeconds
 $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script has completed. ServerVersion: ($ServerURFileVersion). `n Server UR Level: ($ServerURLevel). `n WebConsoleVersion: ($WebConsoleURFileVersion). `n Web Console UR Level: ($WebConsoleURLevel). `n ConsoleVersion: ($ConsoleURFileVersion). `n Console UR Level: ($ConsoleURLevel). `n LA Workspaces: ($LAList). `n PowerShell Version: ($PSVersion). `n CLR Version: ($CLRVersion). `n OSVersion: ($OSVersion). `n Primary MS: ($PrimaryMS). `n Secondary MS Failover list: ($FailoverList). `n Action Account: ($ActionAccount). `n Install path: ($SCOMPath). `n TLS 1.2 Enforced: ($TLS12Enforced). `n ODBC Driver: ($SQLODBC). `n Runtime was ($ScriptTime) seconds.")
 #=================================================================================
 # End of script
+
           </ScriptBody>
           <Parameters>
             <Parameter>
