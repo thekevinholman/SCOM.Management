@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.25.10132.1</Version>
+      <Version>10.25.10132.2</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1501,6 +1501,7 @@ IF ($SCOMAgentVersion -eq "10.19.10177.0")
   "10.22.10056.0" {"2022 RTM"}
   "10.22.10110.0" {"2022 UR1"}
   "10.22.10208.0" {"2022 UR2"}
+  "10.22.10870.0" {"2022 UR3"}
   
   # SCOM 2025
   "10.25.10079.0" {"2025 RTM"}
@@ -2125,7 +2126,8 @@ function URVersion($Version)
 	"10.22.10560.0" {"2022 UR1 with KB5028684"}
 	"10.22.10610.0" {"2022 UR2"} 	
 	"10.22.10618.0" {"2022 UR2 with KB5033752"} 
-	"10.22.10684.0" {"2022 UR2 with KB5037360"} 
+	"10.22.10684.0" {"2022 UR2 with KB5037360"}
+	"10.22.11642.0" {"2022 UR3"}
 	
     # SCOM 2025
     "10.25.10132.0" {"2025 RTM"}	
