@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.25.10132.2</Version>
+      <Version>10.25.10132.5</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1229,7 +1229,6 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
           <DiscoveryClass TypeID="SCOM.Management.Agent.Class">
             <Property PropertyID="PSInstalled" />
             <Property PropertyID="Architecture" />
-            <Property PropertyID="OSName" />
             <Property PropertyID="APMInstalled" />
             <Property PropertyID="DotNetVersion" />
           </DiscoveryClass>
@@ -1270,14 +1269,6 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
               <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
             </RegistryAttributeDefinition>
             <RegistryAttributeDefinition>
-              <AttributeName>OSName</AttributeName>
-              <Path>SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductName</Path>
-              <PathType>1</PathType>
-              <!-- 0=regKey 1=regValue -->
-              <AttributeType>1</AttributeType>
-              <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
-            </RegistryAttributeDefinition>
-            <RegistryAttributeDefinition>
               <AttributeName>APMInstalled</AttributeName>
               <Path>SYSTEM\CurrentControlSet\Services\System Center Management APM</Path>
               <PathType>0</PathType>
@@ -1309,10 +1300,6 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
               <Setting>
                 <Name>$MPElement[Name="SCOM.Management.Agent.Class"]/Architecture$</Name>
                 <Value>$Data/Values/Architecture$</Value>
-              </Setting>
-              <Setting>
-                <Name>$MPElement[Name="SCOM.Management.Agent.Class"]/OSName$</Name>
-                <Value>$Data/Values/OSName$</Value>
               </Setting>
               <Setting>
                 <Name>$MPElement[Name="SCOM.Management.Agent.Class"]/APMInstalled$</Name>
@@ -1351,6 +1338,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
             <Property PropertyID="PrimaryMS" />
             <Property PropertyID="FailoverList" />
             <Property PropertyID="ActionAccount" />
+            <Property PropertyID="OSName" />
             <Property PropertyID="OSVersion" />
             <Property PropertyID="InstallPath" />
             <Property PropertyID="CertLoaded" />
@@ -1371,7 +1359,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
 #
 #  Author: Kevin Holman
 #  
-#  Version: 3.2
+#  Version: 3.3
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName,[string]$IP)
 
@@ -1452,7 +1440,7 @@ IF ($SCOMAgentVersion -eq "10.19.10177.0")
   $SCOMAgentVersion = $SCOMAgentVersionFile.VersionInfo.FileVersion
 }
 
-[string]$SCOMAgentURVersion = switch($SCOMAgentVersion)
+[string]$SCOMAgentURVersion = switch -wildcard ($SCOMAgentVersion)
 {
   # SCOM 2012
   "7.1.10184.0" {"2012 R2 RTM"}
@@ -1496,7 +1484,10 @@ IF ($SCOMAgentVersion -eq "10.19.10177.0")
   "10.19.10200.0" {"2019 UR4"}
   "10.19.10211.0" {"2019 UR5"}
   "10.19.10253.0" {"2019 UR6"}
-  
+ 
+  # Azure MMA (Deprecated)
+  "10.20.*" {"Azure MMA (Deprecated)"}
+ 
   # SCOM 2022
   "10.22.10056.0" {"2022 RTM"}
   "10.22.10110.0" {"2022 UR1"}
@@ -1671,6 +1662,11 @@ CATCH
 }
 #=======================================================================
 
+# Get OSName  section
+#=======================================================================
+[string]$OSName = (Get-WmiObject -Class Win32_OperatingSystem).Caption
+#=======================================================================
+
 # Get OSVersion  section
 #=======================================================================
 $OSRegKey = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
@@ -1790,6 +1786,7 @@ $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/CLRVersion
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/PrimaryMS$", $PrimaryMS)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/FailoverList$", $FailoverList)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/ActionAccount$", $ActionAccount)
+$instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/OSName$", $OSName)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/OSVersion$", $OSVersion)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/InstallPath$", $SCOMAgentPath)
 $instance.AddProperty("$MPElement[Name='SCOM.Management.Agent.Class']/CertLoaded$", $CertLoaded)
@@ -1812,7 +1809,7 @@ $DiscoveryData
 #Log an event for script ending and total execution time.
 $EndTime = Get-Date
 $ScriptTime = ($EndTime - $StartTime).TotalSeconds
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent Version: ($SCOMAgentVersion). `nAgent Rollup: ($SCOMAgentURVersion). `nADIntEnabled: ($ADIntEnabled). `nManagement Group list: ($MGList). `Log Analytics Workspace list: ($LAList). `nProxyURL: ($ProxyURL). `nPowerShell Version: ($PSVersion). `nCLR Version: ($CLRVersion). `n Primary MS: ($PrimaryMS). `nSecondary MS Failover list: ($FailoverList). `nAction Account: ($ActionAccount). `nOS Version: ($OSVersion). `nSCOM Agent Path: ($SCOMAgentPath). `nCertLoaded: ($CertLoaded). `nCert Expiration: ($CertExpires). `nCert Thumbprint: ($CertThumbPrint). `nCert Issuer: ($CertIssuer). `nIP ($IPList). `nConnection: ($PortList). `nScript runtime: ($ScriptTime) seconds.")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent Version: ($SCOMAgentVersion). `nAgent Rollup: ($SCOMAgentURVersion). `nADIntEnabled: ($ADIntEnabled). `nManagement Group list: ($MGList). `Log Analytics Workspace list: ($LAList). `nProxyURL: ($ProxyURL). `nPowerShell Version: ($PSVersion). `nCLR Version: ($CLRVersion). `n Primary MS: ($PrimaryMS). `nSecondary MS Failover list: ($FailoverList). `nAction Account: ($ActionAccount). `nOS Name: ($OSName). `nOS Version: ($OSVersion). `nSCOM Agent Path: ($SCOMAgentPath). `nCertLoaded: ($CertLoaded). `nCert Expiration: ($CertExpires). `nCert Thumbprint: ($CertThumbPrint). `nCert Issuer: ($CertIssuer). `nIP ($IPList). `nConnection: ($PortList). `nScript runtime: ($ScriptTime) seconds.")
 #=================================================================================
 # End of script
 		  </ScriptBody>
