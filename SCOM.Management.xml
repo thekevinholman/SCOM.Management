@@ -1440,6 +1440,14 @@ IF ($SCOMAgentVersion -eq "10.19.10177.0")
   $SCOMAgentVersion = $SCOMAgentVersionFile.VersionInfo.FileVersion
 }
 
+#Check for SCOM 2025 with Update Rollup
+IF ($SCOMAgentVersion -eq "10.25.10079.0")
+{
+  #This is SCOM 2025.  Check for Update Rollup
+  $SCOMAgentVersionFile = Get-Item $SCOMAgentPath\MOMModules.dll
+  $SCOMAgentVersion = $SCOMAgentVersionFile.VersionInfo.FileVersion
+}
+
 [string]$SCOMAgentURVersion = switch -wildcard ($SCOMAgentVersion)
 {
   # SCOM 2012
@@ -1496,6 +1504,7 @@ IF ($SCOMAgentVersion -eq "10.19.10177.0")
   
   # SCOM 2025
   "10.25.10079.0" {"2025 RTM"}
+  "10.25.10994.0" {"2025 UR1"}  
 
   # If nothing else found then default to version number
   default {$SCOMAgentVersion} 
