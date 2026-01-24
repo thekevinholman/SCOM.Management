@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.25.10132.6</Version>
+      <Version>10.25.10324.0</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
