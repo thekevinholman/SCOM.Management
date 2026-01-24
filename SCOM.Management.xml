@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.25.10132.5</Version>
+      <Version>10.25.10132.6</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1975,7 +1975,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
 #
 #  Author: Kevin Holman
 #
-#  Version: 3.3
+#  Version: 3.4
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName)
 
@@ -1985,7 +1985,7 @@ param($SourceId,$ManagedEntityId,$ComputerName,$MGName)
 # $SourceId = '{00000000-0000-0000-0000-000000000000}'
 # $ManagedEntityId = '{00000000-0000-0000-0000-000000000000}'
 # $Computername = 'server.domain.com'
-# $MGName = 'SCOM1'
+# $MGName = 'MG1'
 #=================================================================================
 
 
@@ -2125,9 +2125,13 @@ function URVersion($Version)
 	"10.22.10618.0" {"2022 UR2 with KB5033752"} 
 	"10.22.10684.0" {"2022 UR2 with KB5037360"}
 	"10.22.11642.0" {"2022 UR3"}
+	"10.22.11951.0" {"2022 UR3 with KB5071859"}
 	
     # SCOM 2025
-    "10.25.10132.0" {"2025 RTM"}	
+    "10.25.10132.0" {"2025 RTM"}
+	"10.25.10079.0" {"2025 RTM"}  #Gateway
+    "10.25.10324.0"	{"2025 UR1"}
+    "10.25.10994.0"	{"2025 UR1"}  #Gateway
   }
 }
                         			
@@ -2200,6 +2204,18 @@ IF ($SCOMCorePath -match "Gateway")
     #This is SCOM 2022
     $ServerURFile = Get-Item $SCOMPath\Microsoft.SystemCenter.Telemetry.EventData.dll
     $ServerURFileVersion = $ServerURFile.VersionInfo.FileVersion 
+    #Check for Post UR3 hotfix KB5071859
+	IF ($ServerURFileVersion -eq "10.22.11642.0")
+    {
+      $ServerURFile = Get-Item $SCOMPath\MOMAgentManagement.dll
+      $ServerURFileVersion = $ServerURFile.VersionInfo.FileVersion
+    }
+  }
+  ELSEIF ($MajorSCOMVersion -eq "10.25")
+  {
+    #This is SCOM 2025
+    $ServerURFile = Get-Item $SCOMPath\MOMAgentManagement.dll
+    $ServerURFileVersion = $ServerURFile.VersionInfo.FileVersion 
   }
   
   # Set these to null since we do not expect a web console or a console on a GW
@@ -2225,7 +2241,6 @@ ELSE  #This is a Management Server not a Gateway
     {
       $WebConsoleURFileVersion = ""
     }
-
     #Need to see if this is Post SCOM2012 UR14 hotfix for web console
     IF ($WebConsoleURFileVersion -eq "7.1.10226.1387")
     {
@@ -2234,7 +2249,6 @@ ELSE  #This is a Management Server not a Gateway
       $WebConsoleHotfixFileVersion = $WebConsoleHotfixFile.VersionInfo.FileVersion
       $WebConsoleURFileVersion = $WebConsoleHotfixFileVersion
     }
-
     Try
     {
       $ConsoleURFile = Get-Item $SCOMCorePath\Console\Microsoft.EnterpriseManagement.Management.DataProviders.dll
@@ -2245,7 +2259,6 @@ ELSE  #This is a Management Server not a Gateway
       $ConsoleURFileVersion = ""
     }
   }
-
   IF ($MajorSCOMVersion -eq "7.2")  #SCOM2016
   {
     Try
@@ -2257,7 +2270,6 @@ ELSE  #This is a Management Server not a Gateway
     {
       $WebConsoleURFileVersion = ""
     }
-
     #Need to see if this is Post SCOM2016 UR10 hotfix for web console
     IF ($WebConsoleURFileVersion -eq "7.2.12324.0")
     {
@@ -2266,7 +2278,6 @@ ELSE  #This is a Management Server not a Gateway
       $WebConsoleHotfixFileVersion = $WebConsoleHotfixFile.VersionInfo.FileVersion
       $WebConsoleURFileVersion = $WebConsoleHotfixFileVersion
     }
-
     Try
     {
       $ConsoleURFile = Get-Item $SCOMCorePath\Console\Microsoft.EnterpriseManagement.Monitoring.DataProviders.dll
@@ -2277,12 +2288,10 @@ ELSE  #This is a Management Server not a Gateway
       $ConsoleURFileVersion = ""
     }
   }
-
   IF ($MajorSCOMVersion -eq "7.3")  #SCOM 1801 or 1807 Semi Annual Channel
   {
     $ServerURFile = Get-Item $SCOMCorePath\Server\Microsoft.EnterpriseManagement.DataAccessLayer.dll
     $ServerURFileVersion = $ServerURFile.VersionInfo.FileVersion
-
     Try
     {
       $WebConsoleURFile = Get-Item $SCOMCorePath\WebConsole\WebHost\bin\Microsoft.Mom.Common.dll
@@ -2302,7 +2311,6 @@ ELSE  #This is a Management Server not a Gateway
       $ConsoleURFileVersion = ""
     }
   }
-
   IF ($MajorSCOMVersion -eq "10.19") #SCOM 2019
   {
     #We need to use a different file for versioning for SCOM 2019
@@ -2325,7 +2333,6 @@ ELSE  #This is a Management Server not a Gateway
       $ServerUR3HotfixFileVersion = $ServerUR3HotfixFile.VersionInfo.FileVersion
       $ServerURFileVersion = $ServerUR3HotfixFileVersion
     }
-
 	#Check to see if this is SCOM 2019 UR6 plus hotfix
     IF ($ServerURFileVersion -eq "10.19.10649.0")
     {
@@ -2334,8 +2341,6 @@ ELSE  #This is a Management Server not a Gateway
       $ServerUR6HotfixFileVersion = $ServerUR6HotfixFile.VersionInfo.FileVersion
       $ServerURFileVersion = $ServerUR6HotfixFileVersion
     }
-
-
     Try
 	{
 	  $WebConsoleURFile = Get-Item $SCOMCorePath\WebConsole\Dashboard\OMVersion.dll
@@ -2345,7 +2350,6 @@ ELSE  #This is a Management Server not a Gateway
 	{
 	  $WebConsoleURFileVersion = ""
 	}
-    
     #Need to see if this isPost UR3 hotfix for web console
     IF ($WebConsoleURFileVersion -eq "10.19.10505.0")
     {
@@ -2354,7 +2358,6 @@ ELSE  #This is a Management Server not a Gateway
       $WebConsoleHotfixFileVersion = $WebConsoleHotfixFile.VersionInfo.FileVersion
       $WebConsoleURFileVersion = $WebConsoleHotfixFileVersion
     }
-
 	Try
 	{
 	  $ConsoleURFile = Get-Item $SCOMCorePath\Console\Microsoft.MOM.UI.Components.dll
@@ -2364,7 +2367,6 @@ ELSE  #This is a Management Server not a Gateway
 	{
 	  $ConsoleURFileVersion = ""
 	}
-	
     #Need to see if this is Post UR4 hotfix for console
     IF ($ConsoleURFileVersion -eq "10.19.10569.0")
     {
@@ -2373,7 +2375,6 @@ ELSE  #This is a Management Server not a Gateway
       $ConsoleHotfixFileVersion = $ConsoleHotfixFile.VersionInfo.FileVersion
       $ConsoleURFileVersion = $ConsoleHotfixFileVersion
     }
-
 	#Need to see if this is Post UR6 hotfix for console
     IF ($ConsoleURFileVersion -eq "10.19.10649.0")
     {
@@ -2382,11 +2383,7 @@ ELSE  #This is a Management Server not a Gateway
       $ConsoleHotfixFileVersion = $ConsoleHotfixFile.VersionInfo.FileVersion
       $ConsoleURFileVersion = $ConsoleHotfixFileVersion
     }
-
-	
   }
-
-
   IF ($MajorSCOMVersion -eq "10.22") #SCOM 2022
   {
     #Detect SCOM UR Version
@@ -2402,9 +2399,17 @@ ELSE  #This is a Management Server not a Gateway
       $ServerUR2HotfixFileVersion = $ServerUR2HotfixFile.VersionInfo.FileVersion
       $ServerURFileVersion = $ServerUR2HotfixFileVersion
     }
-
-	
-    Try
+	#Check discovered server file version to see if this is SCOM 2022 UR3 console plus hotfix
+    IF ($ServerURFileVersion -eq "10.22.11642.0")
+    {
+      #This is SCOM 2022 UR3. Check for KB5071859
+      $ServerUR3HotfixFile = Get-Item $SCOMCorePath\Server\MOMAgentManagement.dll
+      $ServerUR3HotfixFileVersion = $ServerUR3HotfixFile.VersionInfo.FileVersion
+      $ServerURFileVersion = $ServerUR3HotfixFileVersion
+    }	
+    
+	#Get Main UR WebConsole version	
+	Try
 	{
 	  $WebConsoleURFile = Get-Item $SCOMCorePath\WebConsole\Dashboard\OMVersion.dll
 	  $WebConsoleURFileVersion = $WebConsoleURFile.VersionInfo.FileVersion
@@ -2413,7 +2418,8 @@ ELSE  #This is a Management Server not a Gateway
 	{
 	  $WebConsoleURFileVersion = ""
 	}
-    
+	
+	#Get Main UR Console Version
 	Try
 	{
 	  $ConsoleURFile = Get-Item $SCOMCorePath\Console\Microsoft.MOM.UI.Components.dll
@@ -2423,8 +2429,7 @@ ELSE  #This is a Management Server not a Gateway
 	{
 	  $ConsoleURFileVersion = ""
 	}
-	
-		#Check to see if this is SCOM 2022 UR2 plus hotfix
+	#Check discovered console file version to see if this is SCOM 2022 UR2 console plus hotfix
     IF (($ConsoleURFileVersion -eq "10.22.10605.0") -or ($ConsoleURFileVersion -eq "10.22.10610.0"))
     {
       #This is SCOM 2022 UR2. Check for KB5033752 and KB5037360
@@ -2432,7 +2437,45 @@ ELSE  #This is a Management Server not a Gateway
       $ConsoleUR2HotfixFileVersion = $ConsoleUR2HotfixFile.VersionInfo.FileVersion
       $ConsoleURFileVersion = $ConsoleUR2HotfixFileVersion
     }
-	
+	#Check discovered console file version to see if this is SCOM 2022 UR3 Console plus hotfix
+    IF ($ConsoleURFileVersion -eq "10.22.11642.0")
+    {
+      #This is SCOM 2022 UR3. Check for KB5071859
+      $ConsoleUR3HotfixFile = Get-Item $SCOMCorePath\Console\zh-hans\Microsoft.EnterpriseManagement.UI.ConsoleFramework.resources.dll
+      $ConsoleUR3HotfixFileVersion = $ConsoleUR3HotfixFile.VersionInfo.FileVersion
+      $ConsoleURFileVersion = $ConsoleUR3HotfixFileVersion
+    }
+  }	
+
+  IF ($MajorSCOMVersion -eq "10.25") #SCOM 2025
+  {
+    #Detect SCOM UR Version
+    #We need to use a different file for versioning for SCOM 2025
+    #In SCOM 2025 UR1 only the following file and Microsoft.Mon.Sdk.Authorization.dll changed version in main folder.
+    $ServerURFile = Get-Item $SCOMCorePath\Server\MOMAgentManagement.dll
+    $ServerURFileVersion = $ServerURFile.VersionInfo.FileVersion
+    
+    #Determine main Webconsole file version for 2025
+    Try
+	{
+	  $WebConsoleURFile = Get-Item $SCOMCorePath\WebConsole\Dashboard\OMVersion.dll
+	  $WebConsoleURFileVersion = $WebConsoleURFile.VersionInfo.FileVersion
+	}
+	Catch
+	{
+	  $WebConsoleURFileVersion = ""
+	}
+   
+    #Determine main Console file version for 2025
+	Try
+	{
+	  $ConsoleURFile = Get-Item $SCOMCorePath\Console\Microsoft.MOM.UI.Components.dll
+	  $ConsoleURFileVersion = $ConsoleURFile.VersionInfo.FileVersion
+	}
+	Catch
+	{
+	  $ConsoleURFileVersion = ""
+	}
   }	
 }
 $ServerURLevel = URVersion $ServerURFileVersion
@@ -3136,6 +3179,9 @@ $Process.CreateFlags = 16777216
 
             CommandAndFilePath = WScript.Arguments(0)
 
+            Wscript.Echo "Attempting to run command line:"
+            Wscript.Echo CommandAndFilePath
+
             Set objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
 
             Set objProcess = objWMIService.Get("Win32_Process")
@@ -3146,7 +3192,16 @@ $Process.CreateFlags = 16777216
             Set strShell = objWMIService.ExecMethod( _
             "Win32_Process", "Create", objProgram)
 
-            Wscript.Echo "Software Install Executed"
+            'Check for errors
+            If Err.Number &lt;&gt; 0 Then
+              ' Error occurred - handle it
+              WScript.Echo "ERROR!!!"
+              WScript.Echo "Error Number: " &amp; Err.Number
+              WScript.Echo "Error Description: " &amp; Err.Description
+              Err.Clear ' Clear the error to continue execution
+            Else
+              Wscript.Echo "Software Install Attempt Completed"
+            End If
           </ScriptBody>
           <TimeoutSeconds>300</TimeoutSeconds>
         </ProbeAction>
