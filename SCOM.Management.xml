@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.25.10324.0</Version>
+      <Version>10.25.10324.1</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1984,7 +1984,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
 #
 #  Author: Kevin Holman
 #
-#  Version: 3.4
+#  Version: 3.5
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName)
 
@@ -2414,7 +2414,10 @@ ELSE  #This is a Management Server not a Gateway
       #This is SCOM 2022 UR3. Check for KB5071859
       $ServerUR3HotfixFile = Get-Item $SCOMCorePath\Server\MOMAgentManagement.dll
       $ServerUR3HotfixFileVersion = $ServerUR3HotfixFile.VersionInfo.FileVersion
-      $ServerURFileVersion = $ServerUR3HotfixFileVersion
+      IF ($ServerUR3HotfixFileVersion -eq "10.22.11951.0")
+      {
+        $ServerURFileVersion = $ServerUR3HotfixFileVersion
+      }
     }	
     
 	#Get Main UR WebConsole version	
@@ -2452,7 +2455,10 @@ ELSE  #This is a Management Server not a Gateway
       #This is SCOM 2022 UR3. Check for KB5071859
       $ConsoleUR3HotfixFile = Get-Item $SCOMCorePath\Console\zh-hans\Microsoft.EnterpriseManagement.UI.ConsoleFramework.resources.dll
       $ConsoleUR3HotfixFileVersion = $ConsoleUR3HotfixFile.VersionInfo.FileVersion
-      $ConsoleURFileVersion = $ConsoleUR3HotfixFileVersion
+      IF ($ConsoleUR3HotfixFileVersion -eq "10.22.11951.0")
+	  {
+	    $ConsoleURFileVersion = $ConsoleUR3HotfixFileVersion
+	  }
     }
   }	
 
