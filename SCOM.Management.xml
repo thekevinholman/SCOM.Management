@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.25.10324.1</Version>
+      <Version>10.25.10603.0</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1359,7 +1359,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
 #
 #  Author: Kevin Holman
 #  
-#  Version: 3.3
+#  Version: 3.4
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName,[string]$IP)
 
@@ -1446,6 +1446,18 @@ IF ($SCOMAgentVersion -eq "10.25.10079.0")
   #This is SCOM 2025.  Check for Update Rollup
   $SCOMAgentVersionFile = Get-Item $SCOMAgentPath\MOMModules.dll
   $SCOMAgentVersion = $SCOMAgentVersionFile.VersionInfo.FileVersion
+  IF ($SCOMAgentVersion -eq "10.25.10994.0")
+  {
+    #This is UR1.
+	#Check for KB5080648
+    $SCOMAgentUR1HotfixVersionFile = Get-Item $SCOMAgentPath\MOMConnector.dll
+    $SCOMAgentUR1HotfixVersion = $SCOMAgentUR1HotfixVersionFile.VersionInfo.FileVersion
+	IF ($SCOMAgentUR1HotfixVersion -eq "10.25.11168.0")
+	{
+	  #Set version to match the discovered version in SCOM console and OMProducts.
+	  $SCOMAgentVersion = $SCOMAgentUR1HotfixVersion	
+	}
+  }
 }
 
 [string]$SCOMAgentURVersion = switch -wildcard ($SCOMAgentVersion)
@@ -1504,7 +1516,8 @@ IF ($SCOMAgentVersion -eq "10.25.10079.0")
   
   # SCOM 2025
   "10.25.10079.0" {"2025 RTM"}
-  "10.25.10994.0" {"2025 UR1"}  
+  "10.25.10994.0" {"2025 UR1"}
+  "10.25.11168.0" {"2025 UR1 with KB5080648"}  
 
   # If nothing else found then default to version number
   default {$SCOMAgentVersion} 
@@ -1984,7 +1997,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
 #
 #  Author: Kevin Holman
 #
-#  Version: 3.5
+#  Version: 3.6
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName)
 
@@ -2141,6 +2154,7 @@ function URVersion($Version)
 	"10.25.10079.0" {"2025 RTM"}  #Gateway
     "10.25.10324.0"	{"2025 UR1"}
     "10.25.10994.0"	{"2025 UR1"}  #Gateway
+	"10.25.10603.0"	{"2025 UR1 with KB5080648"}
   }
 }
                         			
@@ -2225,8 +2239,20 @@ IF ($SCOMCorePath -match "Gateway")
     #This is SCOM 2025
     $ServerURFile = Get-Item $SCOMPath\MOMAgentManagement.dll
     $ServerURFileVersion = $ServerURFile.VersionInfo.FileVersion 
+	#Check if UR1
+	IF ($ServerURFileVersion -eq "10.25.10324.0")
+	{
+	  #This is SCOM 2025 UR1.  Check for KB5080648
+      $ServerUR1HotfixFile = Get-Item $SCOMPath\MOMConnector.dll
+      $ServerUR1HotfixFileVersion = $ServerUR1HotfixFile.VersionInfo.FileVersion
+      IF ($ServerUR1HotfixFileVersion -eq "10.25.11168.0")
+      {
+        #This is KB5080648.  Hard code the version to the same as the discovered version in the console for OMProducts.
+		$ServerURFileVersion = "10.25.10603.0"
+      }	  
+	}
   }
-  
+ 
   # Set these to null since we do not expect a web console or a console on a GW
   $WebConsoleURFileVersion = ""
   $ConsoleURFileVersion = ""
@@ -2469,6 +2495,18 @@ ELSE  #This is a Management Server not a Gateway
     #In SCOM 2025 UR1 only the following file and Microsoft.Mon.Sdk.Authorization.dll changed version in main folder.
     $ServerURFile = Get-Item $SCOMCorePath\Server\MOMAgentManagement.dll
     $ServerURFileVersion = $ServerURFile.VersionInfo.FileVersion
+	#Check if UR1
+	IF ($ServerURFileVersion -eq "10.25.10324.0")
+	{
+	  #This is SCOM 2025 UR1.  Check for KB5080648
+      $ServerUR1HotfixFile = Get-Item $SCOMCorePath\Server\MOMConnector.dll
+      $ServerUR1HotfixFileVersion = $ServerUR1HotfixFile.VersionInfo.FileVersion
+      IF ($ServerUR1HotfixFileVersion -eq "10.25.11168.0")
+      {
+        #This is KB5080648.  Hard code the version to the same as the discovered version in the console for OMProducts.
+		$ServerURFileVersion = "10.25.10603.0"
+      }	  
+	}	
     
     #Determine main Webconsole file version for 2025
     Try
