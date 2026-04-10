@@ -10,7 +10,7 @@ SCOM - Management Pack to discover properties and add tasks to make SCOM Admins 
 https://kevinholman.com/2017/05/09/scom-management-mp-making-a-scom-admins-life-a-little-easier/
 
 Version History:
-* 10.25.10603.0 - Added support for SCOM 2025 UR1 with hotfix KBKB5080648.
+* 10.25.10603.0 - Added support for SCOM 2025 UR1 with hotfix KB5080648.
 * 10.25.10324.1 - Bug fix for discovering SCOM 2022 UR3 without hotfix correctly.
 * 10.25.10324.0 - Added support for SCOM 2025 UR1.  Added support for SCOM 2022 UR3 plus KB5071859.  Added logging for Execute software from share task.
 * 10.25.10132.5 - Changed method to detect OS Name to support Windows 11 OS.  Added Agent Version detection of deprecated Azure MMA 10.20.* agents.
