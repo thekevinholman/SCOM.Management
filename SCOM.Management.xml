@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.25.10603.0</Version>
+      <Version>10.25.10603.1</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1452,7 +1452,7 @@ IF ($SCOMAgentVersion -eq "10.25.10079.0")
 	#Check for KB5080648
     $SCOMAgentUR1HotfixVersionFile = Get-Item $SCOMAgentPath\MOMConnector.dll
     $SCOMAgentUR1HotfixVersion = $SCOMAgentUR1HotfixVersionFile.VersionInfo.FileVersion
-	IF ($SCOMAgentUR1HotfixVersion -eq "10.25.11168.0")
+	IF ($ServerUR1HotfixFileVersion -eq "10.25.11168.0" -or $ServerUR1HotfixFileVersion -eq "10.25.11182.0")
 	{
 	  #Set version to match the discovered version in SCOM console and OMProducts.
 	  $SCOMAgentVersion = $SCOMAgentUR1HotfixVersion	
@@ -2245,7 +2245,7 @@ IF ($SCOMCorePath -match "Gateway")
 	  #This is SCOM 2025 UR1.  Check for KB5080648
       $ServerUR1HotfixFile = Get-Item $SCOMPath\MOMConnector.dll
       $ServerUR1HotfixFileVersion = $ServerUR1HotfixFile.VersionInfo.FileVersion
-      IF ($ServerUR1HotfixFileVersion -eq "10.25.11168.0")
+      IF ($ServerUR1HotfixFileVersion -eq "10.25.11168.0" -or $ServerUR1HotfixFileVersion -eq "10.25.11182.0")
       {
         #This is KB5080648.  Hard code the version to the same as the discovered version in the console for OMProducts.
 		$ServerURFileVersion = "10.25.10603.0"
@@ -2501,7 +2501,7 @@ ELSE  #This is a Management Server not a Gateway
 	  #This is SCOM 2025 UR1.  Check for KB5080648
       $ServerUR1HotfixFile = Get-Item $SCOMCorePath\Server\MOMConnector.dll
       $ServerUR1HotfixFileVersion = $ServerUR1HotfixFile.VersionInfo.FileVersion
-      IF ($ServerUR1HotfixFileVersion -eq "10.25.11168.0")
+      IF ($ServerUR1HotfixFileVersion -eq "10.25.11168.0" -or $ServerUR1HotfixFileVersion -eq "10.25.11182.0")
       {
         #This is KB5080648.  Hard code the version to the same as the discovered version in the console for OMProducts.
 		$ServerURFileVersion = "10.25.10603.0"
