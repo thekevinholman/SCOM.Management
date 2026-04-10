@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.25.10603.1</Version>
+      <Version>10.25.10644.0</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1359,7 +1359,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nRuntime
 #
 #  Author: Kevin Holman
 #  
-#  Version: 3.4
+#  Version: 3.5
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName,[string]$IP)
 
@@ -1452,7 +1452,7 @@ IF ($SCOMAgentVersion -eq "10.25.10079.0")
 	#Check for KB5080648
     $SCOMAgentUR1HotfixVersionFile = Get-Item $SCOMAgentPath\MOMConnector.dll
     $SCOMAgentUR1HotfixVersion = $SCOMAgentUR1HotfixVersionFile.VersionInfo.FileVersion
-	IF ($ServerUR1HotfixFileVersion -eq "10.25.11168.0" -or $ServerUR1HotfixFileVersion -eq "10.25.11182.0")
+	IF ($SCOMAgentUR1HotfixVersion -eq "10.25.11168.0" -or $SCOMAgentUR1HotfixVersion -eq "10.25.11182.0")
 	{
 	  #Set version to match the discovered version in SCOM console and OMProducts.
 	  $SCOMAgentVersion = $SCOMAgentUR1HotfixVersion	
@@ -1517,7 +1517,8 @@ IF ($SCOMAgentVersion -eq "10.25.10079.0")
   # SCOM 2025
   "10.25.10079.0" {"2025 RTM"}
   "10.25.10994.0" {"2025 UR1"}
-  "10.25.11168.0" {"2025 UR1 with KB5080648"}  
+  "10.25.11168.0" {"2025 UR1 with KB5080648"}
+  "10.25.11182.0" {"2025 UR1 with KB5080648"}    
 
   # If nothing else found then default to version number
   default {$SCOMAgentVersion} 
@@ -1997,7 +1998,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
 #
 #  Author: Kevin Holman
 #
-#  Version: 3.6
+#  Version: 3.7
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName)
 
@@ -2155,6 +2156,7 @@ function URVersion($Version)
     "10.25.10324.0"	{"2025 UR1"}
     "10.25.10994.0"	{"2025 UR1"}  #Gateway
 	"10.25.10603.0"	{"2025 UR1 with KB5080648"}
+	"10.25.10644.0"	{"2025 UR1 with KB5080648"}	
   }
 }
                         			
@@ -2248,7 +2250,7 @@ IF ($SCOMCorePath -match "Gateway")
       IF ($ServerUR1HotfixFileVersion -eq "10.25.11168.0" -or $ServerUR1HotfixFileVersion -eq "10.25.11182.0")
       {
         #This is KB5080648.  Hard code the version to the same as the discovered version in the console for OMProducts.
-		$ServerURFileVersion = "10.25.10603.0"
+		$ServerURFileVersion = "10.25.10644.0"
       }	  
 	}
   }
@@ -2504,7 +2506,7 @@ ELSE  #This is a Management Server not a Gateway
       IF ($ServerUR1HotfixFileVersion -eq "10.25.11168.0" -or $ServerUR1HotfixFileVersion -eq "10.25.11182.0")
       {
         #This is KB5080648.  Hard code the version to the same as the discovered version in the console for OMProducts.
-		$ServerURFileVersion = "10.25.10603.0"
+		$ServerURFileVersion = "10.25.10644.0"
       }	  
 	}	
     
