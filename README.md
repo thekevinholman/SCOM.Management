@@ -10,6 +10,7 @@ SCOM - Management Pack to discover properties and add tasks to make SCOM Admins 
 https://kevinholman.com/2017/05/09/scom-management-mp-making-a-scom-admins-life-a-little-easier/
 
 Version History:
+* 10.25.10644.1 - Added support for SCOM 2025 UR1 with Web Console Hotfix KB5073079
 * 10.25.10644.0 - Bug fix for discovering SCOM 2025 UR1 with hotfix KB5080648.
 * 10.25.10603.0 - Added support for SCOM 2025 UR1 with hotfix KB5080648.
 * 10.25.10324.1 - Bug fix for discovering SCOM 2022 UR3 without hotfix correctly.
