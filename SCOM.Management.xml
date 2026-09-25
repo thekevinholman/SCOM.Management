@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>SCOM.Management</ID>
-      <Version>10.25.10644.0</Version>
+      <Version>10.25.10644.1</Version>
     </Identity>
     <Name>SCOM.Management</Name>
     <References>
@@ -1998,7 +1998,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript has completed. `nAgent V
 #
 #  Author: Kevin Holman
 #
-#  Version: 3.7
+#  Version: 3.8
 #=================================================================================
 param($SourceId,$ManagedEntityId,$ComputerName,$MGName)
 
@@ -2155,7 +2155,8 @@ function URVersion($Version)
 	"10.25.10079.0" {"2025 RTM"}  #Gateway
     "10.25.10324.0"	{"2025 UR1"}
     "10.25.10994.0"	{"2025 UR1"}  #Gateway
-	"10.25.10603.0"	{"2025 UR1 with KB5080648"}
+    "10.25.10377.0"	{"2025 UR1 with KB5073079"}	
+    "10.25.10603.0"	{"2025 UR1 with KB5080648"}
 	"10.25.10644.0"	{"2025 UR1 with KB5080648"}	
   }
 }
@@ -2515,12 +2516,24 @@ ELSE  #This is a Management Server not a Gateway
 	{
 	  $WebConsoleURFile = Get-Item $SCOMCorePath\WebConsole\Dashboard\OMVersion.dll
 	  $WebConsoleURFileVersion = $WebConsoleURFile.VersionInfo.FileVersion
+      #Check if UR1
+	  IF ($WebConsoleURFileVersion -eq "10.25.10324.0")
+	  {
+        #This is UR1.  Check for KB5073079
+        $WebConsoleUR1HotfixFile = Get-Item $SCOMCorePath\WebConsole\Dashboard\bin\Microsoft.EnterpriseManagement.OMDataService.dll
+        $WebConsoleUR1HotfixFileVersion = $WebConsoleUR1HotfixFile.VersionInfo.FileVersion
+        IF ($WebConsoleUR1HotfixFileVersion -eq "10.25.10377.0")
+        {
+          #This is KB5073079.
+		  $WebConsoleURFileVersion = "10.25.10377.0"
+        }	
+      }
 	}
 	Catch
 	{
 	  $WebConsoleURFileVersion = ""
 	}
-   
+ 
     #Determine main Console file version for 2025
 	Try
 	{
